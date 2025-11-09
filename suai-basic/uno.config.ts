@@ -9,6 +9,8 @@ export default defineConfig({
   presets: [
     presetWind3({
       dark: 'class',
+      /* Disable preflight - we manage our own reset in base/reset.css */
+      preflights: false,
     }),
     presetAttributify(),
     presetIcons({
@@ -31,9 +33,32 @@ export default defineConfig({
 
   theme: {
     colors: {
-      suai: {
-        accent: '#3b82f6',
-      }
+      primary: {
+        DEFAULT: '#3b82f6',
+        light: '#60a5fa',
+        dark: '#1d4ed8',
+      },
+      success: {
+        DEFAULT: '#10b981',
+        light: '#34d399',
+        dark: '#059669',
+      },
+      danger: {
+        DEFAULT: '#ef4444',
+        light: '#f87171',
+        dark: '#dc2626',
+      },
+      warning: {
+        DEFAULT: '#f59e0b',
+        light: '#fbbf24',
+        dark: '#d97706',
+      },
+      info: {
+        DEFAULT: '#06b6d4',
+        light: '#22d3ee',
+        dark: '#0891b2',
+      },
+      secondary: '#6b7280',
     }
   },
 

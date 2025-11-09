@@ -1,0 +1,84 @@
+Category,Component,SUAI Tag,HTML Compatible,CSS Only,JS Required,JS Enhanced
+Actions,Button,<button>,<button>,Yes,No,Yes - Analytics/loading/debounce
+Actions,Copy Button,<button type="copy">,<button>,Yes - Styling,Yes - Clipboard API,Yes - Fallbacks/analytics
+Actions,Dropdown,<dropdown>,"<details> + Popover API",Yes - Base,No,Yes - Positioning/keyboard nav
+Actions,Sign - QR Code,<sign type="qr">,"<img>, <canvas>",Yes - Pre-rendered,Yes - Dynamic generation,Yes - Advanced features
+Actions,Sign - Barcode,<sign type="barcode">,"<img>, <canvas>",Yes - Pre-rendered,Yes - Dynamic generation,Yes - Advanced features
+Actions,Sign - Stars Rating,<sign type="stars">,"<span>, <div>",Yes - Mask-image,No,No
+Actions,Sign - Hearts Rating,<sign type="hearts">,"<span>, <div>",Yes - Mask-image,No,No
+Actions,Sign - Energy Grade,<sign type="energy">,<span>,Yes - Color scale,No,No
+Actions,Sign - Certification (CE/ISO/Eco),<sign type="ce|iso|eco">,<img>,Yes - Background-image,No,No
+Actions,Sign - Status (Online/Verified),<sign type="online|verified">,<span>,Yes - CSS mask,No,No
+Actions,Sign - Badge,<sign type="badge">,<span>,Yes - Pill shape,No,No
+Actions,Sign - Count,<sign type="count">,<span>,Yes - Pill shape,No,No
+Feedback & Status,Badge,<sign type="badge">,<span class="badge">,Yes - Full,No,No
+Feedback & Status,Alert,<alert>,<div role="alert">,Yes - With Popover API,No,Yes - Auto-dismiss/queue
+Feedback & Status,Dialog,<dialog>,<dialog> (native),Yes - Full,No,Yes - Positioning/animations
+Feedback & Status,Tooltip/Hint,[hint="..."],Any element + attribute,Yes - Pure CSS,No,Yes - Markdown rendering
+Feedback & Status,Progress Bar,<progress type="bar">,<progress>,Yes - Full,No,Yes - Time-based animation
+Feedback & Status,Progress Ring,<progress type="ring">,"<svg>, <div>",Yes - Conic-gradient,No,Yes - Time-based animation
+Feedback & Status,Progress Steps,<progress type="steps">,<div> + steps,Yes - Base,No,Yes - Label generation
+Feedback & Status,Progress Gauge,<progress type="gauge">,<div>,Yes - Conic-gradient,No,Yes - Thresholds
+Feedback & Status,Skeleton,<progress type="skeleton">,<div>,Yes - Shimmer animation,No,No
+Feedback & Status,Progress Percent,<progress type="percent">,<span>,Yes - CSS content,No,No
+Feedback & Status,Spinner,<progress type="ring"> (no value),<div>,Yes - Pure animations,No,No
+Feedback & Status,Tag,<tag>,<span class="tag">,Yes - Styling,No,Yes - Add/remove/sort
+Form Controls,Text Input,<input type="text">,<input type="text">,Yes - Validation styles,No,Yes - Alphabet filter/clear btn
+Form Controls,Email Input,<input type="email">,<input type="email">,Yes - Validation styles,No,Yes - Validation feedback
+Form Controls,Password Input,<input type="password">,<input type="password">,Yes - Validation styles,No,Yes - Toggle visibility
+Form Controls,Number Input,<input type="number">,<input type="number">,Yes - Validation styles,No,Yes - Step controls
+Form Controls,Tel Input,<input type="tel">,<input type="tel">,Yes - Validation styles,No,Yes - Format validation
+Form Controls,URL Input,<input type="url">,<input type="url">,Yes - Validation styles,No,Yes - Protocol handling
+Form Controls,Search Input,<input type="search">,<input type="search">,Yes - Validation styles,No,Yes - Clear btn/autocomplete
+Form Controls,Date Input,<input type="date">,<input type="date">,Yes - Native picker,No,Yes - Custom calendar
+Form Controls,Time Input,<input type="time">,<input type="time">,Yes - Native picker,No,Yes - Custom time picker
+Form Controls,DateTime Input,<input type="datetime-local">,<input type="datetime-local">,Yes - Native picker,No,Yes - Custom picker
+Form Controls,Color Input,<input type="color">,<input type="color">,Yes - Native picker,No,Yes - Format conversion
+Form Controls,File Input,<input type="file">,<input type="file">,Yes - Styling,No,Yes - Drag-drop/preview
+Form Controls,Range Input,<input type="range">,<input type="range">,Yes - Track/thumb styling,No,Yes - Dual handles/tooltip
+Form Controls,Rating,<input type="range">,<input type="range">,Yes - Star rendering via CSS,No,Yes - Half-stars/animations
+Form Controls,Checkbox,<select type="checkbox" multiple>,<input type="checkbox">,Yes - Full,No,Yes - Indeterminate/group ops
+Form Controls,Radio,<select type="radio">,<input type="radio"> + <fieldset>,Yes - Full,No,Yes - Enhanced UX
+Form Controls,Dropdown,<select type="dropdown">,<select>,Yes - Full,No,Yes - Search/multi-select
+Form Controls,List,<select type="list">,<select>,Yes - Always visible,No,Yes - Enhanced UX
+Form Controls,Slider,<select type="slider">,<input type="range">,Yes - Track/thumb styling,No,Yes - Value display/steps
+Form Controls,Toggle,<select type="toggle">,<input type="checkbox">,Yes - Animation,No,Yes - State management
+Form Controls,Switch,<select type="switch">,<input type="checkbox">,Yes - Visual switch,No,Yes - Multi-value switching
+Form Controls,Swatch,<select type="swatch">,Custom,Yes - Color display,No,Yes - Custom colors
+Form Controls,Composer Plain,<composer mode="plain">,<textarea>,Yes - Basic,No,Yes - Auto-resize/counter
+Form Controls,Composer Markdown,<composer type="markdown">,<textarea> + contenteditable,Yes - Basic,Yes - Markdown parsing,Yes - Toolbar/shortcuts
+Form Controls,Composer HTML,<composer type="html">,<textarea> + contenteditable,Yes - Basic,Yes - HTML editing,Yes - Syntax highlight
+Form Controls,Composer Rich,<composer type="rich">,<div contenteditable>,Yes - Basic,Yes - WYSIWYG,Yes - Full editor
+Form Controls,Composer Code,<composer type="code">,<textarea>,Yes - Basic,Yes - Syntax highlight,Yes - Language support
+Form Controls,Composer Email,<composer type="email">,<textarea> + contenteditable,Yes - Basic,Yes - Email formatting,Yes - Emoji picker
+Form Controls,Preview,<preview>,"<div>, <iframe>",Yes - Container,Yes - Render content,Yes - Live sync
+Form Controls,Version,<version>,"<div>, <article>",Yes - Container,No,Yes - Version management
+Form Controls,Diff,<diff>,<div>,Yes - Container,Yes - Diff rendering,Yes - Syntax highlight
+Imagery,Media Image,<media type="image">,<img>,Yes - Full,No,Yes - Lazy loading
+Imagery,Media Animation,<media type="animation">,<img> (GIF/APNG),Yes - With controls,No,Yes - Play/pause controls
+Imagery,Media SVG,<media type="svg">,"<img>, <svg>",Yes - Full,No,Yes - Interactive SVG
+Imagery,Media Video,<media type="video">,<video>,Yes - Full,No,Yes - Custom controls
+Imagery,Avatar,<avatar>,<figure> + <figcaption>,Yes - Initials via CSS,No,Yes - Extract initials from name
+Imagery,Gallery Carousel,<gallery type="carousel">,<ul> + <li>,Yes - Layout,Yes - Navigation,Yes - Autoplay/swipe
+Imagery,Gallery Grid,<gallery type="grid">,<ul> + <li>,Yes - Grid layout,No,Yes - Dynamic columns
+Imagery,Gallery Masonry,<gallery type="masonry">,<ul> + <li>,Yes - Masonry layout,No,Yes - Responsive masonry
+Imagery,Gallery Lightbox,<gallery type="lightbox">,<ul> + <li>,Yes - Layout,Yes - Overlay,Yes - Zoom/keyboard nav
+Imagery,Gallery Compare,<gallery type="compare">,<div>,Yes - Layout,Yes - Draggable slider,Yes - Enhanced gestures
+Imagery,Icon Semantic,<icon name="*">,Custom,Yes - UnoCSS/Iconify,No,No
+Imagery,Icon Inline,<svg>,<svg>,Yes - Full,No,Yes - Animations
+Imagery,Icon External,<media type="svg">,<img>,Yes - Full,No,No
+Imagery,Icon Decorative,.icon-left:{name} / .icon-right:{name},CSS classes,Yes - Pseudo-elements,No,No
+Navigation,Path Sitemap,<path type="sitemap">,<nav> + <ol>,Yes - Separator/ellipsis,No,Yes - Auto-match/wildcards
+Navigation,Path History,<path type="history">,<nav> + <ol>,Yes - Trail display,No,Yes - History tracking
+Navigation,Path Memory,<path type="memory">,<nav> + <ol>,Yes - Stepper display,No,Yes - State management
+Navigation,Path Itinerary,<path type="itinerary">,<nav> + <ol>,Yes - Route display,No,Yes - Coordinates/maps
+Navigation,Path Timeline,<path type="timeline">,<nav> + <ol>,Yes - Timeline display,No,Yes - Date formatting
+Navigation,Path Roadmap,<path type="roadmap">,<nav> + <ol>,Yes - Milestone display,No,Yes - Version tracking
+Navigation,Path Decision,<path type="decision">,<nav> + <ol>,Yes - Path display,No,Yes - Decision tree
+Navigation,Path Workflow,<path type="workflow">,<nav> + <ol>,Yes - Process display,No,Yes - State tracking
+Navigation,Path Playlist,<path type="playlist">,<nav> + <ol>,Yes - Track display,No,Yes - Media controls
+Navigation,Point,<point>,"<a>, <span>",Yes - Link styling,No,Yes - Dynamic labels
+Navigation,Tabs,<tabs> = <nav>,<nav> + <a>,Yes - Tab styling,Yes - Panel switching,Yes - URL sync/lazy load
+Navigation,Tab,<tab> = <a>,<a>,Yes - Link styling,No,Yes - Active state
+Navigation,Tree,<tree>,<ul> + <li> nested,Yes - Tree styling,Yes - Expand/collapse,Yes - Search/lazy load
+Navigation,Tree Node,<node>,<li>,Yes - Node styling,Yes - Selection,Yes - Drag-drop

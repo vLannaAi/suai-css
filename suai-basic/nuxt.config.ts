@@ -8,7 +8,9 @@ export default defineNuxtConfig({
   ssr: false,
 
   // UnoCSS Integration
-  modules: ['@unocss/nuxt'],
+  modules: [
+    '@unocss/nuxt'
+  ],
 
   // CSS & Styles
   css: [
