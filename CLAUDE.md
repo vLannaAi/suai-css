@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 SUAI (สวย = "beautiful" in Thai) is a progressive-enhancement CSS framework built in 4 stages, each a top-level directory:
 
-- **`suai-html/`** — Stage 1, implemented. Zero-JS semantic HTML styling: `suai.css` (theme-agnostic base) + `suai-lai/` themes (pla = Material 3, nok = Bootstrap 5.3, maa = Apple HIG), each with base/light-vars/dark-vars/fonts files. Uses **legacy `--suai-*` variables** scoped by `data-theme` + `data-mode` on `<html>`.
+- **`suai-html/`** — Stage 1, implemented and migrated to the `--su-*` contract. Zero-JS semantic HTML styling: a single generated `suai.bundle.css` (concatenation of `suai-css/tokens.css` + `suai-css/themes/fonts/fonts.css` + `suai-css/themes/{pla,nok,maa,speed}.css` + `suai-html/suai.css`), covering 4 skins (pla = Material 3, nok = Bootstrap 5.3, maa = Apple HIG, speed = crimson) scoped by `data-su-theme` + `data-su-mode` on `<html>` — the same attribute contract as Stage 2. `suai.bundle.css` is a **committed build artifact**: run `pnpm build:html` after editing `suai-css/tokens.css`, `suai-css/themes/*`, or `suai-html/suai.css`.
 - **`suai-css/`** — Stage 2, **the active work**. Home of the canonical **`--su-*` token contract** (`tokens.css`), the UnoCSS authoring config (`uno.config.ts`), and themes (`themes/speed.css`). Ignore the stale README claiming this stage is "planned" — `tokens.css` and `SYNC.md` are the source of truth here.
 - **`suai-js/`, `suai-vue/`** — Stages 3–4, placeholder READMEs only.
 - **`docs/`** — numbered by stage (`0-OVERVIEW` roadmap/philosophy, `1-FOUNDATION` architecture, `2-STAGE-1-HTML`, `5-STAGE-4-VUE` component specs).
@@ -18,15 +18,18 @@ pnpm demo          # static server for all demos at http://localhost:8877 (scrip
 pnpm demo:build    # compile suai-css/demo/speed-demo.html utilities → demo/demo.css (UnoCSS CLI)
 ```
 
-No tests or linters exist. Verify CSS changes visually via the demo server (`/suai-html/demos/` for Stage 1, `/suai-css/demo/speed-demo.html` for Stage 2). Re-run `pnpm demo:build` after changing `uno.config.ts` or utility classes in `speed-demo.html` — `demo.css` is a committed build artifact.
+No tests or linters exist. Verify CSS changes visually via the demo server (`/suai-html/demos/` for Stage 1, `/suai-css/demo/speed-demo.html` for Stage 2). Re-run `pnpm demo:build` after changing `uno.config.ts` or utility classes in `speed-demo.html` — `demo.css` is a committed build artifact. Likewise, re-run `pnpm build:html` after editing `suai-css/tokens.css`, `suai-css/themes/*`, or `suai-html/suai.css` — `suai-html/suai.bundle.css` is a committed build artifact.
 
-## The two token systems (don't mix them)
+## One shared token contract, two consumption models
+
+Both stages are migrated onto the same `--su-*` token contract and `data-su-theme` + `data-su-mode` scoping attributes — `--suai-*` (the pre-migration Stage 1 name) is fully retired, do not reintroduce it.
 
 | | Stage 1 (suai-html) | Stage 2 (suai-css) |
 |---|---|---|
-| Variables | `--suai-*` (legacy names) | `--su-*` (canonical contract) |
-| Scoping attrs | `data-theme` + `data-mode` | `data-su-theme` + `data-su-mode` |
-| Themes | pla / nok / maa in `suai-lai/` | `themes/speed.css` (first canonical theme) |
+| Variables | `--su-*` (canonical contract) | `--su-*` (canonical contract) |
+| Scoping attrs | `data-su-theme` + `data-su-mode` | `data-su-theme` + `data-su-mode` |
+| Consumption | Single generated `suai.bundle.css`, plain CSS, no build tools to consume | UnoCSS utility classes compiling to `var(--su-*)` |
+| Themes | pla / nok / maa / speed, all bundled together | `themes/speed.css` (first canonical theme) |
 
 The `--su-*` attributes are deliberately su-namespaced so a host app's own `data-theme` (e.g. Nuxt UI) never collides. New work uses `--su-*`; an old-name migration map lives at the bottom of `tokens.css`.
 

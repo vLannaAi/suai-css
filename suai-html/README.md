@@ -12,9 +12,9 @@ SUAI HTML (Stage 1) is a **no-JS, semantic-first CSS framework** that makes stan
 
 ```html
 <!DOCTYPE html>
-<html data-theme="pla" data-mode="light">
+<html data-su-theme="pla" data-su-mode="light">
 <head>
-  <link rel="stylesheet" href="suai-html/suai.css">
+  <link rel="stylesheet" href="suai-html/suai.bundle.css">
 </head>
 <body>
   <article>
@@ -32,16 +32,15 @@ That's it. No `className="..."`, no `import`, no JavaScript. Just HTML.
 
 ## Features
 
-✅ **Zero JavaScript** - Pure CSS, works everywhere
-✅ **Semantic HTML** - Official HTML5 tags only
-✅ **3 Beautiful Themes** - Material Design 3, Bootstrap 5.3, Apple HIG inspired
-✅ **Light & Dark Modes** - Built-in theme switching
-✅ **Mobile-First** - Responsive by default
-✅ **~50KB Bundle** - Small, fast, efficient
-✅ **No Build Tools** - Drop in and use
-✅ **Email Compatible** - Works in email templates
-✅ **SSR Perfect** - Server-side rendering friendly
-✅ **Accessibility First** - Semantic HTML is accessible HTML
+- **Zero JavaScript** - Pure CSS, works everywhere
+- **Semantic HTML** - Official HTML5 tags only
+- **4 Beautiful Skins** - Material Design 3, Bootstrap 5.3, Apple HIG, and a crimson "Speed" skin
+- **Light & Dark Modes** - Built-in theme switching
+- **Single Bundle** - One CSS file, no build tools required to consume
+- **No Build Tools** - Drop in and use
+- **Email Compatible** - Works in email templates
+- **SSR Perfect** - Server-side rendering friendly
+- **Accessibility First** - Semantic HTML is accessible HTML
 
 ---
 
@@ -50,18 +49,18 @@ That's it. No `className="..."`, no `import`, no JavaScript. Just HTML.
 ### Option 1: CDN (Coming Soon)
 
 ```html
-<link rel="stylesheet" href="https://cdn.suai.dev/suai-html/suai.css">
-<html data-theme="pla" data-mode="light">
+<link rel="stylesheet" href="https://cdn.suai.dev/suai-html/suai.bundle.css">
+<html data-su-theme="pla" data-su-mode="light">
 ```
 
 ### Option 2: Download
 
-1. Download `suai.css` and `suai-lai/` folder
-2. Link in your HTML:
+1. Download `suai.bundle.css` (and `suai-theme.js` if you want a JS switcher)
+2. Link it in your HTML:
 
 ```html
-<link rel="stylesheet" href="path/to/suai.css">
-<html data-theme="pla" data-mode="light">
+<link rel="stylesheet" href="path/to/suai.bundle.css">
+<html data-su-theme="pla" data-su-mode="light">
 ```
 
 ### Option 3: npm (Coming Soon)
@@ -71,40 +70,35 @@ npm install @suai/html
 ```
 
 ```html
-<link rel="stylesheet" href="node_modules/@suai/html/suai.css">
+<link rel="stylesheet" href="node_modules/@suai/html/suai.bundle.css">
 ```
 
 ---
 
 ## Theme System
 
-SUAI HTML includes 3 themes, each with light and dark modes:
+`suai.bundle.css` ships all 4 skins and both modes in a single file. Pick a skin and a mode by setting two attributes on `<html>` — no extra `<link>` tags, no JavaScript required:
+
+```html
+<html data-su-theme="pla" data-su-mode="light">
+```
+
+- `data-su-theme` — one of `pla`, `nok`, `maa`, `speed`
+- `data-su-mode` — `light` or `dark`
 
 ### PLA (ปลา - Fish)
 Material Design 3 inspired. Smooth, rounded, elevated.
 
-```html
-<html data-theme="pla" data-mode="light">  <!-- Light mode -->
-<html data-theme="pla" data-mode="dark">   <!-- Dark mode -->
-```
-
 ### NOK (นก - Bird)
 Bootstrap 5.3 inspired. Clean, professional, accessible.
-
-```html
-<html data-theme="nok" data-mode="light">
-<html data-theme="nok" data-mode="dark">
-```
 
 ### MAA (ม้า - Horse)
 iOS/Apple HIG inspired. Minimal, precise, elegant.
 
-```html
-<html data-theme="maa" data-mode="light">
-<html data-theme="maa" data-mode="dark">
-```
+### Speed
+A crimson, high-contrast skin.
 
-**Switching themes**: Just change the `data-theme` and `data-mode` attributes. No page reload needed. No JavaScript required (set server-side or statically).
+**Switching themes**: Just change the `data-su-theme` and `data-su-mode` attributes. No page reload needed. No JavaScript required (set server-side or statically). An optional `suai-theme.js` is provided for client-side switching in demos — see [THEMES.md](THEMES.md).
 
 ---
 
@@ -161,12 +155,12 @@ Open `/demos/index.html` to start exploring.
 
 ```html
 <!DOCTYPE html>
-<html lang="en" data-theme="pla" data-mode="light">
+<html lang="en" data-su-theme="pla" data-su-mode="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Page</title>
-  <link rel="stylesheet" href="suai-html/suai.css">
+  <link rel="stylesheet" href="suai-html/suai.bundle.css">
 </head>
 <body>
   <header>
@@ -251,28 +245,28 @@ Open `/demos/index.html` to start exploring.
 
 ## CSS Variables
 
-All themes use unified CSS variables. You can customize by overriding:
+All skins read the same `--su-*` token contract. You can customize by overriding tokens on `:root` (or any subtree) in your own stylesheet loaded after the bundle:
 
 ```css
 :root {
-  --suai-primary: #your-color;
-  --suai-text: #your-text-color;
-  --suai-surface: #your-background;
+  --su-accent: #your-color;
+  --su-fg: #your-text-color;
+  --su-bg: #your-background;
   /* ... and more */
 }
 ```
 
-See `/demos/6.theme.html` for complete variable reference.
+See `/demos/6.theme.html` for a complete variable reference, and `suai-css/tokens.css` for the full contract.
 
 ---
 
 ## Browser Support
 
-- ✅ Chrome/Edge 90+
-- ✅ Firefox 88+
-- ✅ Safari 14+
-- ✅ iOS Safari 14+
-- ✅ Android Chrome 90+
+- Chrome/Edge 90+
+- Firefox 88+
+- Safari 14+
+- iOS Safari 14+
+- Android Chrome 90+
 
 Essentially: all modern browsers with CSS variables support.
 
@@ -280,7 +274,7 @@ Essentially: all modern browsers with CSS variables support.
 
 ## When to Use SUAI HTML (Stage 1)
 
-✅ **Perfect For**:
+**Perfect For**:
 - Static sites & blogs
 - Server-rendered apps (Rails, Laravel, Django)
 - Email templates
@@ -289,7 +283,7 @@ Essentially: all modern browsers with CSS variables support.
 - Prototypes
 - Accessibility-first projects
 
-❌ **Not Ideal For**:
+**Not Ideal For**:
 - Heavy customization per component (use Stage 2)
 - Interactive SPAs (use Stage 3 or 4)
 - Utility-first workflow (use Stage 2)
@@ -331,15 +325,11 @@ Read the full philosophy: `/docs/0-OVERVIEW/03-philosophy.md`
 ```
 suai-html/
 ├── README.md (this file)
-├── suai.css (main CSS file)
-├── suai-lai/ (theme system)
-│   ├── pla/ (Material Design 3 theme)
-│   │   ├── pla-base.css
-│   │   ├── pla-light-vars.css
-│   │   ├── pla-dark-vars.css
-│   │   └── fonts/
-│   ├── nok/ (Bootstrap 5.3 theme)
-│   └── maa/ (Apple HIG theme)
+├── THEMES.md (theme system reference)
+├── suai.css (theme-agnostic base styles, source layer)
+├── suai.bundle.css (generated — tokens + fonts + all 4 skins + suai.css)
+├── suai-theme.js (optional client-side switcher, progressive enhancement only)
+├── fonts/ (variable-font files used by the skins)
 └── demos/ (live demonstrations)
     ├── index.html
     ├── 1.text.html
@@ -347,9 +337,10 @@ suai-html/
     ├── 3.form.html
     ├── 4.media.html
     ├── 5.layout.html
-    ├── 6.theme.html
-    └── theme-demo.js (demo only, not required)
+    └── 6.theme.html
 ```
+
+`suai.bundle.css` is a **generated build artifact** assembled from `suai-css/tokens.css`, `suai-css/themes/*.css`, and `suai-html/suai.css`. Run `pnpm build:html` (from the repo root) after editing any of those source files.
 
 ---
 
@@ -357,21 +348,21 @@ suai-html/
 
 ### Do I need JavaScript?
 
-**No.** SUAI HTML is 100% CSS. The `theme-demo.js` in `/demos/` is only for the demo page theme switcher. Your production site doesn't need it.
+**No.** SUAI HTML is 100% CSS. `suai-theme.js` is an optional progressive-enhancement helper that lets a page's theme switcher flip `data-su-theme`/`data-su-mode` client-side. Your production site doesn't need it — every skin/mode combination renders correctly from static attributes alone.
 
 ### How do I switch themes in production?
 
-Set `data-theme` and `data-mode` attributes on the `<html>` element. This can be done:
+Set `data-su-theme` and `data-su-mode` attributes on the `<html>` element. This can be done:
 - Server-side (recommended)
 - Statically in your HTML
-- With minimal JS if you want client-side switching
+- With `suai-theme.js` if you want client-side switching
 
 ### Can I customize colors/fonts?
 
-Yes! Override CSS variables in your own stylesheet:
+Yes! Override `--su-*` CSS variables in your own stylesheet:
 
 ```html
-<link rel="stylesheet" href="suai-html/suai.css">
+<link rel="stylesheet" href="suai-html/suai.bundle.css">
 <link rel="stylesheet" href="my-custom.css">
 ```
 

@@ -1,51 +1,32 @@
 # SUAI HTML Theme System
 
-## V3.0 Modular Architecture
+## Single-Bundle Architecture
 
-SUAI HTML uses a modular CSS architecture where themes are split into separate files:
+SUAI HTML ships one generated CSS file, `suai.bundle.css`, that contains the token contract, fonts, and all 4 skins in both light and dark mode. There is nothing else to link — no per-theme files, no base/vars split.
 
 ```
 suai-html/
-├── suai.css                        # Common styles (theme-agnostic)
-└── suai-lai/                       # Theme system (สวยลาย = beautiful pattern)
-    ├── pla/                        # PLA theme (ปลา - Fish, Material Design 3)
-    │   ├── fonts/
-    │   │   ├── roboto-flex-full.woff2
-    │   │   └── pla-fonts.css
-    │   ├── pla-base.css            # Theme-specific base styles
-    │   ├── pla-light-vars.css      # Light mode CSS variables
-    │   └── pla-dark-vars.css       # Dark mode CSS variables
-    ├── nok/                        # NOK theme (นก - Bird, Bootstrap 5.3)
-    │   ├── fonts/
-    │   ├── nok-base.css
-    │   ├── nok-light-vars.css
-    │   └── nok-dark-vars.css
-    └── maa/                        # MAA theme (ม้า - Horse, Apple HIG)
-        ├── fonts/
-        ├── maa-base.css
-        ├── maa-light-vars.css
-        └── maa-dark-vars.css
+├── suai.css              # Theme-agnostic base styles (source layer)
+├── suai.bundle.css       # GENERATED — tokens + fonts + pla/nok/maa/speed + suai.css
+├── suai-theme.js          # Optional client-side switcher (progressive enhancement only)
+└── fonts/                 # Variable-font files used by the skins
 ```
+
+`suai.bundle.css` is built by concatenating, in order: `suai-css/tokens.css` (the `--su-*` contract), `suai-css/themes/fonts/fonts.css`, `suai-css/themes/{pla,nok,maa,speed}.css`, and `suai-html/suai.css`. It is a **committed build artifact** — run `pnpm build:html` from the repo root after editing any of those source files.
 
 ---
 
 ## Production Usage (No JavaScript)
 
-For production sites, link all required CSS files directly in your HTML:
+For production sites, link the single bundle and set two attributes on `<html>`:
 
 ### PLA Light Theme
 
 ```html
 <!DOCTYPE html>
-<html lang="en" data-theme="pla" data-mode="light">
+<html lang="en" data-su-theme="pla" data-su-mode="light">
 <head>
-  <!-- Common styles (required) -->
-  <link rel="stylesheet" href="suai-html/suai.css">
-
-  <!-- PLA theme files -->
-  <link rel="stylesheet" href="suai-html/suai-lai/pla/fonts/pla-fonts.css">
-  <link rel="stylesheet" href="suai-html/suai-lai/pla/pla-base.css">
-  <link rel="stylesheet" href="suai-html/suai-lai/pla/pla-light-vars.css">
+  <link rel="stylesheet" href="suai-html/suai.bundle.css">
 </head>
 <body>
   <!-- Your semantic HTML here -->
@@ -57,13 +38,9 @@ For production sites, link all required CSS files directly in your HTML:
 
 ```html
 <!DOCTYPE html>
-<html lang="en" data-theme="pla" data-mode="dark">
+<html lang="en" data-su-theme="pla" data-su-mode="dark">
 <head>
-  <link rel="stylesheet" href="suai-html/suai.css">
-  <link rel="stylesheet" href="suai-html/suai-lai/pla/fonts/pla-fonts.css">
-  <link rel="stylesheet" href="suai-html/suai-lai/pla/pla-base.css">
-  <link rel="stylesheet" href="suai-html/suai-lai/pla/pla-dark-vars.css">
-  <!-- ↑ Note: dark-vars instead of light-vars -->
+  <link rel="stylesheet" href="suai-html/suai.bundle.css">
 </head>
 ```
 
@@ -71,12 +48,9 @@ For production sites, link all required CSS files directly in your HTML:
 
 ```html
 <!DOCTYPE html>
-<html lang="en" data-theme="nok" data-mode="light">
+<html lang="en" data-su-theme="nok" data-su-mode="light">
 <head>
-  <link rel="stylesheet" href="suai-html/suai.css">
-  <link rel="stylesheet" href="suai-html/suai-lai/nok/fonts/nok-fonts.css">
-  <link rel="stylesheet" href="suai-html/suai-lai/nok/nok-base.css">
-  <link rel="stylesheet" href="suai-html/suai-lai/nok/nok-light-vars.css">
+  <link rel="stylesheet" href="suai-html/suai.bundle.css">
 </head>
 ```
 
@@ -84,12 +58,19 @@ For production sites, link all required CSS files directly in your HTML:
 
 ```html
 <!DOCTYPE html>
-<html lang="en" data-theme="maa" data-mode="light">
+<html lang="en" data-su-theme="maa" data-su-mode="light">
 <head>
-  <link rel="stylesheet" href="suai-html/suai.css">
-  <link rel="stylesheet" href="suai-html/suai-lai/maa/fonts/maa-fonts.css">
-  <link rel="stylesheet" href="suai-html/suai-lai/maa/maa-base.css">
-  <link rel="stylesheet" href="suai-html/suai-lai/maa/maa-light-vars.css">
+  <link rel="stylesheet" href="suai-html/suai.bundle.css">
+</head>
+```
+
+### Speed Light Theme
+
+```html
+<!DOCTYPE html>
+<html lang="en" data-su-theme="speed" data-su-mode="light">
+<head>
+  <link rel="stylesheet" href="suai-html/suai.bundle.css">
 </head>
 ```
 
@@ -105,7 +86,6 @@ For production sites, link all required CSS files directly in your HTML:
 - Elevated surfaces with prominent shadows
 - Smooth transitions and animations
 - Modern, friendly, approachable
-- Font: Roboto Flex (variable font with slant axis)
 
 **Best for**: Modern web apps, consumer products, friendly interfaces
 
@@ -119,7 +99,6 @@ For production sites, link all required CSS files directly in your HTML:
 - Clean, professional appearance
 - Medium shadows and borders
 - Business-appropriate styling
-- Font: Noto Sans Thai Flex
 
 **Best for**: Business applications, documentation, professional sites
 
@@ -133,15 +112,23 @@ For production sites, link all required CSS files directly in your HTML:
 - Subtle shadows and blurs
 - Clean, spacious layouts
 - Apple-like refinement
-- Font: CMU Flex
 
 **Best for**: Premium products, minimalist design, Apple-style applications
 
 ---
 
+### Speed
+**Characteristics**:
+- Crimson, high-contrast palette
+- Sharp, no-nonsense styling
+
+**Best for**: Bold, attention-grabbing interfaces
+
+---
+
 ## Server-Side Theme Switching
 
-Set themes based on user preferences stored on the server:
+Set attributes based on user preferences stored on the server:
 
 ### Express.js Example
 
@@ -156,12 +143,9 @@ app.get('/', (req, res) => {
 
 ```ejs
 <!DOCTYPE html>
-<html data-theme="<%= theme %>" data-mode="<%= mode %>">
+<html data-su-theme="<%= theme %>" data-su-mode="<%= mode %>">
 <head>
-  <link rel="stylesheet" href="/suai-html/suai.css">
-  <link rel="stylesheet" href="/suai-html/suai-lai/<%= theme %>/fonts/<%= theme %>-fonts.css">
-  <link rel="stylesheet" href="/suai-html/suai-lai/<%= theme %>/<%= theme %>-base.css">
-  <link rel="stylesheet" href="/suai-html/suai-lai/<%= theme %>/<%= theme %>-<%= mode %>-vars.css">
+  <link rel="stylesheet" href="/suai-html/suai.bundle.css">
 </head>
 ```
 
@@ -173,12 +157,9 @@ $theme = $_SESSION['theme'] ?? 'pla';
 $mode = $_SESSION['mode'] ?? 'light';
 ?>
 <!DOCTYPE html>
-<html data-theme="<?= $theme ?>" data-mode="<?= $mode ?>">
+<html data-su-theme="<?= $theme ?>" data-su-mode="<?= $mode ?>">
 <head>
-  <link rel="stylesheet" href="/suai-html/suai.css">
-  <link rel="stylesheet" href="/suai-html/suai-lai/<?= $theme ?>/fonts/<?= $theme ?>-fonts.css">
-  <link rel="stylesheet" href="/suai-html/suai-lai/<?= $theme ?>/<?= $theme ?>-base.css">
-  <link rel="stylesheet" href="/suai-html/suai-lai/<?= $theme ?>/<?= $theme ?>-<?= $mode ?>-vars.css">
+  <link rel="stylesheet" href="/suai-html/suai.bundle.css">
 </head>
 ```
 
@@ -186,132 +167,53 @@ $mode = $_SESSION['mode'] ?? 'light';
 
 ## Client-Side Theme Switching (Optional)
 
-For demos or apps needing interactive theme switching, use JavaScript:
-
-### Minimal Implementation
+For demos or apps needing interactive theme switching, `suai-theme.js` is a small progressive-enhancement helper. It flips `data-su-theme`/`data-su-mode` on `<html>` and persists the choice in `localStorage` — it injects no CSS, and the page is fully styled without it.
 
 ```html
-<script>
-function setTheme(theme, mode) {
-  const head = document.head;
+<link rel="stylesheet" href="suai.bundle.css">
+<script src="suai-theme.js" defer></script>
 
-  // Remove old theme CSS
-  document.querySelectorAll('link[data-suai-theme]').forEach(el => el.remove());
-
-  // Load new theme CSS
-  const files = [
-    `suai-lai/${theme}/fonts/${theme}-fonts.css`,
-    `suai-lai/${theme}/${theme}-base.css`,
-    `suai-lai/${theme}/${theme}-${mode}-vars.css`
-  ];
-
-  files.forEach(href => {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    link.setAttribute('data-suai-theme', 'true');
-    head.appendChild(link);
-  });
-
-  // Update data attributes
-  document.documentElement.setAttribute('data-theme', theme);
-  document.documentElement.setAttribute('data-mode', mode);
-}
-</script>
-
-<button onclick="setTheme('pla', 'light')">PLA Light</button>
-<button onclick="setTheme('pla', 'dark')">PLA Dark</button>
-<button onclick="setTheme('nok', 'light')">NOK Light</button>
+<fieldset aria-label="Theme controls">
+  <legend>Skin</legend>
+  <button type="button" data-su-set-theme="pla">PLA</button>
+  <button type="button" data-su-set-theme="nok">NOK</button>
+  <button type="button" data-su-set-theme="maa">MAA</button>
+  <button type="button" data-su-set-theme="speed">Speed</button>
+  <span>Mode</span>
+  <button type="button" data-su-set-mode="light">Light</button>
+  <button type="button" data-su-set-mode="dark">Dark</button>
+</fieldset>
 ```
 
-### Using Demo Switcher
+Any element with `data-su-set-theme="<skin>"` or `data-su-set-mode="<mode>"` becomes a switcher button once clicked; no other markup or initialization is required.
 
-The demos include `theme-demo.js` for interactive switching:
-
-```html
-<script src="theme-demo.js"></script>
-<script>
-  // Switch themes
-  suaiSet('pla', 'dark');
-  suaiSet('nok', 'light');
-  suaiSet('maa', 'light');
-</script>
-```
-
-**Note**: `theme-demo.js` is **only for demos**. Production sites should set themes server-side or use a minimal custom implementation.
+**Note**: `suai-theme.js` is optional. Production sites should set themes server-side or statically unless client-side switching is actually needed.
 
 ---
 
-## CSS Variables
+## CSS Variables (the `--su-*` contract)
 
-All themes use unified `--suai-*` CSS variables:
-
-### Colors
-- `--suai-primary` - Primary brand color
-- `--suai-secondary` - Secondary color
-- `--suai-text` - Text color
-- `--suai-text-secondary` - Secondary text
-- `--suai-surface` - Background surface
-- `--suai-surface-variant` - Alternate background
-- `--suai-error` - Error color
-- `--suai-success` - Success color
-- `--suai-warning` - Warning color
-
-### Typography
-- `--suai-font-family` - Main font
-- `--suai-font-family-monospace` - Monospace font
-- `--suai-font-size-base` - Base font size
-- `--suai-line-height-base` - Base line height
-
-### Spacing
-- `--suai-spacing-1` through `--suai-spacing-5`
-
-### Borders & Shadows
-- `--suai-border-radius` - Default border radius
-- `--suai-border-width` - Default border width
-- `--suai-shadow-sm`, `--suai-shadow`, `--suai-shadow-lg`
-
-### Customization
-
-Override variables in your own CSS:
+All skins read the same token contract, defined in `suai-css/tokens.css` and documented in `/demos/6.theme.html`. Customize by overriding tokens in your own stylesheet, loaded after the bundle:
 
 ```css
 :root {
-  --suai-primary: #your-brand-color;
-  --suai-font-family: 'Your Font', sans-serif;
+  --su-accent: #your-brand-color;
+  --su-font-body: 'Your Font', sans-serif;
 }
 ```
 
----
+Key token groups: surfaces (`--su-bg`, `--su-bg-accent`), text (`--su-fg`, `--su-muted`, `--su-subtle`), borders (`--su-border`, `--su-border-subtle`), accents (`--su-accent`, `--su-accent-fg`, `--su-accent-2`), status colors (`--su-danger`/`-bg`/`-fg`, and the same for `success`/`warning`/`info`), typography (`--su-font-body`, `--su-font-mono`, `--su-font-size*`, `--su-leading`), shape (`--su-radius*`, `--su-border-w`), elevation (`--su-shadow*`), spacing (`--su-space-*`), and motion (`--su-transition*`).
 
-## Benefits of V3.0 Modular Architecture
-
-✅ **Smaller initial bundle** - Load only what you need
-✅ **Faster page loads** - Separate files can be cached independently
-✅ **Easy customization** - Override just the files you need
-✅ **Clear separation** - Fonts, base styles, and variables are separate
-✅ **Production-ready** - No build tools required
+See `suai-css/tokens.css` for the full contract and its authoring rules.
 
 ---
 
-## Migration from V2.0
+## Benefits of the Single-Bundle Architecture
 
-If you were using the old unified CSS approach:
-
-**Old (V2.0)**:
-```html
-<link rel="stylesheet" href="suai.css">
-<html data-theme="pla" data-mode="light">
-```
-
-**New (V3.0)**:
-```html
-<link rel="stylesheet" href="suai.css">
-<link rel="stylesheet" href="suai-lai/pla/fonts/pla-fonts.css">
-<link rel="stylesheet" href="suai-lai/pla/pla-base.css">
-<link rel="stylesheet" href="suai-lai/pla/pla-light-vars.css">
-<html data-theme="pla" data-mode="light">
-```
+- **One `<link>` tag** - No per-theme file wiring
+- **All skins available at once** - Switch `data-su-theme`/`data-su-mode` with zero extra requests
+- **Production-ready** - No build tools required to consume the bundle
+- **Easy customization** - Override `--su-*` tokens in your own stylesheet loaded after the bundle
 
 ---
 
@@ -325,7 +227,7 @@ See `/demos/` for complete examples:
 - `5.layout.html` - Layout examples
 - `6.theme.html` - Theme reference and CSS variable viewer
 
-All demos include interactive theme switching for easy comparison.
+All demos include an interactive theme switcher (via `suai-theme.js`) for easy comparison, and render correctly with JavaScript disabled.
 
 ---
 
