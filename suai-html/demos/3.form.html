@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-su-theme="pla" data-su-mode="light">
   <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SUAI Form Elements - Comprehensive Form Controls Showcase</title>
-  <link rel="stylesheet" href="../suai.css">
-  <script src="theme-demo.js"></script>
+  <link rel="stylesheet" href="../suai.bundle.css">
+  <script src="../suai-theme.js" defer></script>
 
 </head>
 <body>
+
+  <fieldset class="su-switcher" aria-label="Theme controls">
+    <legend>Skin</legend>
+    <button type="button" data-su-set-theme="pla">PLA</button>
+    <button type="button" data-su-set-theme="nok">NOK</button>
+    <button type="button" data-su-set-theme="maa">MAA</button>
+    <button type="button" data-su-set-theme="speed">Speed</button>
+    <span>Mode</span>
+    <button type="button" data-su-set-mode="light">Light</button>
+    <button type="button" data-su-set-mode="dark">Dark</button>
+  </fieldset>
 
   <header>
     <h1>SUAI Form Elements</h1>
@@ -17,7 +28,7 @@
     <nav>
       <a href="1.text.html">1. Text</a>
       <a href="2.display.html">2. Display</a>
-      <a>3. Form</a>
+      <a aria-current="page">3. Form</a>
       <a href="4.media.html">4. Media</a>
       <a href="5.layout.html">5. Layout</a>
       <a href="6.theme.html">6. Theme</a>

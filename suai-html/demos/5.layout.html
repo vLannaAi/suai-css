@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-su-theme="pla" data-su-mode="light">
   <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SUAI Layout Elements - Mobile-First Responsive Layouts</title>
-  <link rel="stylesheet" href="../suai.css">
-  <script src="theme-demo.js"></script>
+  <link rel="stylesheet" href="../suai.bundle.css">
+  <script src="../suai-theme.js" defer></script>
 </head>
 
 <style> 
@@ -19,6 +19,16 @@
 </style>
 <body>
 
+  <fieldset class="su-switcher" aria-label="Theme controls">
+    <legend>Skin</legend>
+    <button type="button" data-su-set-theme="pla">PLA</button>
+    <button type="button" data-su-set-theme="nok">NOK</button>
+    <button type="button" data-su-set-theme="maa">MAA</button>
+    <button type="button" data-su-set-theme="speed">Speed</button>
+    <span>Mode</span>
+    <button type="button" data-su-set-mode="light">Light</button>
+    <button type="button" data-su-set-mode="dark">Dark</button>
+  </fieldset>
 
   <header>
     <h1>SUAI Layout Elements</h1>
@@ -29,7 +39,7 @@
       <a href="2.display.html">2. Display</a>
       <a href="3.form.html">3. Form</a>
       <a href="4.media.html">4. Media</a>
-      <a>5. Layout</a>
+      <a aria-current="page">5. Layout</a>
       <a href="6.theme.html">6. Theme</a>
     </nav>
 
@@ -113,12 +123,12 @@
       <demo>
         <div data-layout="side-nav">
           <header>
-            <a href="#drawer-1" aria-label="Open menu">☰</a>
+            <a href="#drawer-1" aria-label="Open menu">Menu</a>
             <h2>App Header</h2>
           </header>
 
           <nav id="drawer-1">
-            <a href="#" aria-label="Close menu">✕</a>
+            <a href="#" aria-label="Close menu">Close</a>
             <h3>Navigation</h3>
             <a href="#home">Home</a>
             <a href="#dashboard">Dashboard</a>
@@ -515,23 +525,18 @@ form &gt; div &gt; main &gt; section &gt; header h3 {
 
           <footer>
             <button aria-label="Home">
-              <span>🏠</span>
               <span>Home</span>
             </button>
             <button aria-label="Search">
-              <span>🔍</span>
               <span>Search</span>
             </button>
             <button aria-label="Add new item">
-              <span>➕</span>
               <span>Add</span>
             </button>
             <button aria-label="Likes">
-              <span>❤️</span>
-              <span>Likes</span>
+              <span>Like</span>
             </button>
             <button aria-label="User profile">
-              <span>👤</span>
               <span>Profile</span>
             </button>
           </footer>
@@ -568,12 +573,12 @@ form &gt; div[data-layout="bottom-toolbar"] &gt; footer {
       <demo>
         <div data-layout="side-nav" style="min-height: 500px;">
           <header>
-            <a href="#drawer-2" aria-label="Open menu">☰</a>
+            <a href="#drawer-2" aria-label="Open menu">Menu</a>
             <h2>Full App Layout</h2>
           </header>
 
           <nav id="drawer-2">
-            <a href="#" aria-label="Close menu">✕</a>
+            <a href="#" aria-label="Close menu">Close</a>
             <h3>Main Menu</h3>
             <a href="#dashboard">Dashboard</a>
             <a href="#projects">Projects</a>
