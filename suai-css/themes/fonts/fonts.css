@@ -31,14 +31,9 @@
   src: url('./fonts/noto-sans-thai-flex.woff2') format('woff2');
 }
 
-/* CMU-flex - Variable font with weight axis for Thai/English (MAA / iOS/Apple) */
-@font-face {
-  font-family: 'CMU';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 300 700;
-  src: url('./fonts/CMU-flex.woff2') format('woff2');
-}
+/* MAA (iOS/Apple HIG) uses the native Apple system font stack — no webfont.
+   (The former CMU-flex.woff2 was an incomplete 24KB file the browser could
+   not parse; --su-font-body in maa.css now resolves to -apple-system / SF.) */
 
 /* DM Sans - Variable font with weight + optical-size axes (SPEED / body+display) */
 @font-face {

@@ -65,6 +65,10 @@
 [data-su-theme="pla"] h3 { color: color-mix(in srgb, var(--su-accent) 60%, var(--su-fg) 40%); }
 [data-su-theme="pla"] h4 { color: color-mix(in srgb, var(--su-accent) 40%, var(--su-fg) 60%); }
 [data-su-theme="pla"] h5 { color: color-mix(in srgb, var(--su-accent) 20%, var(--su-fg) 80%); }
+/* Headings inside the accent-filled header/footer keep the on-accent colour
+   (otherwise the colored-heading hierarchy above paints them accent-on-accent). */
+[data-su-theme="pla"] header :is(h1,h2,h3,h4,h5,h6),
+[data-su-theme="pla"] footer :is(h1,h2,h3,h4,h5,h6) { color: var(--su-accent-fg); }
 
 /* Emphasis with slant (Material Design uses slant instead of true italic) */
 [data-su-theme="pla"] strong { text-transform: uppercase; letter-spacing: .05em; font-size: 1.05em; }

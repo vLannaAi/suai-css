@@ -37,7 +37,7 @@
   </header>
 
   <!-- Main Content -->
-  <div class="page-content">
+  <main>
 
     <!-- COLOR PALETTE SECTION (live reference) -->
     <section class="section" id="colors">
@@ -147,7 +147,7 @@ console.log(theme);</code></pre>
       </div>
     </section>
 
-  </div>
+  </main>
 
   <script>
     // Live --su-* reference: reads computed values and renders swatches.
@@ -165,6 +165,8 @@ console.log(theme);</code></pre>
     }
 
     renderSuVars();
+    // Re-read after the deferred switcher restores a saved skin/mode from localStorage.
+    window.addEventListener('load', renderSuVars);
     document.addEventListener('click', (e) => {
       if (e.target.closest('[data-su-set-theme],[data-su-set-mode]')) setTimeout(renderSuVars, 0);
     });

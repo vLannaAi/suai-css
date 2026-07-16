@@ -17,8 +17,8 @@ Full backlog: `docs/0-OVERVIEW/04-noydb-intake-backlog.md`.
 | SP | What | Owner | State | Holds |
 |---|---|---|---|---|
 | **SP-1** | `--su-` token contract freeze (`suai-css/tokens.css`) | suai — [suai#1](https://github.com/vLannaAi/suai-css/issues/1) | 🟡 draft exists, review pending | noy-db-ui#7 (token bridge), final names in noy-db-ui#9 (SP-3 map), all suai component authoring |
-| **SP-2** | `ui-suai` fork exists (seed = current ui-nuxt) | noy-db-ui — [noy#8](https://github.com/vLannaAi/noy-db-ui/issues/8) | 🔴 not started | suai#4 (adaptive label), suai#5 (gallery) — extractions pull from that living code |
-| **SP-3** | Nuxt-UI-vars ↔ `--su-*` bridge map | noy-db-ui drafts, suai reviews — [noy#9](https://github.com/vLannaAi/noy-db-ui/issues/9) | 🔴 draftable now, final after SP-1 | SUAI components blending inside ui-nuxt pages |
+| **SP-2** | `ui-suai` fork exists (seed = current ui-nuxt) | noy-db-ui — [noy#8](https://github.com/vLannaAi/noy-db-ui/issues/8) | 🟢 DONE on local main (2026-07-16, `packages/ui-suai`, build/typecheck/lint green) — push + close noy#8 pending | suai#4 (adaptive label), suai#5 (gallery) — extractions pull from that living code |
+| **SP-3** | Nuxt-UI-vars ↔ `--su-*` bridge map | noy-db-ui drafts, suai reviews — [noy#9](https://github.com/vLannaAi/noy-db-ui/issues/9) | 🟡 DRAFTED (2026-07-16, `noy-db-ui/docs/ui-nuxt/7.suai-bridge.md` — verified vs live Nuxt UI v4 docs; radius multipliers verified vs installed @nuxt/ui 4.10; open: suai review) | SUAI components blending inside ui-nuxt pages |
 | **SP-4** | Rolling component handoffs (suai ships → noy swaps) | per component — [noy#10](https://github.com/vLannaAi/noy-db-ui/issues/10) | 🔴 after SP-2 | each bespoke-visual deletion in ui-suai |
 
 ## Rules for the two parallel sessions

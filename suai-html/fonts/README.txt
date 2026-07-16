@@ -20,13 +20,6 @@ Files:
   Licence: SIL OFL 1.1
   Used by: suai-css/themes/nok.css (--su-font-body)
 
-- CMU-flex.woff2
-  Family: CMU (variable: wght 300-700)
-  Source: pre-existing project asset (Computer Modern Unicode derivative,
-  packaged as a variable font for this project)
-  Licence: SIL OFL 1.1
-  Used by: suai-css/themes/maa.css (--su-font-body)
-
 - DM-Sans-flex.woff2
   Family: DM Sans (variable: wght 100-1000, opsz 9-40)
   Source: https://github.com/googlefonts/dm-fonts
