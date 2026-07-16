@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "demo": "node scripts/serve.mjs",
-    "demo:build": "pnpm -C suai-css demo:build"
+    "demo:build": "pnpm -C suai-css demo:build",
+    "build:html": "node scripts/build-suai-bundle.mjs"
   }
 }
