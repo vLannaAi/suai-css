@@ -46,6 +46,6 @@ Dropped tokens → substitution (base uses literals; a skin file overrides only 
 
 ## Reconciliation outcome (SP-1)
 
-- **Step 1 (direct-rename coverage):** `grep -oE '\-\-su-[a-z0-9-]+' suai-css/tokens.css | sort -u` → 32 unique `--su-*` tokens defined in `:root`. `grep -c 'su-accent\|su-bg\|su-fg\|su-muted\|su-subtle\|su-border\|su-space\|su-radius\|su-shadow\|su-leading\|su-font-size'` on that list → `32` (non-zero). Every direct-rename target in the table above exists in `tokens.css`.
+- **Step 1 (direct-rename coverage):** `tokens.css` `:root` declares ~52 `--su-*` tokens; every direct-rename target in the table above (`su-accent`, `su-bg`, `su-fg`, `su-muted`, `su-subtle`, `su-border`, `su-space-*`, `su-radius*`, `su-shadow*`, `su-leading`, `su-font-size*`, status `-bg`/`-fg`, etc.) resolves to a real declaration — verified by name, not by count.
 - **Step 2 (dropped-token substitutions):** every entry in the dropped-token table resolves to either a literal, a `color-mix()` expression, or an existing `--su-*` token (`--su-bg-accent`, `--su-muted`, `--su-accent`, `--su-fg` all confirmed present). **No provisional tokens were required.** Dropped tokens (headings, font-weights, grays, layout dims) become literals per the contract's "NOT IN THE CONTRACT" section (`suai-css/tokens.css` lines 144–169), not new tokens.
 - **Provisional additions:** none. `tokens.css` was not modified by this task.

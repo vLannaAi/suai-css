@@ -54,8 +54,8 @@ The `--su-*` attributes are deliberately su-namespaced so a host app's own `data
 
 ## Coordination with noy-db-ui (read SYNC.md first)
 
-This private repo works in parallel with the public `vLannaAi/noy-db-ui` repo. `SYNC.md` is the canonical sync map — read it before touching `tokens.css` or planning component work. Key rules:
+This repo works in parallel with `vLannaAi/noy-db-ui` — **both repos are public**. `SYNC.md` is the canonical sync map — read it before touching `tokens.css` or planning component work. Key rules:
 
 - **Token names are unstable while SP-1 (token contract freeze) is open** — renames land in `tokens.css` first, never invented downstream.
-- Issues live in `vLannaAi/suai-css` (full detail OK) and `vLannaAi/noy-db-ui` (public — keep lean, no strategy/client names, reference the private tracker instead).
+- Issue detail is public in both trackers — write full technical detail wherever the work lives. Client names, product names, and strategy narrative never enter issues, commits, or committed files in either repo; they live only in local gitignored files (pattern: `noy-db-ui/SYNC.local.md`).
 - When a sync point changes state, update both `SYNC.md` here and `noy-db-ui/SYNC.local.md`, and comment on held issues.
