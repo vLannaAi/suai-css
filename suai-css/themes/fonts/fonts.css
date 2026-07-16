@@ -1,0 +1,60 @@
+/**
+ * SUAI Stage-1 skins - Font Declarations
+ * Consolidated @font-face rules for all skins (pla, nok, maa, speed).
+ *
+ * Paths are written relative to the eventual bundle output at
+ * suai-html/suai.bundle.css (i.e. `./fonts/NAME.woff2` resolves to
+ * suai-html/fonts/NAME.woff2). See Task 6 for the bundling step that
+ * concatenates this file into the bundle.
+ *
+ * Licences: all fonts below are SIL Open Font License 1.1.
+ * See suai-html/fonts/README.txt for full attribution.
+ */
+
+/* Roboto Flex - Variable font with weight + width axes (PLA / Material Design) */
+@font-face {
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 1000;
+  font-stretch: 25% 151%;
+  src: url('./fonts/roboto-flex-full.woff2') format('woff2');
+}
+
+/* Noto Sans Thai Flex - Variable font with weight + width axes for Thai/Latin (NOK / Bootstrap) */
+@font-face {
+  font-family: 'Noto Sans Thai';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  font-stretch: 62.5% 100%;
+  src: url('./fonts/noto-sans-thai-flex.woff2') format('woff2');
+}
+
+/* CMU-flex - Variable font with weight axis for Thai/English (MAA / iOS/Apple) */
+@font-face {
+  font-family: 'CMU';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 700;
+  src: url('./fonts/CMU-flex.woff2') format('woff2');
+}
+
+/* DM Sans - Variable font with weight + optical-size axes (SPEED / body+display) */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 1000;
+  src: url('./fonts/DM-Sans-flex.woff2') format('woff2');
+}
+
+/* Saira - Variable font with weight + width axes (SPEED / brand) */
+@font-face {
+  font-family: 'Saira';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  font-stretch: 50% 125%;
+  src: url('./fonts/Saira-flex.woff2') format('woff2');
+}
