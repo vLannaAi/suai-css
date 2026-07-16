@@ -30,6 +30,8 @@ Migrate Stage 1 onto the `--su-*` contract, unify all four skins (pla / nok / ma
 4. All four skins are visually distinct across all six element pages, screenshot-verified.
 5. No console errors on any page (favicon 404 excepted or fixed).
 
+**Aesthetic constraint (owner directive):** **no decorative emoji anywhere in demo output.** The current demos scatter placeholder emoji (`🏠🔍➕❤👤☰✕` in `5.layout.html`; `🎨✍📏🔲✨🧩📋` in `6.theme.html`; also `2.display.html` and the Speed demo) — these read as ugly and unprofessional. Replace with plain text labels (Stage 1 is CSS-only; real iconography is Stage 2's `presetIcons` job, never inline emoji). This applies to all rebuilt pages and the switcher.
+
 **Explicitly out of scope:** redesigning how pla/nok/maa *look* (re-express current identities in `--su-*`, do not restyle); the Nuxt "matrix showcase" harness (deferred — this migration is the foundation it will sit on); Stage 3/4.
 
 ## 3. Architecture — four layers, one source of truth
@@ -87,6 +89,7 @@ Six element pages (text / display / form / media / layout / theme) + `index.html
 2. Render the shared switcher markup (same on every page, including `index.html`).
 3. Replace bare `<a>` current-page markers with `<a aria-current="page">` styled as inactive.
 4. `theme-demo.js` is deleted; `6.theme.html` becomes a live `--su-*` variable reference reading computed values.
+5. **Strip all decorative emoji** (§2) → plain text labels. Verify with `grep -rlP '[\x{1F000}-\x{1FAFF}\x{2600}-\x{27BF}\x{2B00}-\x{2BFF}]' suai-html/` returning empty.
 
 ## 8. Verification plan
 
