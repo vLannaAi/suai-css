@@ -1,16 +1,16 @@
 # SUAI ⇄ noy-db-ui — parallel-work sync map
 
-**Canonical copy** (private repo). A gitignored mirror lives at `noy-db-ui/SYNC.local.md`
+**Canonical copy.** A gitignored mirror lives at `noy-db-ui/SYNC.local.md`
 for the session working in that repo. Update BOTH when a sync point changes state.
 Full backlog: `docs/0-OVERVIEW/04-noydb-intake-backlog.md`.
 
 ## The two tracks
 
-| | suai (this repo, PRIVATE) | noy-db-ui (PUBLIC) |
+| | suai (this repo, PUBLIC) | noy-db-ui (PUBLIC) |
 |---|---|---|
 | Owns | `--su-` token contract, themes, schema-blind components, playground/docs | shared engine (`packages/ui`), forks (`ui-vanilla`/`ui-nuxt`/`ui-suai`), schema-aware workflow |
 | Milestones | W0 #1 · W1 #2 · W2 #3 | same titles, same numbers |
-| Publicity rule | full detail OK here | issues stay LEAN — no strategy narrative, no client names; point to `vLannaAi/suai-css#N` |
+| Publicity rule | both repos are public — full technical detail OK in both trackers; anything client- or strategy-sensitive lives ONLY in local gitignored files (pattern: `noy-db-ui/SYNC.local.md`) | same |
 
 ## Sync points (the only places the tracks touch)
 
@@ -31,8 +31,10 @@ Full backlog: `docs/0-OVERVIEW/04-noydb-intake-backlog.md`.
    don't re-spec what exists.
 5. **State changes**: when an SP closes, tick it here, mirror to `SYNC.local.md`, and
    comment on the held issues so the other session's next `gh issue list` shows it.
-6. **Publicity**: noy-db-ui is public — details, client/product names, and strategy stay in
-   this repo's issues; public issues carry one-line bodies + a private-tracker reference.
+6. **Publicity**: BOTH repos are public. Issue detail is public in both trackers —
+   write full technical detail wherever the work lives. Client names, product names,
+   and strategy narrative never enter issues, commits, or committed files in either
+   repo; they live only in local gitignored files (pattern: `noy-db-ui/SYNC.local.md`).
 
 ## Quick status commands
 
