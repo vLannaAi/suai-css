@@ -1,0 +1,155 @@
+/* ============================================================================
+   SUAI THEME: nok (นก) — Bootstrap 5.3 inspired theme.
+   Ported from suai-html/suai-lai/nok/{nok-light-vars,nok-dark-vars,nok-base}.css
+   to the --su-* contract (suai-css/tokens.css).
+   ----------------------------------------------------------------------------
+   Usage: load AFTER tokens.css, then <html data-su-theme="nok"> (add
+   data-su-mode="dark" for dark). Noto Sans Thai is NOT bundled here — the app
+   loads it (webfont or system fallback applies otherwise).
+   ========================================================================= */
+
+/* NOK (นก) — Bootstrap 5.3. Ported to --su-* contract. */
+[data-su-theme="nok"] {
+  --su-accent: #0d6efd;
+  --su-accent-fg: #ffffff;
+  --su-bg: #ffffff;
+  --su-bg-accent: #f8f9fa;
+  --su-fg: #212529;
+  --su-muted: #6c757d;
+  --su-subtle: #adb5bd;
+  --su-border: #dee2e6;
+  --su-border-subtle: #e9ecef;
+  --su-success: #198754; --su-success-bg: #d1e7dd;
+  --su-danger:  #dc3545; --su-danger-bg:  #f8d7da;
+  --su-warning: #ffc107; --su-warning-bg: #fff3cd;
+  --su-info:    #0dcaf0; --su-info-bg:    #cff4fc;
+  --su-font-body: "Noto Sans Thai", system-ui, sans-serif;
+  --su-font-size-lg: 1.25rem;        /* NOK source's font-size-lg value; used by blockquote below */
+  --su-radius: .375rem; --su-radius-sm: .25rem; --su-radius-lg: .5rem;
+  --su-shadow-sm: 0 0.125rem 0.25rem rgba(0,0,0,.075);
+  --su-shadow:    0 0.5rem 1rem rgba(0,0,0,.15);
+  --su-shadow-lg: 0 1rem 3rem rgba(0,0,0,.175);
+  --su-transition: all .2s ease-in-out;
+}
+
+/* Dark — colors only; shape/type/spacing are mode-invariant by contract. */
+[data-su-theme="nok"][data-su-mode="dark"] {
+  --su-accent: #6ea8fe; --su-accent-fg: #000000;
+  --su-bg: #212529; --su-bg-accent: #343a40;
+  --su-fg: #dee2e6; --su-muted: #adb5bd; --su-subtle: #6c757d;
+  --su-border: #495057; --su-border-subtle: #343a40;
+  --su-success:#75b798; --su-success-bg:#051b11;
+  --su-danger:#ea868f;  --su-danger-bg:#2c0b0e;
+  --su-warning:#ffda6a; --su-warning-bg:#332701;
+  --su-info:#6edff6;    --su-info-bg:#032830;
+  --su-shadow-sm: 0 0.125rem 0.25rem rgba(0,0,0,.3);
+  --su-shadow:    0 0.5rem 1rem rgba(0,0,0,.4);
+  --su-shadow-lg: 0 1rem 3rem rgba(0,0,0,.5);
+}
+
+/* ============================================================================
+   BASE RULES — NOK's "personality": flat Bootstrap design with visible
+   borders (no elevation shadows), full-border inputs, striped/bordered
+   tables, bordered buttons. Every selector is scoped under
+   [data-su-theme="nok"] — unscoped rules would collide once all four skins
+   bundle together.
+   ========================================================================= */
+
+/* Bootstrap keeps heading colors uniform (no gradient like Material) */
+[data-su-theme="nok"] h1,
+[data-su-theme="nok"] h2,
+[data-su-theme="nok"] h3,
+[data-su-theme="nok"] h4,
+[data-su-theme="nok"] h5,
+[data-su-theme="nok"] h6 { color: var(--su-fg); }
+
+/* Tables — Bootstrap striped with borders */
+[data-su-theme="nok"] table { border: var(--su-border-w) solid var(--su-border); }
+[data-su-theme="nok"] tbody tr:nth-child(odd) { background-color: var(--su-bg); }
+[data-su-theme="nok"] tbody tr:nth-child(even) { background-color: var(--su-bg-accent); }
+[data-su-theme="nok"] th,
+[data-su-theme="nok"] td { border: var(--su-border-w) solid var(--su-border-subtle); }
+
+/* Buttons — Bootstrap flat design with borders */
+[data-su-theme="nok"] button,
+[data-su-theme="nok"] input[type="button"],
+[data-su-theme="nok"] input[type="submit"],
+[data-su-theme="nok"] input[type="reset"] {
+  box-shadow: none;
+  border: var(--su-border-w) solid var(--su-accent);
+}
+[data-su-theme="nok"] button:hover,
+[data-su-theme="nok"] input[type="button"]:hover,
+[data-su-theme="nok"] input[type="submit"]:hover {
+  box-shadow: none;
+  border-color: color-mix(in srgb, var(--su-accent) 85%, black);
+}
+[data-su-theme="nok"] button:active,
+[data-su-theme="nok"] input[type="button"]:active,
+[data-su-theme="nok"] input[type="submit"]:active {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+[data-su-theme="nok"] input[type="reset"] {
+  background-color: transparent;
+  color: var(--su-fg);
+  border: var(--su-border-w) solid var(--su-border);
+}
+[data-su-theme="nok"] input[type="reset"]:hover {
+  background-color: var(--su-bg-accent);
+}
+
+/* Inputs — Bootstrap full borders (not bottom-only like Material) */
+[data-su-theme="nok"] input[type="text"],
+[data-su-theme="nok"] input[type="email"],
+[data-su-theme="nok"] input[type="password"],
+[data-su-theme="nok"] input[type="search"],
+[data-su-theme="nok"] input[type="url"],
+[data-su-theme="nok"] input[type="tel"],
+[data-su-theme="nok"] input[type="number"],
+[data-su-theme="nok"] input[type="date"],
+[data-su-theme="nok"] input[type="datetime-local"],
+[data-su-theme="nok"] input[type="month"],
+[data-su-theme="nok"] input[type="week"],
+[data-su-theme="nok"] input[type="time"],
+[data-su-theme="nok"] input[type="color"],
+[data-su-theme="nok"] textarea,
+[data-su-theme="nok"] select {
+  border: var(--su-border-w) solid var(--su-border);
+  background-color: var(--su-bg);
+}
+[data-su-theme="nok"] input:focus,
+[data-su-theme="nok"] textarea:focus,
+[data-su-theme="nok"] select:focus {
+  border-color: var(--su-accent);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Forms — Bootstrap bordered style */
+[data-su-theme="nok"] form { border: var(--su-border-w) solid var(--su-border); box-shadow: none; }
+[data-su-theme="nok"] fieldset { background-color: var(--su-bg); }
+
+/* Code blocks — Bootstrap bordered */
+[data-su-theme="nok"] pre { border: var(--su-border-w) solid var(--su-border); box-shadow: none; }
+
+/* Blockquotes — Bootstrap style */
+[data-su-theme="nok"] blockquote { font-size: var(--su-font-size-lg); font-style: normal; }
+
+/* Cards & surfaces — Bootstrap flat with borders */
+[data-su-theme="nok"] article {
+  background-color: var(--su-bg);
+  border: var(--su-border-w) solid var(--su-border);
+  border-radius: var(--su-radius);
+  padding: var(--su-space-4);
+  box-shadow: none;
+}
+[data-su-theme="nok"] article:hover {
+  border-color: var(--su-border);
+  box-shadow: var(--su-shadow-sm);
+}
+
+/* Details — Bootstrap bordered */
+[data-su-theme="nok"] details { box-shadow: none; }
+
+/* Horizontal rule — Bootstrap thicker */
+[data-su-theme="nok"] hr { opacity: 0.25; border-top-width: 2px; }
