@@ -43,5 +43,5 @@ createServer(async (req, res) => {
 }).listen(PORT, () => {
   console.log(`SUAI demos → http://localhost:${PORT}`)
   console.log(`  speed theme:  http://localhost:${PORT}/suai-css/demo/speed-demo.html`)
-  console.log(`  suai-html:    http://localhost:${PORT}/suai-html/`)
+  console.log(`  suai-html:    http://localhost:${PORT}/suai-html/demos/`)
 })
