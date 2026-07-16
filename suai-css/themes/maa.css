@@ -1,0 +1,312 @@
+/* ============================================================================
+   SUAI THEME: maa (ม้า) — iOS 18 / Apple HIG inspired theme.
+   Ported from suai-html/suai-lai/maa/{maa-light-vars,maa-dark-vars,maa-base}.css
+   to the --su-* contract (suai-css/tokens.css).
+   ----------------------------------------------------------------------------
+   Usage: load AFTER tokens.css, then <html data-su-theme="maa"> (add
+   data-su-mode="dark" for dark). CMU (variable font) is NOT bundled here —
+   the app loads it (webfont or system fallback applies otherwise).
+   ========================================================================= */
+
+/* MAA (ม้า) — iOS 18 / Apple HIG. Ported to --su-* contract. */
+[data-su-theme="maa"] {
+  --su-accent: #007aff;
+  --su-accent-fg: #ffffff;
+  --su-bg: #ffffff;
+  --su-bg-accent: #f2f2f7;
+  --su-fg: rgba(0,0,0,.85);
+  --su-muted: rgba(60,60,67,.6);
+  --su-subtle: rgba(60,60,67,.3);
+  --su-border: #c6c6c8;
+  --su-border-subtle: rgba(60,60,67,.29);
+  --su-success: #34c759; --su-success-bg: #e8f8ec;
+  --su-danger:  #ff3b30; --su-danger-bg:  #ffe5e3;
+  --su-warning: #ff9500; --su-warning-bg: #fff3e0;
+  --su-info:    #5ac8fa; --su-info-bg:    #e5f6fd;
+  --su-font-body: "CMU", sans-serif;
+  --su-font-size-sm: 0.8125rem;     /* iOS Footnote; source value ≠ contract default (used by th/legend) */
+  --su-border-w: 0.5px;
+  --su-radius: 10px; --su-radius-sm: 8px; --su-radius-lg: 12px;
+  --su-shadow-sm: 0 1px 3px rgba(0,0,0,.12);
+  --su-shadow:    0 2px 8px rgba(0,0,0,.15);
+  --su-shadow-lg: 0 4px 16px rgba(0,0,0,.18);
+  --su-transition: all .3s cubic-bezier(.4,0,.2,1);
+  --su-transition-fast: all .2s cubic-bezier(.4,0,.2,1);
+}
+
+/* Dark — colors only; shape/type/spacing are mode-invariant by contract. */
+[data-su-theme="maa"][data-su-mode="dark"] {
+  --su-accent: #0a84ff;
+  --su-bg: #000000; --su-bg-accent: #000000;
+  --su-fg: rgba(255,255,255,.85); --su-muted: rgba(235,235,245,.6); --su-subtle: rgba(235,235,245,.3);
+  --su-border: #38383a; --su-border-subtle: rgba(84,84,88,.6);
+  --su-success:#32d74b; --su-success-bg:#1a3a23;
+  --su-danger:#ff453a;  --su-danger-bg:#4d1a1a;
+  --su-warning:#ff9f0a; --su-warning-bg:#4d3000;
+  --su-info:#64d2ff;    --su-info-bg:#1a3a52;
+  --su-shadow-sm: 0 1px 3px rgba(0,0,0,.3);
+  --su-shadow:    0 2px 8px rgba(0,0,0,.4);
+  --su-shadow-lg: 0 4px 16px rgba(0,0,0,.5);
+}
+
+/* MAA overrides base heading sizes (iOS text styles: Large Title..Headline). */
+[data-su-theme="maa"] h1 { font-size: 2.125rem; }
+[data-su-theme="maa"] h2 { font-size: 1.75rem; }
+[data-su-theme="maa"] h3 { font-size: 1.375rem; }
+[data-su-theme="maa"] h4 { font-size: 1.25rem; }
+[data-su-theme="maa"] h5 { font-size: 1.0625rem; }
+
+/* ============================================================================
+   BASE RULES — MAA's "personality": 44px minimum touch targets, filled input
+   backgrounds, rounded corners everywhere, minimal borders with subtle
+   separators, iOS slant italics, grouped list styling. Every selector is
+   scoped under [data-su-theme="maa"] — unscoped rules would collide once all
+   four skins bundle together.
+   ========================================================================= */
+
+/* iOS uses slant variation for italic emphasis */
+[data-su-theme="maa"] em {
+  font-family: var(--su-font-body);
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: 'slnt' -10;
+}
+
+[data-su-theme="maa"] i {
+  font-family: var(--su-font-body);
+  font-style: normal;
+  font-variation-settings: 'slnt' -10;
+}
+
+[data-su-theme="maa"] blockquote {
+  font-family: var(--su-font-body);
+  font-variation-settings: 'slnt' -10;
+  background-color: var(--su-bg-accent);
+}
+
+/* Tables — iOS grouped list style (no borders) */
+[data-su-theme="maa"] table {
+  border: none;
+  border-radius: var(--su-radius-lg);
+  overflow: hidden;
+  background-color: var(--su-bg-accent);
+}
+
+[data-su-theme="maa"] thead {
+  background-color: transparent;
+  border-bottom: var(--su-border-w) solid var(--su-border-subtle);
+}
+
+[data-su-theme="maa"] tbody { border-top: none; }
+
+[data-su-theme="maa"] tr { border-bottom: var(--su-border-w) solid var(--su-border-subtle); }
+
+[data-su-theme="maa"] tr:last-child { border-bottom: none; }
+
+[data-su-theme="maa"] th,
+[data-su-theme="maa"] td {
+  border: none;
+  padding: var(--su-space-3) var(--su-space-4);
+}
+
+[data-su-theme="maa"] th {
+  border-bottom: var(--su-border-w) solid var(--su-border-subtle);
+  font-size: var(--su-font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--su-muted);
+}
+
+/* No striping in iOS style */
+[data-su-theme="maa"] tbody tr:nth-child(even) { background-color: transparent; }
+
+/* Buttons — iOS rounded with subtle shadows */
+[data-su-theme="maa"] button,
+[data-su-theme="maa"] input[type="button"],
+[data-su-theme="maa"] input[type="submit"],
+[data-su-theme="maa"] input[type="reset"] {
+  min-height: 44px;
+  padding: var(--su-space-3) var(--su-space-4);
+  border-radius: var(--su-radius);
+  box-shadow: var(--su-shadow-sm);
+  font-weight: 600;
+  border: none;
+}
+
+[data-su-theme="maa"] button:hover,
+[data-su-theme="maa"] input[type="button"]:hover,
+[data-su-theme="maa"] input[type="submit"]:hover { box-shadow: var(--su-shadow); }
+
+[data-su-theme="maa"] button:active,
+[data-su-theme="maa"] input[type="button"]:active,
+[data-su-theme="maa"] input[type="submit"]:active {
+  transform: scale(0.98);
+  box-shadow: var(--su-shadow-sm);
+}
+
+[data-su-theme="maa"] input[type="reset"] {
+  background-color: var(--su-bg-accent);
+  color: var(--su-accent);
+  box-shadow: none;
+}
+
+[data-su-theme="maa"] input[type="reset"]:hover {
+  background-color: color-mix(in srgb, var(--su-fg) 6%, var(--su-bg-accent));
+}
+
+/* Inputs — iOS filled style */
+[data-su-theme="maa"] input[type="text"],
+[data-su-theme="maa"] input[type="email"],
+[data-su-theme="maa"] input[type="password"],
+[data-su-theme="maa"] input[type="search"],
+[data-su-theme="maa"] input[type="url"],
+[data-su-theme="maa"] input[type="tel"],
+[data-su-theme="maa"] input[type="number"],
+[data-su-theme="maa"] input[type="date"],
+[data-su-theme="maa"] input[type="datetime-local"],
+[data-su-theme="maa"] input[type="month"],
+[data-su-theme="maa"] input[type="week"],
+[data-su-theme="maa"] input[type="time"],
+[data-su-theme="maa"] input[type="color"],
+[data-su-theme="maa"] textarea,
+[data-su-theme="maa"] select {
+  min-height: 44px;
+  background-color: var(--su-bg-accent);
+  border: none;
+  border-radius: var(--su-radius);
+  padding: var(--su-space-3) var(--su-space-4);
+}
+
+[data-su-theme="maa"] input:focus,
+[data-su-theme="maa"] textarea:focus,
+[data-su-theme="maa"] select:focus {
+  background-color: color-mix(in srgb, var(--su-fg) 6%, var(--su-bg-accent));
+  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.1);
+}
+
+[data-su-theme="maa"] input:disabled,
+[data-su-theme="maa"] textarea:disabled,
+[data-su-theme="maa"] select:disabled {
+  background-color: color-mix(in srgb, var(--su-bg-accent) 50%, var(--su-bg));
+}
+
+/* Forms — iOS grouped style */
+[data-su-theme="maa"] form {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+[data-su-theme="maa"] form > * + * { margin-top: var(--su-space-2); }
+
+[data-su-theme="maa"] fieldset {
+  background-color: var(--su-bg-accent);
+  border: none;
+  border-radius: var(--su-radius-lg);
+  padding: var(--su-space-4);
+}
+
+[data-su-theme="maa"] legend {
+  font-size: var(--su-font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--su-muted);
+  padding: 0;
+}
+
+/* Code blocks — iOS style */
+[data-su-theme="maa"] pre {
+  background-color: var(--su-bg-accent);
+  border: none;
+  border-radius: var(--su-radius);
+  box-shadow: none;
+}
+
+[data-su-theme="maa"] code {
+  background-color: var(--su-bg-accent);
+  border: none;
+}
+
+[data-su-theme="maa"] kbd {
+  background-color: #8e8e93;
+  color: var(--su-bg);
+  border: none;
+  box-shadow: var(--su-shadow-sm);
+}
+
+/* Links — iOS tint color */
+[data-su-theme="maa"] a {
+  color: var(--su-accent);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+[data-su-theme="maa"] a:hover { opacity: 0.7; text-decoration: none; }
+
+[data-su-theme="maa"] a:active { opacity: 0.5; }
+
+/* Lists — iOS grouped style */
+[data-su-theme="maa"] ul,
+[data-su-theme="maa"] ol { list-style-position: outside; }
+
+/* Cards & surfaces — iOS grouped style */
+[data-su-theme="maa"] article {
+  background-color: var(--su-bg-accent);
+  border: none;
+  border-radius: var(--su-radius-lg);
+  padding: var(--su-space-4);
+  box-shadow: var(--su-shadow-sm);
+}
+
+[data-su-theme="maa"] article:hover { box-shadow: var(--su-shadow); }
+
+/* Details — iOS style */
+[data-su-theme="maa"] details {
+  background-color: var(--su-bg-accent);
+  border: none;
+  border-radius: var(--su-radius-lg);
+  box-shadow: var(--su-shadow-sm);
+}
+
+[data-su-theme="maa"] details[open] { box-shadow: var(--su-shadow); }
+
+[data-su-theme="maa"] summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+/* Horizontal rule — iOS separator */
+[data-su-theme="maa"] hr {
+  border-top: var(--su-border-w) solid var(--su-border-subtle);
+  opacity: 1;
+}
+
+/* Sections — iOS inset grouped style */
+[data-su-theme="maa"] section {
+  background-color: transparent;
+  border-radius: var(--su-radius-lg);
+}
+
+/* iOS style navigation */
+[data-su-theme="maa"] nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--su-space-1);
+}
+
+[data-su-theme="maa"] nav li { display: block; margin-right: 0; }
+
+[data-su-theme="maa"] nav a {
+  display: block;
+  padding: var(--su-space-3) var(--su-space-4);
+  min-height: 44px;
+  border-radius: var(--su-radius);
+  background-color: var(--su-bg-accent);
+  transition: background-color 0.2s ease;
+}
+
+[data-su-theme="maa"] nav a:hover {
+  background-color: color-mix(in srgb, var(--su-fg) 6%, var(--su-bg-accent));
+  opacity: 1;
+}
