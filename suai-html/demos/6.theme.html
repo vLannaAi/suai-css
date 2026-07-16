@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-su-theme="pla" data-su-mode="light">
   <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SUAI CSS V3.0 - Theme Reference</title>
 
-  <link rel="stylesheet" href="../suai.css">
-  <script src="theme-demo.js"></script>
+  <link rel="stylesheet" href="../suai.bundle.css">
+  <script src="../suai-theme.js" defer></script>
 </head>
 <body>
+
+  <fieldset class="su-switcher" aria-label="Theme controls">
+    <legend>Skin</legend>
+    <button type="button" data-su-set-theme="pla">PLA</button>
+    <button type="button" data-su-set-theme="nok">NOK</button>
+    <button type="button" data-su-set-theme="maa">MAA</button>
+    <button type="button" data-su-set-theme="speed">Speed</button>
+    <span>Mode</span>
+    <button type="button" data-su-set-mode="light">Light</button>
+    <button type="button" data-su-set-mode="dark">Dark</button>
+  </fieldset>
+
   <!-- Fixed Header with Theme Switcher -->
   <header>
     <h1>SUAI CSS V3.0 - Theme Reference & Comparison</h1>
@@ -19,7 +31,7 @@
       <a href="3.form.html">3. Form</a>
       <a href="4.media.html">4. Media</a>
       <a href="5.layout.html">5. Layout</a>
-      <a>6. Theme</a>
+      <a aria-current="page">6. Theme</a>
     </nav>
 
   </header>
@@ -27,44 +39,28 @@
   <!-- Main Content -->
   <div class="page-content">
 
-    <!-- COLOR PALETTE SECTION -->
+    <!-- COLOR PALETTE SECTION (live reference) -->
     <section class="section" id="colors">
-      <h2>🎨 Color Palette</h2>
+      <h2>Color Palette</h2>
+      <p>Live-reads the computed <code>--su-*</code> custom properties on <code>&lt;html&gt;</code>. Switch skin/mode above and the values below update.</p>
 
-      <h3>Primary Colors</h3>
-      <div class="color-grid" id="primary-colors"></div>
-
-      <h3>Gray Scale</h3>
-      <div class="gray-gradient" id="gray-gradient"></div>
-      <div class="color-grid" id="gray-colors"></div>
-
-      <h3>Semantic Colors</h3>
-      <div class="color-grid" id="semantic-colors"></div>
-
-      <h3>Surface & Background Colors</h3>
-      <div class="color-grid" id="surface-colors"></div>
-
-      <h3>Text Colors</h3>
-      <div class="color-grid" id="text-colors"></div>
-
-      <h3>Border Colors</h3>
-      <div class="color-grid" id="border-colors"></div>
+      <div id="su-vars"></div>
     </section>
 
     <!-- TYPOGRAPHY SECTION -->
     <section class="section" id="typography">
-      <h2>✍️ Typography</h2>
+      <h2>Typography</h2>
 
       <h3>Font Family</h3>
       <div class="typo-sample">
-        <div class="typo-sample-label">--suai-font-family</div>
+        <div class="typo-sample-label">--su-font-body</div>
         <p style="margin: 0; font-size: 1.25rem;">The quick brown fox jumps over the lazy dog. 0123456789</p>
         <p style="margin: 0.5rem 0 0 0; font-size: 1.25rem;">สวัสดีครับ นี่คือตัวอย่างฟอนต์ภาษาไทย</p>
       </div>
 
       <div class="typo-sample">
-        <div class="typo-sample-label">--suai-font-monospace</div>
-        <p style="margin: 0; font-size: 1rem; font-family: var(--suai-font-monospace);">
+        <div class="typo-sample-label">--su-font-mono</div>
+        <p style="margin: 0; font-size: 1rem; font-family: var(--su-font-mono);">
           const theme = 'suai'; // Monospace font for code
         </p>
       </div>
@@ -78,47 +74,11 @@
         <h5 style="margin: 0.5rem 0;">Heading 5 - The quick brown fox</h5>
         <h6 style="margin: 0.5rem 0;">Heading 6 - The quick brown fox</h6>
       </div>
-
-      <h3>Font Sizes</h3>
-      <div id="font-sizes"></div>
-
-      <h3>Font Weights</h3>
-      <div id="font-weights"></div>
-
-      <h3>Line Heights</h3>
-      <div id="line-heights"></div>
-    </section>
-
-    <!-- SPACING SECTION -->
-    <section class="section" id="spacing">
-      <h2>📏 Spacing Scale</h2>
-      <div class="spacing-ruler" id="spacing-ruler"></div>
-    </section>
-
-    <!-- BORDERS SECTION -->
-    <section class="section" id="borders">
-      <h2>🔲 Borders</h2>
-
-      <h3>Border Width</h3>
-      <div style="margin: 1rem 0;">
-        <div style="height: 50px; border: var(--suai-border-width) solid var(--suai-border); display: flex; align-items: center; padding: 1rem; background: var(--suai-surface-variant);">
-          Border width: <code style="margin-left: 0.5rem; padding: 0.25rem 0.5rem; background: var(--suai-surface);" id="border-width-value">Loading...</code>
-        </div>
-      </div>
-
-      <h3>Border Radius</h3>
-      <div class="radius-grid" id="border-radius"></div>
-    </section>
-
-    <!-- SHADOWS SECTION -->
-    <section class="section" id="shadows">
-      <h2>✨ Shadows & Elevation</h2>
-      <div class="shadow-grid" id="shadow-grid"></div>
     </section>
 
     <!-- COMPONENTS SECTION -->
     <section class="section" id="components">
-      <h2>🧩 Component Examples</h2>
+      <h2>Component Examples</h2>
 
       <div class="component-grid">
         <!-- Buttons -->
@@ -187,439 +147,26 @@ console.log(theme);</code></pre>
       </div>
     </section>
 
-    <!-- VARIABLE TABLE SECTION -->
-    <section class="section" id="variables">
-      <h2>📋 All Variables</h2>
-      <p>Click on any variable name to copy it to clipboard.</p>
-
-      <input type="text" id="var-search" class="search-box" placeholder="Search variables...">
-
-      <div class="var-table-container">
-        <table class="var-table">
-          <thead>
-            <tr>
-              <th>Variable Name</th>
-              <th>Current Value</th>
-              <th>Category</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="var-table-body"></tbody>
-        </table>
-      </div>
-    </section>
-
   </div>
 
   <script>
-    // Get computed CSS variable value
-    function getCSSVar(name) {
-      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    // Live --su-* reference: reads computed values and renders swatches.
+    // Demo-only reflection — the page's styling comes entirely from the
+    // static bundle; this script only displays values, never injects CSS.
+    const suVarNames = ['--su-bg', '--su-bg-accent', '--su-fg', '--su-muted', '--su-subtle', '--su-border', '--su-accent', '--su-accent-fg', '--su-accent-2', '--su-danger', '--su-success', '--su-warning', '--su-info'];
+
+    function renderSuVars() {
+      const cs = getComputedStyle(document.documentElement);
+      document.getElementById('su-vars').innerHTML = suVarNames.map(n =>
+        `<div style="display:flex;align-items:center;gap:.5rem;padding:.25rem 0">
+           <span style="display:inline-block;width:1.5rem;height:1.5rem;border:1px solid var(--su-border);background:var(${n})"></span>
+           <code>${n}</code><span>${cs.getPropertyValue(n).trim()}</span></div>`
+      ).join('');
     }
 
-    // RGB to Hex conversion
-    function rgbToHex(rgb) {
-      if (!rgb || rgb === '') return '';
-      const match = rgb.match(/\d+/g);
-      if (!match) return rgb;
-      const [r, g, b] = match.map(Number);
-      return '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
-    }
-
-    // Create color swatch
-    function createColorSwatch(varName, category) {
-      const value = getCSSVar(varName);
-      const hex = rgbToHex(value);
-
-      const swatch = document.createElement('div');
-      swatch.className = 'color-swatch';
-      swatch.onclick = () => copyToClipboard(varName);
-
-      const colorDiv = document.createElement('div');
-      colorDiv.className = 'color-swatch-color';
-      colorDiv.style.backgroundColor = `var(${varName})`;
-
-      const infoDiv = document.createElement('div');
-      infoDiv.className = 'color-swatch-info';
-
-      const nameDiv = document.createElement('div');
-      nameDiv.className = 'color-swatch-name';
-      nameDiv.textContent = varName;
-
-      const valueDiv = document.createElement('div');
-      valueDiv.className = 'color-swatch-value';
-      valueDiv.textContent = hex || value || 'N/A';
-
-      infoDiv.appendChild(nameDiv);
-      infoDiv.appendChild(valueDiv);
-      swatch.appendChild(colorDiv);
-      swatch.appendChild(infoDiv);
-
-      return swatch;
-    }
-
-    // Copy to clipboard
-    function copyToClipboard(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        showToast(`Copied: ${text}`);
-      });
-    }
-
-    // Show toast notification
-    function showToast(message) {
-      const toast = document.createElement('div');
-      toast.className = 'toast';
-      toast.textContent = message;
-      document.body.appendChild(toast);
-
-      setTimeout(() => {
-        toast.remove();
-      }, 2000);
-    }
-
-    // Update theme display
-    function updateThemeDisplay() {
-      const { theme, mode } = suaiGet();
-      document.getElementById('current-theme-display').textContent = `${theme.toUpperCase()} - ${mode}`;
-
-      // Highlight active button
-      document.querySelectorAll('.theme-switcher-compact button').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.getElementById(`btn-${theme}-${mode}`)?.classList.add('active');
-    }
-
-    // Load colors
-    function loadColors() {
-      // Primary colors
-      const primaryColors = ['--suai-primary', '--suai-primary-hover', '--suai-primary-active', '--suai-primary-container'];
-      const primaryContainer = document.getElementById('primary-colors');
-      primaryContainer.innerHTML = '';
-      primaryColors.forEach(color => {
-        primaryContainer.appendChild(createColorSwatch(color, 'primary'));
-      });
-
-      // Gray scale
-      const grayColors = ['--suai-gray-100', '--suai-gray-200', '--suai-gray-300', '--suai-gray-400', '--suai-gray-500', '--suai-gray-600', '--suai-gray-700', '--suai-gray-800', '--suai-gray-900'];
-
-      // Gray gradient
-      const grayGradient = document.getElementById('gray-gradient');
-      grayGradient.innerHTML = '';
-      grayColors.forEach(color => {
-        const item = document.createElement('div');
-        item.className = 'gray-gradient-item';
-        item.style.backgroundColor = `var(${color})`;
-        const label = document.createElement('span');
-        label.className = 'gray-gradient-label';
-        label.textContent = color.replace('--suai-gray-', '');
-        item.appendChild(label);
-        grayGradient.appendChild(item);
-      });
-
-      // Gray swatches
-      const grayContainer = document.getElementById('gray-colors');
-      grayContainer.innerHTML = '';
-      grayColors.forEach(color => {
-        grayContainer.appendChild(createColorSwatch(color, 'gray'));
-      });
-
-      // Semantic colors
-      const semanticColors = ['--suai-success', '--suai-success-container', '--suai-info', '--suai-info-container', '--suai-warning', '--suai-warning-container', '--suai-danger', '--suai-danger-container'];
-      const semanticContainer = document.getElementById('semantic-colors');
-      semanticContainer.innerHTML = '';
-      semanticColors.forEach(color => {
-        semanticContainer.appendChild(createColorSwatch(color, 'semantic'));
-      });
-
-      // Surface colors
-      const surfaceColors = ['--suai-surface', '--suai-surface-variant', '--suai-surface-hover', '--suai-surface-container', '--suai-surface-container-high', '--suai-surface-container-highest'];
-      const surfaceContainer = document.getElementById('surface-colors');
-      surfaceContainer.innerHTML = '';
-      surfaceColors.forEach(color => {
-        surfaceContainer.appendChild(createColorSwatch(color, 'surface'));
-      });
-
-      // Text colors
-      const textColors = ['--suai-text', '--suai-text-muted', '--suai-text-subtle', '--suai-text-on-primary'];
-      const textContainer = document.getElementById('text-colors');
-      textContainer.innerHTML = '';
-      textColors.forEach(color => {
-        textContainer.appendChild(createColorSwatch(color, 'text'));
-      });
-
-      // Border colors
-      const borderColors = ['--suai-border', '--suai-border-subtle'];
-      const borderContainer = document.getElementById('border-colors');
-      borderContainer.innerHTML = '';
-      borderColors.forEach(color => {
-        borderContainer.appendChild(createColorSwatch(color, 'border'));
-      });
-    }
-
-    // Load typography
-    function loadTypography() {
-      // Font sizes
-      const fontSizes = [
-        { name: '--suai-font-size-base', label: 'Base', sample: 'The quick brown fox' },
-        { name: '--suai-font-size-sm', label: 'Small', sample: 'The quick brown fox' },
-        { name: '--suai-font-size-lg', label: 'Large', sample: 'The quick brown fox' }
-      ];
-
-      const fontSizesContainer = document.getElementById('font-sizes');
-      fontSizesContainer.innerHTML = '';
-      fontSizes.forEach(({ name, label, sample }) => {
-        const div = document.createElement('div');
-        div.className = 'typo-grid';
-        div.innerHTML = `
-          <div class="typo-grid-label">${label}</div>
-          <div class="typo-grid-value">${getCSSVar(name)}</div>
-          <div style="font-size: var(${name});">${sample}</div>
-        `;
-        fontSizesContainer.appendChild(div);
-      });
-
-      // Font weights
-      const fontWeights = [
-        { name: '--suai-font-weight-light', label: 'Light (300)' },
-        { name: '--suai-font-weight-normal', label: 'Normal (400)' },
-        { name: '--suai-font-weight-medium', label: 'Medium (500)' },
-        { name: '--suai-font-weight-semibold', label: 'Semibold (600)' },
-        { name: '--suai-font-weight-bold', label: 'Bold (700)' }
-      ];
-
-      const fontWeightsContainer = document.getElementById('font-weights');
-      fontWeightsContainer.innerHTML = '';
-      fontWeights.forEach(({ name, label }) => {
-        const div = document.createElement('div');
-        div.className = 'typo-grid';
-        div.innerHTML = `
-          <div class="typo-grid-label">${label}</div>
-          <div class="typo-grid-value">${getCSSVar(name)}</div>
-          <div style="font-weight: var(${name});">The quick brown fox jumps over the lazy dog</div>
-        `;
-        fontWeightsContainer.appendChild(div);
-      });
-
-      // Line heights
-      const lineHeights = [
-        { name: '--suai-line-height-sm', label: 'Small' },
-        { name: '--suai-line-height-base', label: 'Base' },
-        { name: '--suai-line-height-lg', label: 'Large' }
-      ];
-
-      const lineHeightsContainer = document.getElementById('line-heights');
-      lineHeightsContainer.innerHTML = '';
-      lineHeights.forEach(({ name, label }) => {
-        const div = document.createElement('div');
-        div.className = 'typo-sample';
-        div.innerHTML = `
-          <div class="typo-sample-label">${name} = ${getCSSVar(name)}</div>
-          <p style="margin: 0; line-height: var(${name});">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        `;
-        lineHeightsContainer.appendChild(div);
-      });
-    }
-
-    // Load spacing
-    function loadSpacing() {
-      const spacings = [
-        { name: '--suai-spacing-1', label: 'Spacing 1' },
-        { name: '--suai-spacing-2', label: 'Spacing 2' },
-        { name: '--suai-spacing-3', label: 'Spacing 3' },
-        { name: '--suai-spacing-4', label: 'Spacing 4' },
-        { name: '--suai-spacing-5', label: 'Spacing 5' }
-      ];
-
-      const spacingRuler = document.getElementById('spacing-ruler');
-      spacingRuler.innerHTML = '';
-      spacings.forEach(({ name, label }) => {
-        const value = getCSSVar(name);
-        const div = document.createElement('div');
-        div.className = 'spacing-item';
-        div.innerHTML = `
-          <div class="spacing-label">${name}</div>
-          <div class="spacing-bar" style="width: var(${name});">${value}</div>
-        `;
-        spacingRuler.appendChild(div);
-      });
-    }
-
-    // Load borders
-    function loadBorders() {
-      document.getElementById('border-width-value').textContent = getCSSVar('--suai-border-width');
-
-      const radiuses = [
-        { name: '--suai-border-radius-sm', label: 'Small' },
-        { name: '--suai-border-radius', label: 'Default' },
-        { name: '--suai-border-radius-lg', label: 'Large' },
-        { name: '--suai-border-radius-full', label: 'Full' }
-      ];
-
-      const radiusGrid = document.getElementById('border-radius');
-      radiusGrid.innerHTML = '';
-      radiuses.forEach(({ name, label }) => {
-        const value = getCSSVar(name);
-        const div = document.createElement('div');
-        div.className = 'radius-example';
-        div.innerHTML = `
-          <div class="radius-box" style="border-radius: var(${name});">${label}</div>
-          <div class="radius-label">${name}<br>${value}</div>
-        `;
-        radiusGrid.appendChild(div);
-      });
-    }
-
-    // Load shadows
-    function loadShadows() {
-      const shadows = [
-        { name: '--suai-shadow-sm', label: 'Small' },
-        { name: '--suai-shadow', label: 'Medium' },
-        { name: '--suai-shadow-md', label: 'Medium (Alt)' },
-        { name: '--suai-shadow-lg', label: 'Large' }
-      ];
-
-      const shadowGrid = document.getElementById('shadow-grid');
-      shadowGrid.innerHTML = '';
-      shadows.forEach(({ name, label }) => {
-        const div = document.createElement('div');
-        div.className = 'shadow-example';
-        div.innerHTML = `
-          <div class="shadow-box" style="box-shadow: var(${name});">${label}</div>
-          <div class="shadow-label">${name}</div>
-        `;
-        shadowGrid.appendChild(div);
-      });
-    }
-
-    // Load variable table
-    function loadVariableTable() {
-      const variables = [
-        // Primary colors
-        { name: '--suai-primary', category: 'Color - Primary' },
-        { name: '--suai-primary-hover', category: 'Color - Primary' },
-        { name: '--suai-primary-active', category: 'Color - Primary' },
-        { name: '--suai-primary-container', category: 'Color - Primary' },
-        // Gray scale
-        { name: '--suai-gray-100', category: 'Color - Gray' },
-        { name: '--suai-gray-200', category: 'Color - Gray' },
-        { name: '--suai-gray-300', category: 'Color - Gray' },
-        { name: '--suai-gray-400', category: 'Color - Gray' },
-        { name: '--suai-gray-500', category: 'Color - Gray' },
-        { name: '--suai-gray-600', category: 'Color - Gray' },
-        { name: '--suai-gray-700', category: 'Color - Gray' },
-        { name: '--suai-gray-800', category: 'Color - Gray' },
-        { name: '--suai-gray-900', category: 'Color - Gray' },
-        // Semantic
-        { name: '--suai-success', category: 'Color - Semantic' },
-        { name: '--suai-success-container', category: 'Color - Semantic' },
-        { name: '--suai-info', category: 'Color - Semantic' },
-        { name: '--suai-info-container', category: 'Color - Semantic' },
-        { name: '--suai-warning', category: 'Color - Semantic' },
-        { name: '--suai-warning-container', category: 'Color - Semantic' },
-        { name: '--suai-danger', category: 'Color - Semantic' },
-        { name: '--suai-danger-container', category: 'Color - Semantic' },
-        // Surface
-        { name: '--suai-surface', category: 'Color - Surface' },
-        { name: '--suai-surface-variant', category: 'Color - Surface' },
-        { name: '--suai-surface-hover', category: 'Color - Surface' },
-        { name: '--suai-surface-container', category: 'Color - Surface' },
-        { name: '--suai-surface-container-high', category: 'Color - Surface' },
-        { name: '--suai-surface-container-highest', category: 'Color - Surface' },
-        // Text
-        { name: '--suai-text', category: 'Color - Text' },
-        { name: '--suai-text-muted', category: 'Color - Text' },
-        { name: '--suai-text-subtle', category: 'Color - Text' },
-        { name: '--suai-text-on-primary', category: 'Color - Text' },
-        // Border
-        { name: '--suai-border', category: 'Color - Border' },
-        { name: '--suai-border-subtle', category: 'Color - Border' },
-        // Shadows
-        { name: '--suai-shadow-sm', category: 'Shadow' },
-        { name: '--suai-shadow', category: 'Shadow' },
-        { name: '--suai-shadow-md', category: 'Shadow' },
-        { name: '--suai-shadow-lg', category: 'Shadow' },
-        // Typography - Font
-        { name: '--suai-font-family', category: 'Typography - Font' },
-        { name: '--suai-font-monospace', category: 'Typography - Font' },
-        // Typography - Size
-        { name: '--suai-font-size-base', category: 'Typography - Size' },
-        { name: '--suai-font-size-sm', category: 'Typography - Size' },
-        { name: '--suai-font-size-lg', category: 'Typography - Size' },
-        { name: '--suai-h1', category: 'Typography - Size' },
-        { name: '--suai-h2', category: 'Typography - Size' },
-        { name: '--suai-h3', category: 'Typography - Size' },
-        { name: '--suai-h4', category: 'Typography - Size' },
-        { name: '--suai-h5', category: 'Typography - Size' },
-        { name: '--suai-h6', category: 'Typography - Size' },
-        // Typography - Line Height
-        { name: '--suai-line-height-base', category: 'Typography - Line Height' },
-        { name: '--suai-line-height-sm', category: 'Typography - Line Height' },
-        { name: '--suai-line-height-lg', category: 'Typography - Line Height' },
-        // Typography - Weight
-        { name: '--suai-font-weight-light', category: 'Typography - Weight' },
-        { name: '--suai-font-weight-normal', category: 'Typography - Weight' },
-        { name: '--suai-font-weight-medium', category: 'Typography - Weight' },
-        { name: '--suai-font-weight-semibold', category: 'Typography - Weight' },
-        { name: '--suai-font-weight-bold', category: 'Typography - Weight' },
-        // Spacing
-        { name: '--suai-spacing-1', category: 'Spacing' },
-        { name: '--suai-spacing-2', category: 'Spacing' },
-        { name: '--suai-spacing-3', category: 'Spacing' },
-        { name: '--suai-spacing-4', category: 'Spacing' },
-        { name: '--suai-spacing-5', category: 'Spacing' },
-        // Borders
-        { name: '--suai-border-width', category: 'Border' },
-        { name: '--suai-border-radius', category: 'Border' },
-        { name: '--suai-border-radius-sm', category: 'Border' },
-        { name: '--suai-border-radius-lg', category: 'Border' },
-        { name: '--suai-border-radius-full', category: 'Border' },
-        // Transitions
-        { name: '--suai-transition', category: 'Transition' },
-        { name: '--suai-transition-fast', category: 'Transition' },
-        // Layout
-        { name: '--suai-layout-max-width', category: 'Layout' },
-        { name: '--suai-layout-sidebar-width', category: 'Layout' },
-        { name: '--suai-layout-aside-width', category: 'Layout' },
-        { name: '--suai-layout-aside-width-desktop', category: 'Layout' }
-      ];
-
-      const tbody = document.getElementById('var-table-body');
-      tbody.innerHTML = '';
-
-      variables.forEach(({ name, category }) => {
-        const value = getCSSVar(name);
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td><span class="var-name" onclick="copyToClipboard('${name}')">${name}</span></td>
-          <td class="var-value">${value || 'N/A'}</td>
-          <td>${category}</td>
-          <td><button class="copy-btn" onclick="copyToClipboard('${name}')">Copy</button></td>
-        `;
-        tbody.appendChild(tr);
-      });
-
-      // Search functionality
-      document.getElementById('var-search').addEventListener('input', (e) => {
-        const search = e.target.value.toLowerCase();
-        const rows = tbody.querySelectorAll('tr');
-        rows.forEach(row => {
-          const text = row.textContent.toLowerCase();
-          row.style.display = text.includes(search) ? '' : 'none';
-        });
-      });
-    }
-
-    // Initialize everything on load
-    window.addEventListener('load', () => {
-      updateThemeDisplay();
-      loadColors();
-      loadTypography();
-      loadSpacing();
-      loadBorders();
-      loadShadows();
-      loadVariableTable();
+    renderSuVars();
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('[data-su-set-theme],[data-su-set-mode]')) setTimeout(renderSuVars, 0);
     });
   </script>
 </body>
