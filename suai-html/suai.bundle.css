@@ -154,21 +154,8 @@
      Themes may set them; the contract doesn't list them.
    ----------------------------------------------------------------------------
    MIGRATION MAP (old → canonical)
-   suai-html (--suai-*):
-     --suai-primary → --su-accent          --suai-text-on-primary → --su-accent-fg
-     --suai-surface → --su-bg              --suai-surface-variant → --su-bg-accent
-     --suai-text → --su-fg                 --suai-text-muted → --su-muted
-     --suai-text-subtle → --su-subtle      --suai-border[-subtle] → --su-border[-subtle]
-     --suai-danger/-container → --su-danger/-bg   (same for success/info/warning)
-     --suai-font-family → --su-font-body   --suai-font-monospace → --su-font-mono
-     --suai-font-size-* → --su-font-size-*
-     --suai-h1..h6, --suai-line-height-sm/-lg, --suai-font-weight-*: DROPPED
-       from the contract (lean v1) — components/base styles use literals
-     --suai-line-height-base → --su-leading  --suai-spacing-N → --su-space-N
-     --suai-border-radius[-sm/-lg/-full] → --su-radius[-sm/-lg/-full]
-     --suai-border-width → --su-border-w   --suai-shadow* → --su-shadow*
-     --suai-transition* → --su-transition* (--suai-primary-hover/-active: drop;
-     derive via color-mix, e.g. color-mix(in srgb, var(--su-accent) 85%, black))
+   See docs/superpowers/specs/assets/token-map.md for the full legacy-name →
+   --su-* migration map (Stage-1 suai-html's retired variable prefix).
    noy-db-ui showcase (unprefixed extended tokens):
      --font-display/-body/-mono/-brand → --su-font-*
      --display-transform/-spacing/-weight → --su-display-*
