@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-  <html>
+  <html lang="en" data-su-theme="pla" data-su-mode="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SUAI Display Elements - Tables, Lists, Progress & Interactive Components</title>
-  <link rel="stylesheet" href="../suai.css">
-  <script src="theme-demo.js"></script>
+  <link rel="stylesheet" href="../suai.bundle.css">
+  <script src="../suai-theme.js" defer></script>
 </head>
 <body>
+
+  <fieldset class="su-switcher" aria-label="Theme controls">
+    <legend>Skin</legend>
+    <button type="button" data-su-set-theme="pla">PLA</button>
+    <button type="button" data-su-set-theme="nok">NOK</button>
+    <button type="button" data-su-set-theme="maa">MAA</button>
+    <button type="button" data-su-set-theme="speed">Speed</button>
+    <span>Mode</span>
+    <button type="button" data-su-set-mode="light">Light</button>
+    <button type="button" data-su-set-mode="dark">Dark</button>
+  </fieldset>
 
   <header>
     <h1>SUAI Display Elements</h1>
@@ -15,7 +26,7 @@
 
     <nav>
       <a href="1.text.html">1. Text</a>
-      <a>2. Display</a>
+      <a aria-current="page">2. Display</a>
       <a href="3.form.html">3. Form</a>
       <a href="4.media.html">4. Media</a>
       <a href="5.layout.html">5. Layout</a>
@@ -874,31 +885,19 @@
       <li>Tag-based styling - no classes needed for basic elements</li>
     </ul>
 
-    <h4>Production Setup (V3.0 Modular)</h4>
-    <p>Link all required CSS files for your chosen theme and mode:</p>
+    <h4>Production Setup</h4>
+    <p>Link the single bundled stylesheet; every theme and mode is included, selected via <code>data-su-theme</code> / <code>data-su-mode</code> attributes:</p>
 
-    <pre><code>&lt;!-- Common styles (required) --&gt;
-&lt;link rel="stylesheet" href="suai-html/suai.css"&gt;
+    <pre><code>&lt;link rel="stylesheet" href="suai-html/suai.bundle.css"&gt;
 
-&lt;!-- PLA Light theme --&gt;
-&lt;link rel="stylesheet" href="suai-html/suai-lai/pla/fonts/pla-fonts.css"&gt;
-&lt;link rel="stylesheet" href="suai-html/suai-lai/pla/pla-base.css"&gt;
-&lt;link rel="stylesheet" href="suai-html/suai-lai/pla/pla-light-vars.css"&gt;
-
-&lt;!-- Or NOK Dark theme --&gt;
-&lt;link rel="stylesheet" href="suai-html/suai-lai/nok/fonts/nok-fonts.css"&gt;
-&lt;link rel="stylesheet" href="suai-html/suai-lai/nok/nok-base.css"&gt;
-&lt;link rel="stylesheet" href="suai-html/suai-lai/nok/nok-dark-vars.css"&gt;
-
-&lt;html data-theme="nok" data-mode="dark"&gt;</code></pre>
+&lt;html data-su-theme="nok" data-su-mode="dark"&gt;</code></pre>
 
     <h4>Interactive Theme Switching</h4>
-    <p>For <strong>demo/interactive switching</strong>, use the theme switcher (not required for production):</p>
+    <p>For <strong>demo/interactive switching</strong>, add the optional switcher script (not required for production):</p>
 
-    <pre><code>&lt;script src="theme-demo.js"&gt;&lt;/script&gt;
-&lt;button onclick="suaiSet('pla', 'dark')"&gt;PLA Dark&lt;/button&gt;
-&lt;button onclick="suaiSet('nok', 'light')"&gt;NOK Light&lt;/button&gt;
-&lt;button onclick="suaiSet('maa', 'light')"&gt;MAA Light&lt;/button&gt;</code></pre>
+    <pre><code>&lt;script src="suai-html/suai-theme.js" defer&gt;&lt;/script&gt;
+&lt;button data-su-set-theme="pla"&gt;PLA&lt;/button&gt;
+&lt;button data-su-set-mode="dark"&gt;Dark&lt;/button&gt;</code></pre>
 
     <p><a href="./text.html">View Text Elements demo →</a></p>
 

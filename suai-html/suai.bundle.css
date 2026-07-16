@@ -1546,6 +1546,12 @@ transition: var(--su-transition);
 border-bottom: 4px solid var(--su-accent);
 }
 
+nav a[aria-current="page"] {
+  font-weight: 600;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
 a:not([href]) {
   color: var(--su-accent);
   border-bottom: 4px solid var(--su-accent);
