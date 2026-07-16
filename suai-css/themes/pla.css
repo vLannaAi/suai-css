@@ -1,0 +1,144 @@
+/* ============================================================================
+   SUAI THEME: pla (ปลา) — Material Design 3 inspired reference theme.
+   Ported from suai-html/suai-lai/pla/{pla-light-vars,pla-dark-vars,pla-base}.css
+   to the --su-* contract (suai-css/tokens.css). This is the template Tasks
+   3–4 (nok, maa) follow.
+   ----------------------------------------------------------------------------
+   Usage: load AFTER tokens.css, then <html data-su-theme="pla"> (add
+   data-su-mode="dark" for dark). Roboto Flex is NOT bundled here — the app
+   loads it (webfont or system fallback applies otherwise).
+   ========================================================================= */
+
+/* PLA (ปลา) — Material Design 3. Ported to --su-* contract. */
+[data-su-theme="pla"] {
+  --su-accent: #3b82f6;
+  --su-accent-fg: #ffffff;
+  --su-accent-2: #0288d1;            /* info hue as data accent */
+  --su-bg: #ffffff;
+  --su-bg-accent: #f5f5f5;
+  --su-fg: #212121;
+  --su-muted: #616161;
+  --su-subtle: #757575;
+  --su-border: #bdbdbd;
+  --su-border-subtle: #e0e0e0;
+  --su-success: #2e7d32; --su-success-bg: #e8f5e9; --su-success-fg: #1b5e20;
+  --su-danger:  #c62828; --su-danger-bg:  #ffebee; --su-danger-fg:  #b71c1c;
+  --su-warning: #f57c00; --su-warning-bg: #fff3e0; --su-warning-fg: #e65100;
+  --su-info:    #0288d1; --su-info-bg:    #e1f5fe; --su-info-fg:    #01579b;
+  --su-font-body: 'Roboto Flex','Roboto','Noto Sans',system-ui,sans-serif;
+  --su-font-display: var(--su-font-body);
+  --su-font-brand: var(--su-font-body);
+  --su-font-mono: 'Roboto Mono',SFMono-Regular,Menlo,Consolas,monospace;
+  --su-radius: 0.75rem; --su-radius-sm: 0.5rem; --su-radius-lg: 1rem; --su-radius-control: 0.5rem;
+  --su-shadow-sm: 0px 1px 2px 0px rgba(0,0,0,.3), 0px 1px 3px 1px rgba(0,0,0,.15);
+  --su-shadow:    0px 1px 2px 0px rgba(0,0,0,.3), 0px 2px 6px 2px rgba(0,0,0,.15);
+  --su-shadow-lg: 0px 2px 3px 0px rgba(0,0,0,.3), 0px 6px 10px 4px rgba(0,0,0,.15);
+  --su-transition: all .3s cubic-bezier(.4,0,.2,1);
+  --su-transition-fast: all .15s cubic-bezier(.4,0,.2,1);
+}
+
+/* Dark — colors only; shape/type/spacing are mode-invariant by contract. */
+[data-su-theme="pla"][data-su-mode="dark"] {
+  --su-accent: #93c5fd; --su-accent-fg: #371e73;
+  --su-bg: #1c1b1f; --su-bg-accent: #2b2930;
+  --su-fg: #e6e1e5; --su-muted: #cac4d0; --su-subtle: #aea9b4;
+  --su-border: #79747e; --su-border-subtle: #49454f;
+  --su-success:#81c784; --su-success-bg:#1b5e20;
+  --su-danger:#e57373;  --su-danger-bg:#b71c1c;
+  --su-warning:#ffb74d; --su-warning-bg:#e65100;
+  --su-info:#4fc3f7;    --su-info-bg:#01579b;
+  --su-shadow-sm: 0px 1px 3px 1px rgba(0,0,0,.45), 0px 1px 2px 0px rgba(0,0,0,.3);
+  --su-shadow:    0px 2px 6px 2px rgba(0,0,0,.45), 0px 1px 2px 0px rgba(0,0,0,.3);
+  --su-shadow-lg: 0px 6px 10px 4px rgba(0,0,0,.45), 0px 2px 3px 0px rgba(0,0,0,.3);
+}
+
+/* ============================================================================
+   BASE RULES — PLA's "personality": colored heading hierarchy, slanted
+   emphasis, striped tables, Material elevation on interactive elements.
+   Every selector is scoped under [data-su-theme="pla"] — unscoped rules
+   would collide once all four skins bundle together.
+   ========================================================================= */
+
+/* Colored heading hierarchy (h6 stays default text color) */
+[data-su-theme="pla"] h1 { color: var(--su-accent); }
+[data-su-theme="pla"] h2 { color: color-mix(in srgb, var(--su-accent) 80%, var(--su-fg) 20%); }
+[data-su-theme="pla"] h3 { color: color-mix(in srgb, var(--su-accent) 60%, var(--su-fg) 40%); }
+[data-su-theme="pla"] h4 { color: color-mix(in srgb, var(--su-accent) 40%, var(--su-fg) 60%); }
+[data-su-theme="pla"] h5 { color: color-mix(in srgb, var(--su-accent) 20%, var(--su-fg) 80%); }
+
+/* Emphasis with slant (Material Design uses slant instead of true italic) */
+[data-su-theme="pla"] strong { text-transform: uppercase; letter-spacing: .05em; font-size: 1.05em; }
+[data-su-theme="pla"] em { font-weight: 600; font-style: normal; font-variation-settings: 'slnt' -10; color: var(--su-accent); }
+[data-su-theme="pla"] i { font-style: normal; font-variation-settings: 'slnt' -10; opacity: .9; }
+[data-su-theme="pla"] cite { font-variation-settings: 'slnt' -10; color: var(--su-info); transition: var(--su-transition-fast); }
+[data-su-theme="pla"] cite:hover { color: var(--su-accent); }
+[data-su-theme="pla"] q { font-style: normal; font-variation-settings: 'slnt' -10; }
+[data-su-theme="pla"] blockquote { font-variation-settings: 'slnt' -10; }
+
+/* Striped table rows */
+[data-su-theme="pla"] tbody tr:nth-child(even) { background-color: var(--su-bg-accent); }
+[data-su-theme="pla"] tbody tr:nth-child(even):hover { background-color: color-mix(in srgb, var(--su-fg) 6%, var(--su-bg)); }
+
+/* Buttons — Material elevation */
+[data-su-theme="pla"] button,
+[data-su-theme="pla"] input[type="button"],
+[data-su-theme="pla"] input[type="submit"] { box-shadow: var(--su-shadow-sm); }
+[data-su-theme="pla"] button:hover,
+[data-su-theme="pla"] input[type="button"]:hover,
+[data-su-theme="pla"] input[type="submit"]:hover { box-shadow: var(--su-shadow); }
+[data-su-theme="pla"] button:active,
+[data-su-theme="pla"] input[type="button"]:active,
+[data-su-theme="pla"] input[type="submit"]:active { box-shadow: var(--su-shadow-sm); }
+
+[data-su-theme="pla"] input[type="reset"] {
+  background-color: transparent;
+  color: var(--su-accent);
+  border: 2px solid var(--su-border);
+  box-shadow: none;
+}
+[data-su-theme="pla"] input[type="reset"]:hover {
+  background-color: color-mix(in srgb, var(--su-fg) 6%, var(--su-bg));
+  box-shadow: none;
+}
+
+/* Inputs — Material bottom-border style */
+[data-su-theme="pla"] input[type="text"],
+[data-su-theme="pla"] input[type="email"],
+[data-su-theme="pla"] input[type="password"],
+[data-su-theme="pla"] input[type="search"],
+[data-su-theme="pla"] input[type="url"],
+[data-su-theme="pla"] input[type="tel"],
+[data-su-theme="pla"] input[type="number"],
+[data-su-theme="pla"] input[type="date"],
+[data-su-theme="pla"] input[type="datetime-local"],
+[data-su-theme="pla"] input[type="month"],
+[data-su-theme="pla"] input[type="week"],
+[data-su-theme="pla"] input[type="time"],
+[data-su-theme="pla"] textarea,
+[data-su-theme="pla"] select {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid var(--su-border);
+  border-radius: 0;
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+[data-su-theme="pla"] input:focus,
+[data-su-theme="pla"] textarea:focus,
+[data-su-theme="pla"] select:focus { border-bottom-color: var(--su-accent); box-shadow: none; }
+
+/* Code blocks */
+[data-su-theme="pla"] pre { box-shadow: var(--su-shadow-sm); }
+
+/* Cards & elevated surfaces */
+[data-su-theme="pla"] article { background: var(--su-bg); border-radius: var(--su-radius); padding: var(--su-space-4); box-shadow: var(--su-shadow-sm); transition: var(--su-transition); }
+[data-su-theme="pla"] article:hover { box-shadow: var(--su-shadow); }
+
+/* Details */
+[data-su-theme="pla"] details { box-shadow: var(--su-shadow-sm); }
+[data-su-theme="pla"] details[open] { box-shadow: var(--su-shadow); }
+
+/* Forms */
+[data-su-theme="pla"] form { box-shadow: var(--su-shadow-sm); }
