@@ -561,6 +561,14 @@ footer h1, footer h2, footer h3, footer h4, footer h5, footer h6, footer p {
   padding: var(--su-space-3) var(--su-space-4);
   color: var(--su-accent-fg);
 }
+/* When a theme is active, its heading-colour rules ([data-su-theme] h1{...})
+   would otherwise override the on-accent header/footer colour above and make
+   the title low-contrast against the accent banner. This higher-specificity
+   rule keeps header/footer headings readable across every skin and mode. */
+[data-su-theme] header :is(h1, h2, h3, h4, h5, h6, p, small, a, strong, em, b, i, code, time, span, li):not(nav, nav *),
+[data-su-theme] footer :is(h1, h2, h3, h4, h5, h6, p, small, a, strong, em, b, i, code, time, span, li):not(nav, nav *) {
+  color: var(--su-accent-fg);
+}
 nav {
   display: flex;
   gap: var(--su-space-3);

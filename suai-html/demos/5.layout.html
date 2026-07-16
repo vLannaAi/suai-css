@@ -360,16 +360,16 @@ form &gt; div[data-layout="with-aside"] &gt; main {
           <summary>View CSS Selectors</summary>
           <pre>/* Style articles */
 form &gt; div &gt; main &gt; article {
-  background-color: var(--pla-surface-variant);
-  padding: var(--pla-spacing-3);
-  border-radius: var(--pla-border-radius);
+  background-color: var(--su-bg-accent);
+  padding: var(--su-space-3);
+  border-radius: var(--su-radius);
 }
 
 /* Article headers (different from page header) */
 form &gt; div &gt; main &gt; article &gt; header {
   background: none;
   padding: 0;
-  border-bottom: 1px solid var(--pla-outline-variant);
+  border-bottom: 1px solid var(--su-border);
 }
 
 /* Desktop: 2-column grid */
@@ -377,7 +377,7 @@ form &gt; div &gt; main &gt; article &gt; header {
   form &gt; div[data-layout="articles-grid"] &gt; main {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--pla-spacing-3);
+    gap: var(--su-space-3);
   }
 }</pre>
         </details>
@@ -462,18 +462,18 @@ form &gt; div &gt; main &gt; article &gt; header {
           <summary>View CSS Selectors</summary>
           <pre>/* Section spacing */
 form &gt; div &gt; main &gt; section {
-  margin-bottom: var(--pla-spacing-4);
+  margin-bottom: var(--su-space-4);
 }
 
 /* Section headers (different from page/article headers) */
 form &gt; div &gt; main &gt; section &gt; header {
   background: none;
   padding: 0;
-  margin-bottom: var(--pla-spacing-2);
+  margin-bottom: var(--su-space-2);
 }
 
 form &gt; div &gt; main &gt; section &gt; header h3 {
-  color: var(--pla-primary);
+  color: var(--su-accent);
   font-size: 1.25rem;
 }</pre>
         </details>

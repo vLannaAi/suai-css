@@ -302,10 +302,6 @@
 [data-su-theme="pla"] h3 { color: color-mix(in srgb, var(--su-accent) 60%, var(--su-fg) 40%); }
 [data-su-theme="pla"] h4 { color: color-mix(in srgb, var(--su-accent) 40%, var(--su-fg) 60%); }
 [data-su-theme="pla"] h5 { color: color-mix(in srgb, var(--su-accent) 20%, var(--su-fg) 80%); }
-/* Headings inside the accent-filled header/footer keep the on-accent colour
-   (otherwise the colored-heading hierarchy above paints them accent-on-accent). */
-[data-su-theme="pla"] header :is(h1,h2,h3,h4,h5,h6),
-[data-su-theme="pla"] footer :is(h1,h2,h3,h4,h5,h6) { color: var(--su-accent-fg); }
 
 /* Emphasis with slant (Material Design uses slant instead of true italic) */
 [data-su-theme="pla"] strong { text-transform: uppercase; letter-spacing: .05em; font-size: 1.05em; }
@@ -1501,6 +1497,14 @@ footer {
 header h1, header h2, header h3, header h4, header h5, header h6, header p,
 footer h1, footer h2, footer h3, footer h4, footer h5, footer h6, footer p {
   padding: var(--su-space-3) var(--su-space-4);
+  color: var(--su-accent-fg);
+}
+/* When a theme is active, its heading-colour rules ([data-su-theme] h1{...})
+   would otherwise override the on-accent header/footer colour above and make
+   the title low-contrast against the accent banner. This higher-specificity
+   rule keeps header/footer headings readable across every skin and mode. */
+[data-su-theme] header :is(h1, h2, h3, h4, h5, h6, p, small, a, strong, em, b, i, code, time, span, li):not(nav, nav *),
+[data-su-theme] footer :is(h1, h2, h3, h4, h5, h6, p, small, a, strong, em, b, i, code, time, span, li):not(nav, nav *) {
   color: var(--su-accent-fg);
 }
 nav {
