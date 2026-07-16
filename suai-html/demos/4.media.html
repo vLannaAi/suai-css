@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUAI Media Elements - Comprehensive Media Showcase</title>
+  <link rel="stylesheet" href="../suai.css">
+  <script src="theme-demo.js"></script>
+ 
+</head>
+<body>
+
+  <header>
+    <h1>SUAI Media Elements</h1>
+    <h5>Comprehensive Media & Image Showcase</h5>
+
+    <nav>
+      <a href="1.text.html">1. Text</a>
+      <a href="2.display.html">2. Display</a>
+      <a href="3.form.html">3. Form</a>
+      <a>4. Media</a>
+      <a href="5.layout.html">5. Layout</a>
+      <a href="6.theme.html">6. Theme</a>
+    </nav>
+
+   
+  </header>
+
+  <main>
+    <!-- SECTION 1: IMAGES -->
+    <section id="images">
+      <h2>Images</h2>
+      <p>Basic image element with various use cases including standalone images, figures with captions, and accessibility considerations.</p>
+
+      <form>
+        <h3>Basic Image</h3>
+        <img src="https://via.placeholder.com/800x400/4285f4/ffffff?text=Basic+Image" alt="Example image showing basic usage">
+        <small>Always include descriptive alt text for accessibility</small>
+      </form>
+
+      <form>
+        <h3>Figure with Caption</h3>
+        <figure>
+          <img src="https://via.placeholder.com/800x400/34a853/ffffff?text=Figure+Image" alt="Diagram showing data flow">
+          <figcaption>Figure 1: Data flow through the application architecture</figcaption>
+        </figure>
+      </form>
+
+      <form>
+        <h3>Multiple Figures</h3>
+        <figure>
+          <img src="https://via.placeholder.com/400x300/ea4335/ffffff?text=Image+1" alt="First example">
+          <figcaption>Example 1: Initial state</figcaption>
+        </figure>
+
+        <figure>
+          <img src="https://via.placeholder.com/400x300/fbbc04/ffffff?text=Image+2" alt="Second example">
+          <figcaption>Example 2: After transformation</figcaption>
+        </figure>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>&lt;img&gt;</td>
+            <td>Embedded image</td>
+            <td>Display images; always include alt attribute</td>
+          </tr>
+          <tr>
+            <td>&lt;figure&gt;</td>
+            <td>Self-contained content</td>
+            <td>Images, diagrams, code snippets with captions</td>
+          </tr>
+          <tr>
+            <td>&lt;figcaption&gt;</td>
+            <td>Caption for figure</td>
+            <td>Describe or explain the figure content</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 2: RESPONSIVE IMAGES -->
+    <section id="responsive-images">
+      <h2>Responsive Images</h2>
+      <p>The <code>&lt;picture&gt;</code> element enables art direction and responsive images with multiple sources for different contexts.</p>
+
+      <form>
+        <h3>Picture Element (Art Direction)</h3>
+        <picture>
+          <source media="(min-width: 800px)" srcset="https://via.placeholder.com/800x400/4285f4/ffffff?text=Desktop+View">
+          <source media="(min-width: 400px)" srcset="https://via.placeholder.com/400x300/34a853/ffffff?text=Tablet+View">
+          <img src="https://via.placeholder.com/300x200/ea4335/ffffff?text=Mobile+View" alt="Responsive image example">
+        </picture>
+        <small>Resize your browser to see different images for different screen sizes</small>
+      </form>
+
+      <form>
+        <h3>Picture with Figure</h3>
+        <figure>
+          <picture>
+            <source media="(min-width: 800px)" srcset="https://via.placeholder.com/800x400/fbbc04/ffffff?text=Wide+Format">
+            <img src="https://via.placeholder.com/400x400/34a853/ffffff?text=Square+Format" alt="Adaptive image layout">
+          </picture>
+          <figcaption>Adaptive image: wide format on desktop, square on mobile</figcaption>
+        </figure>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>&lt;picture&gt;</td>
+            <td>Container for multiple image sources</td>
+            <td>Art direction, format selection, responsive images</td>
+          </tr>
+          <tr>
+            <td>&lt;source&gt;</td>
+            <td>Media source specification</td>
+            <td>Define alternative sources within picture, audio, or video</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 3: AUDIO -->
+    <section id="audio">
+      <h2>Audio</h2>
+      <p>Audio playback with native browser controls, multiple formats, and accessibility features.</p>
+
+      <form>
+        <h3>Basic Audio Player</h3>
+        <audio controls>
+          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <small>Standard audio player with native controls</small>
+      </form>
+
+      <form>
+        <h3>Audio with Multiple Formats</h3>
+        <audio controls>
+          <source src="audio/podcast.opus" type="audio/opus">
+          <source src="audio/podcast.ogg" type="audio/ogg">
+          <source src="audio/podcast.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <small>Browser will use the first supported format</small>
+      </form>
+
+      <form>
+        <h3>Audio in Figure (Podcast Episode)</h3>
+        <figure>
+          <figcaption>Episode 42: The Future of Web Development</figcaption>
+          <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </figure>
+      </form>
+
+      <form>
+        <h3>Autoplay & Loop Options</h3>
+        <audio controls loop>
+          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <small>This audio will loop when it reaches the end</small>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Element/Attribute</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>&lt;audio&gt;</td>
+            <td>Embedded audio content</td>
+            <td>Music, podcasts, sound effects</td>
+          </tr>
+          <tr>
+            <td>controls</td>
+            <td>Show playback controls</td>
+            <td>Allow user to play, pause, seek, adjust volume</td>
+          </tr>
+          <tr>
+            <td>loop</td>
+            <td>Repeat playback</td>
+            <td>Background music, ambient sounds</td>
+          </tr>
+          <tr>
+            <td>autoplay</td>
+            <td>Start playing automatically</td>
+            <td>Use sparingly; can be disruptive (requires muted)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 4: VIDEO -->
+    <section id="video">
+      <h2>Video</h2>
+      <p>Video playback with controls, multiple formats, poster images, and text tracks for accessibility.</p>
+
+      <form>
+        <h3>Basic Video Player</h3>
+        <video controls width="640">
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+          Your browser does not support the video element.
+        </video>
+        <small>Standard video player with native controls</small>
+      </form>
+
+      <form>
+        <h3>Video with Poster Image</h3>
+        <video controls width="640" poster="https://via.placeholder.com/640x360/4285f4/ffffff?text=Video+Poster">
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+          Your browser does not support the video element.
+        </video>
+        <small>Poster image displays before video starts</small>
+      </form>
+
+      <form>
+        <h3>Video with Subtitles/Captions</h3>
+        <video controls width="640">
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+          <track kind="subtitles" src="subtitles_en.vtt" srclang="en" label="English" default>
+          <track kind="subtitles" src="subtitles_es.vtt" srclang="es" label="Spanish">
+          <track kind="captions" src="captions_en.vtt" srclang="en" label="English Captions">
+          Your browser does not support the video element.
+        </video>
+        <small>Text tracks provide subtitles, captions, and descriptions</small>
+      </form>
+
+      <form>
+        <h3>Video in Figure</h3>
+        <figure>
+          <video controls width="640">
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" type="video/mp4">
+            Your browser does not support the video element.
+          </video>
+          <figcaption>Demo video: Product walkthrough (2:30)</figcaption>
+        </figure>
+      </form>
+
+      <form>
+        <h3>Multiple Format Support</h3>
+        <video controls width="640">
+          <source src="video/demo.webm" type="video/webm">
+          <source src="video/demo.mp4" type="video/mp4">
+          <source src="video/demo.ogv" type="video/ogg">
+          Your browser does not support the video element.
+        </video>
+        <small>Provide multiple formats for browser compatibility</small>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Element/Attribute</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>&lt;video&gt;</td>
+            <td>Embedded video content</td>
+            <td>Movies, tutorials, presentations, animations</td>
+          </tr>
+          <tr>
+            <td>&lt;track&gt;</td>
+            <td>Text tracks for media</td>
+            <td>Subtitles, captions, descriptions, chapters</td>
+          </tr>
+          <tr>
+            <td>poster</td>
+            <td>Preview image</td>
+            <td>Image shown before video loads/plays</td>
+          </tr>
+          <tr>
+            <td>width/height</td>
+            <td>Video dimensions</td>
+            <td>Control display size (maintains aspect ratio)</td>
+          </tr>
+          <tr>
+            <td>kind (track)</td>
+            <td>Track type</td>
+            <td>subtitles, captions, descriptions, chapters, metadata</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 5: COMPLEX MEDIA EXAMPLES -->
+    <section id="complex-examples">
+      <h2>Complex Media Examples</h2>
+      <p>Real-world examples combining multiple media elements in rich semantic structures.</p>
+
+      <h3>Media Gallery</h3>
+      <form>
+        <h4>Photo Gallery with Descriptions</h4>
+        <figure>
+          <picture>
+            <source media="(min-width: 800px)" srcset="https://via.placeholder.com/800x400/4285f4/ffffff?text=Gallery+1">
+            <img src="https://via.placeholder.com/400x300/4285f4/ffffff?text=Gallery+1" alt="Mountain landscape at sunset">
+          </picture>
+          <figcaption>Mountain Range at Golden Hour</figcaption>
+        </figure>
+
+        <figure>
+          <picture>
+            <source media="(min-width: 800px)" srcset="https://via.placeholder.com/800x400/34a853/ffffff?text=Gallery+2">
+            <img src="https://via.placeholder.com/400x300/34a853/ffffff?text=Gallery+2" alt="Ocean waves crashing on shore">
+          </picture>
+          <figcaption>Ocean Waves at Dawn</figcaption>
+        </figure>
+
+        <figure>
+          <picture>
+            <source media="(min-width: 800px)" srcset="https://via.placeholder.com/800x400/ea4335/ffffff?text=Gallery+3">
+            <img src="https://via.placeholder.com/400x300/ea4335/ffffff?text=Gallery+3" alt="Forest path in autumn">
+          </picture>
+          <figcaption>Autumn Forest Trail</figcaption>
+        </figure>
+      </form>
+
+      <h3>Tutorial Section</h3>
+      <form>
+        <h4>Video Tutorial with Transcript</h4>
+        <figure>
+          <video controls width="100%" poster="https://via.placeholder.com/640x360/fbbc04/ffffff?text=Tutorial+Video">
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" type="video/mp4">
+            <track kind="captions" src="tutorial_captions.vtt" srclang="en" label="English" default>
+            <track kind="descriptions" src="tutorial_descriptions.vtt" srclang="en" label="Audio Descriptions">
+            Your browser does not support the video element.
+          </video>
+          <figcaption>
+            <strong>Tutorial: Getting Started with SUAI Framework</strong><br>
+            <small>Duration: 5:23 | Published: 2024-01-15</small>
+          </figcaption>
+        </figure>
+        <small>Enable captions from the video controls for full accessibility</small>
+      </form>
+
+      <h3>Podcast Episode</h3>
+      <form>
+        <h4>Audio Episode with Cover Art</h4>
+        <figure>
+          <img src="https://via.placeholder.com/300x300/4285f4/ffffff?text=Podcast+Cover" alt="Tech Talk Podcast cover art" width="300">
+          <figcaption>
+            <strong>Episode 15: The Future of Semantic HTML</strong><br>
+            <small>Published: January 4, 2025 | Duration: 42:18</small>
+          </figcaption>
+          <audio controls style="width: 100%; margin-top: 1rem;">
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </figure>
+        <p>In this episode, we explore the evolution of semantic HTML and discuss best practices for modern web development.</p>
+      </form>
+
+      <h3>Product Showcase</h3>
+      <form>
+        <h4>Product Images with Details</h4>
+        <figure>
+          <picture>
+            <source media="(min-width: 800px)" srcset="https://via.placeholder.com/800x600/34a853/ffffff?text=Product+Hero">
+            <img src="https://via.placeholder.com/400x300/34a853/ffffff?text=Product+Hero" alt="Product main view">
+          </picture>
+          <figcaption><strong>Premium Wireless Headphones</strong></figcaption>
+        </figure>
+
+        <div>
+          <figure style="display: inline-block; margin: 0 1rem 1rem 0;">
+            <img src="https://via.placeholder.com/200x200/ea4335/ffffff?text=Detail+1" alt="Side view" width="200">
+            <figcaption><small>Side view</small></figcaption>
+          </figure>
+
+          <figure style="display: inline-block; margin: 0 1rem 1rem 0;">
+            <img src="https://via.placeholder.com/200x200/fbbc04/ffffff?text=Detail+2" alt="Controls closeup" width="200">
+            <figcaption><small>Controls</small></figcaption>
+          </figure>
+
+          <figure style="display: inline-block; margin: 0 1rem 1rem 0;">
+            <img src="https://via.placeholder.com/200x200/4285f4/ffffff?text=Detail+3" alt="Carrying case" width="200">
+            <figcaption><small>Case</small></figcaption>
+          </figure>
+        </div>
+
+        <p>High-quality audio experience with active noise cancellation, 30-hour battery life, and premium comfort.</p>
+      </form>
+    </section>
+
+    <!-- SECTION 6: ACCESSIBILITY -->
+    <section id="accessibility">
+      <h2>Accessibility Best Practices</h2>
+      <p>Media elements must be accessible to all users, including those using assistive technologies.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Accessibility Requirement</th>
+            <th>Implementation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>&lt;img&gt;</td>
+            <td>Alternative text</td>
+            <td>Always include descriptive <code>alt</code> attribute</td>
+          </tr>
+          <tr>
+            <td>&lt;video&gt;</td>
+            <td>Captions for deaf/HoH</td>
+            <td>Provide <code>&lt;track kind="captions"&gt;</code></td>
+          </tr>
+          <tr>
+            <td>&lt;video&gt;</td>
+            <td>Audio descriptions for blind</td>
+            <td>Provide <code>&lt;track kind="descriptions"&gt;</code></td>
+          </tr>
+          <tr>
+            <td>&lt;audio&gt;</td>
+            <td>Transcript for deaf</td>
+            <td>Provide text transcript near audio element</td>
+          </tr>
+          <tr>
+            <td>&lt;figure&gt;</td>
+            <td>Clear caption</td>
+            <td>Use <code>&lt;figcaption&gt;</code> to explain the content</td>
+          </tr>
+          <tr>
+            <td>All media</td>
+            <td>Keyboard controls</td>
+            <td>Native <code>controls</code> attribute provides keyboard access</td>
+          </tr>
+          <tr>
+            <td>All media</td>
+            <td>No autoplay with sound</td>
+            <td>Avoid <code>autoplay</code> or use with <code>muted</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form>
+        <h3>Fully Accessible Video Example</h3>
+        <figure>
+          <video controls width="640" poster="https://via.placeholder.com/640x360/4285f4/ffffff?text=Accessible+Video">
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+            <track kind="captions" src="captions_en.vtt" srclang="en" label="English Captions" default>
+            <track kind="descriptions" src="descriptions_en.vtt" srclang="en" label="Audio Descriptions">
+            <track kind="subtitles" src="subtitles_es.vtt" srclang="es" label="Spanish Subtitles">
+            Your browser does not support the video element.
+          </video>
+          <figcaption>
+            <strong>Accessible Demo Video</strong><br>
+            This video includes captions, audio descriptions, and multiple subtitle languages for maximum accessibility.
+          </figcaption>
+        </figure>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <h2>SUAI Media Elements Summary</h2>
+    <p>This page demonstrates all semantic media elements in the SUAI framework using the PLA theme. All elements use zero classes and pure semantic HTML.</p>
+
+    <h3>Key Principles</h3>
+    <ul>
+      <li><strong>Semantic HTML:</strong> Use the right element for the right purpose</li>
+      <li><strong>Accessibility First:</strong> Always include alt text, captions, and descriptions</li>
+      <li><strong>Progressive Enhancement:</strong> Provide multiple formats and fallbacks</li>
+      <li><strong>Responsive Media:</strong> Use <code>&lt;picture&gt;</code> for art direction</li>
+      <li><strong>Native Controls:</strong> Browser controls provide keyboard accessibility</li>
+    </ul>
+
+    <h3>Element Coverage</h3>
+    <pre>
+Media Elements:
+├── &lt;img&gt;          - Embedded images
+├── &lt;picture&gt;      - Responsive images with multiple sources
+├── &lt;source&gt;       - Media source specification
+├── &lt;figure&gt;       - Self-contained content grouping
+├── &lt;figcaption&gt;   - Caption for figures
+├── &lt;audio&gt;        - Audio content
+├── &lt;video&gt;        - Video content
+└── &lt;track&gt;        - Text tracks for media (captions, subtitles)
+    </pre>
+
+    <p><small>SUAI Framework - Semantic, Utility, Adaptive Interface | PLA Theme (v1.0)</small></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "@suai/css",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "demo:build": "unocss \"demo/speed-demo.html\" -c uno.config.ts -o demo/demo.css"
+  },
+  "devDependencies": {
+    "@unocss/cli": "^66.7.5",
+    "unocss": "^66.0.0"
+  }
+}

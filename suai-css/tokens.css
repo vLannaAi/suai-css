@@ -1,0 +1,187 @@
+/* ============================================================================
+   SUAI TOKEN CONTRACT v1 (draft) — canonical tokens.css
+   Seed of @suai/tokens. Prefix: --su- (decided 2026-07-16).
+   ----------------------------------------------------------------------------
+   THE CONTRACT
+   - This file defines every public token and its neutral default (light mode).
+   - A THEME (suai-lai palette: pla/nok/maa/…) overrides any subset of these
+     under [data-su-theme="<name>"] scopes. A CONSUMER app may override any
+     token on :root (or any subtree) — no rebuild, no fork, no !important.
+   - SUAI components ship compiled CSS that reads ONLY these variables; no
+     utility engine (UnoCSS/Tailwind) requirement crosses this seam.
+   ----------------------------------------------------------------------------
+   SCOPING MECHANISM
+   - Palette axis:  data-su-theme="<palette>"   (any element; cascades down)
+   - Mode axis:     data-su-mode="light|dark"   (any element; cascades down)
+   - Attributes are su-namespaced so a host's own data-theme (Nuxt UI, nui
+     useTheme(), etc.) never collides. "system" mode is resolved by the JS
+     helper (useSuTheme) which sets data-su-mode explicitly — CSS stays
+     single-source (no duplicated prefers-color-scheme block).
+   - Multi-level scoping is free: custom properties inherit, so a
+     <aside data-su-mode="dark"> inside a light page just works.
+   ----------------------------------------------------------------------------
+   NAMING RULES
+   - --su-<role>[-<variant>]. Roles are semantic (what it's FOR), never raw
+     values. -fg suffix = "foreground placed on top of" its base token.
+   - Vocabulary: accent (not "primary"), bg/fg (not "surface/text") — terse,
+     collision-free, matches the proven @noy-db/ui role set. --su-accent-2 is
+     the data/content accent, distinct from chrome accent (two-kingdoms rule).
+   - Old-name migration map at the bottom of this file.
+   ========================================================================= */
+
+:root {
+  /* ── COLOR — surfaces ─────────────────────────────────────────────────── */
+  --su-bg: #ffffff;                 /* page / base surface                    */
+  --su-bg-accent: #f1f5f9;          /* raised / alternate surface (panels,
+                                       table stripes, chips)                  */
+
+  /* ── COLOR — text ramp ────────────────────────────────────────────────── */
+  --su-fg: #0f172a;                 /* primary text                           */
+  --su-muted: #64748b;              /* secondary text                         */
+  --su-subtle: #94a3b8;             /* tertiary text, placeholders, disabled  */
+
+  /* ── COLOR — borders ──────────────────────────────────────────────────── */
+  --su-border: #e2e8f0;             /* default control/panel border           */
+  --su-border-subtle: #eef2f7;      /* hairlines, dividers                    */
+
+  /* ── COLOR — accents ──────────────────────────────────────────────────── */
+  --su-accent: #2563eb;             /* brand/chrome accent (buttons, focus)   */
+  --su-accent-fg: #ffffff;          /* text/icon on accent                    */
+  --su-accent-2: var(--su-accent);  /* data accent (links to records, values);
+                                       themes may split it from chrome accent */
+
+  /* ── COLOR — status (triple per status: hue / tint bg / text on tint) ──── */
+  --su-danger: #dc2626;
+  --su-danger-bg: color-mix(in srgb, var(--su-danger) 10%, transparent);
+  --su-danger-fg: #991b1b;
+  --su-success: #16a34a;
+  --su-success-bg: color-mix(in srgb, var(--su-success) 10%, transparent);
+  --su-success-fg: #166534;
+  --su-warning: #d97706;
+  --su-warning-bg: color-mix(in srgb, var(--su-warning) 10%, transparent);
+  --su-warning-fg: #92400e;
+  --su-info: #0ea5e9;
+  --su-info-bg: color-mix(in srgb, var(--su-info) 10%, transparent);
+  --su-info-fg: #075985;
+
+  /* ── TYPOGRAPHY — families ────────────────────────────────────────────── */
+  --su-font-body: system-ui, -apple-system, "Segoe UI", "Noto Sans", sans-serif;
+  --su-font-display: var(--su-font-body);   /* headings / hero voice          */
+  --su-font-brand: var(--su-font-display);  /* logo/brand voice, may diverge  */
+  --su-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* ── TYPOGRAPHY — display voice (the themable "personality" trio) ─────── */
+  --su-display-weight: 600;
+  --su-display-spacing: 0em;
+  --su-display-transform: none;
+
+  /* ── TYPOGRAPHY — sizes & leading ─────────────────────────────────────── */
+  --su-font-size: 1rem;
+  --su-font-size-sm: 0.875rem;
+  --su-font-size-lg: 1.125rem;
+  --su-leading: 1.5;
+
+  /* ── SHAPE ─────────────────────────────────────────────────────────────── */
+  --su-radius: 0.75rem;             /* cards, panels, dialogs                 */
+  --su-radius-sm: 0.5rem;
+  --su-radius-lg: 1rem;
+  --su-radius-full: 9999px;
+  --su-radius-control: 0.5rem;      /* inputs, buttons — often ≠ card radius  */
+  --su-border-w: 1px;
+
+  /* ── ELEVATION ─────────────────────────────────────────────────────────── */
+  --su-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --su-shadow: 0 1px 2px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.08);
+  --su-shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.10), 0 6px 12px rgba(0, 0, 0, 0.10);
+  --su-shadow-card: var(--su-shadow-sm);    /* semantic alias themes retune   */
+
+  /* ── SPACING (scale + semantic steps) ─────────────────────────────────── */
+  --su-space-1: 0.25rem;
+  --su-space-2: 0.5rem;
+  --su-space-3: 1rem;
+  --su-space-4: 1.5rem;
+  --su-space-5: 3rem;
+  --su-space-row: var(--su-space-2);        /* vertical rhythm in lists/rows  */
+  --su-shell-gap: 0px;                      /* app-shell gutter               */
+
+  /* ── MOTION ────────────────────────────────────────────────────────────── */
+  --su-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --su-transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── DARK MODE ─────────────────────────────────────────────────────────────
+   Unanchored attribute selector on purpose: applies at ANY level, enabling
+   mixed-mode layouts (dark aside in a light page). Only color tokens flip;
+   shape/type/spacing are mode-invariant by contract (themes may still vary
+   them per-palette, but never per-mode). */
+[data-su-mode="dark"] {
+  --su-bg: #0f172a;
+  --su-bg-accent: #1e293b;
+  --su-fg: #e2e8f0;
+  --su-muted: #94a3b8;
+  --su-subtle: #64748b;
+  --su-border: #334155;
+  --su-border-subtle: #273449;
+  --su-accent: #3b82f6;
+  --su-accent-fg: #ffffff;
+  --su-danger: #f87171;
+  --su-danger-bg: color-mix(in srgb, var(--su-danger) 12%, transparent);
+  --su-danger-fg: #f87171;
+  --su-success: #4ade80;
+  --su-success-bg: color-mix(in srgb, var(--su-success) 12%, transparent);
+  --su-success-fg: #4ade80;
+  --su-warning: #fbbf24;
+  --su-warning-bg: color-mix(in srgb, var(--su-warning) 12%, transparent);
+  --su-warning-fg: #fbbf24;
+  --su-info: #38bdf8;
+  --su-info-bg: color-mix(in srgb, var(--su-info) 12%, transparent);
+  --su-info-fg: #38bdf8;
+  --su-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --su-shadow: 0 1px 2px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.35);
+  --su-shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.5), 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================================
+   NOT IN THE CONTRACT (by design)
+   - Layout dimensions (max-width, sidebar widths): app-shell concern — apps
+     define their own, optionally referencing --su-space-*.
+   - Font weights beyond --su-display-weight: components use literals.
+   - Component-scoped tokens (e.g. a table's sticky-header --su-thead-bg):
+     defined BY the component's CSS with a var() fallback onto contract
+     tokens, e.g.  background: var(--su-thead-bg, var(--su-accent));
+     Themes may set them; the contract doesn't list them.
+   ----------------------------------------------------------------------------
+   MIGRATION MAP (old → canonical)
+   suai-html (--suai-*):
+     --suai-primary → --su-accent          --suai-text-on-primary → --su-accent-fg
+     --suai-surface → --su-bg              --suai-surface-variant → --su-bg-accent
+     --suai-text → --su-fg                 --suai-text-muted → --su-muted
+     --suai-text-subtle → --su-subtle      --suai-border[-subtle] → --su-border[-subtle]
+     --suai-danger/-container → --su-danger/-bg   (same for success/info/warning)
+     --suai-font-family → --su-font-body   --suai-font-monospace → --su-font-mono
+     --suai-font-size-* → --su-font-size-*
+     --suai-h1..h6, --suai-line-height-sm/-lg, --suai-font-weight-*: DROPPED
+       from the contract (lean v1) — components/base styles use literals
+     --suai-line-height-base → --su-leading  --suai-spacing-N → --su-space-N
+     --suai-border-radius[-sm/-lg/-full] → --su-radius[-sm/-lg/-full]
+     --suai-border-width → --su-border-w   --suai-shadow* → --su-shadow*
+     --suai-transition* → --su-transition* (--suai-primary-hover/-active: drop;
+     derive via color-mix, e.g. color-mix(in srgb, var(--su-accent) 85%, black))
+   noy-db-ui showcase (unprefixed extended tokens):
+     --font-display/-body/-mono/-brand → --su-font-*
+     --display-transform/-spacing/-weight → --su-display-*
+     --radius / --radius-control / --border-w → --su-radius / --su-radius-control / --su-border-w
+     --shadow-card → --su-shadow-card      --hairline → --su-border-subtle
+     --space-row / --shell-gap → --su-space-row / --su-shell-gap
+     --accent-2 → --su-accent-2            --nui-badge-<s>-bg/-fg → --su-<s>-bg/-fg
+   ----------------------------------------------------------------------------
+   CONSUMER BRIDGES (live in the consumer, not here)
+   @noy-db/ui tokens.css (ui-suai fork):
+     :root { --nui-accent: var(--su-accent, #2563eb);
+             --nui-bg: var(--su-bg, #ffffff);  … }
+     Standalone-safe: fallbacks are today's nui values; drop SUAI CSS in and
+     the whole library reskins.
+   Nuxt UI page hosting SUAI components (verify var names per installed major):
+     :root { --su-accent: var(--ui-primary); --su-bg: var(--ui-bg);
+             --su-fg: var(--ui-text); --su-border: var(--ui-border); … }
+   ========================================================================= */

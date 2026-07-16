@@ -1,0 +1,15 @@
+/**
+ * PLA (ปลา - Fish) Theme - Font Declarations
+ * Roboto Flex Variable Font
+ * Axes: wght (100-1000), wdth (25%-151%), plus additional parametric axes
+ */
+
+/* Roboto Flex - Variable font with weight + width axes (Material Design) */
+@font-face {
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 1000;
+  font-stretch: 25% 151%;
+  src: url('./roboto-flex-full.woff2') format('woff2');
+}

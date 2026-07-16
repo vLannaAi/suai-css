@@ -1,0 +1,10 @@
+{
+  "name": "suai",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "demo": "node scripts/serve.mjs",
+    "demo:build": "pnpm -C suai-css demo:build"
+  }
+}

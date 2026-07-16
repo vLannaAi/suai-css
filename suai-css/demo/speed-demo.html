@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-su-theme="speed">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SUAI × speed — token contract demo</title>
+  <!-- Speed's fonts (graceful system-sans fallback when offline) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Saira:wght@600;700&display=swap">
+  <!-- The chain under test: contract → theme → compiled utilities -->
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../themes/speed.css">
+  <link rel="stylesheet" href="./demo.css">
+</head>
+<body class="bg-su-bg text-su-fg font-su-body min-h-screen transition-colors">
+
+  <header class="px-6 py-5 md:px-10 flex flex-wrap items-center justify-between gap-4 border-b border-su-border">
+    <div>
+      <h1 class="font-su-brand font-bold text-2xl text-su-accent">i3speedex</h1>
+      <p class="text-sm text-su-muted">SUAI token contract v1 · theme: <strong>speed</strong> · first-consumer demo</p>
+    </div>
+    <div class="flex gap-2">
+      <button id="mode-toggle" class="su-btn-soft">toggle dark mode</button>
+      <button id="theme-toggle" class="su-btn-ghost">theme: speed ⇄ default</button>
+    </div>
+  </header>
+
+  <main class="p-6 md:p-10 grid gap-8 md:grid-cols-2 items-start">
+
+    <!-- Cluster 1: follows the page-level mode (html[data-su-mode]) -->
+    <section class="flex flex-col gap-3">
+      <p class="text-xs text-su-subtle uppercase tracking-wide">follows page mode</p>
+
+      <article class="su-card p-5 flex flex-col gap-4">
+        <header class="flex items-baseline justify-between">
+          <h3 class="font-su-display font-bold text-lg">Record 42 — Vinyl</h3>
+          <time class="text-xs text-su-subtle">Jul 16, 2026</time>
+        </header>
+        <section class="text-sm text-su-muted leading-relaxed">
+          Chrome is crimson, data is cyan: this
+          <a href="#" class="text-su-accent-2 font-medium">record link</a>
+          lives in the accent-2 kingdom, while the buttons below belong to the chrome accent.
+        </section>
+        <div class="flex flex-wrap gap-2">
+          <button class="su-btn-primary">Save</button>
+          <button class="su-btn-soft">Duplicate</button>
+          <button class="su-btn-ghost">Discard</button>
+          <button class="su-btn-primary" disabled>Locked</button>
+        </div>
+        <input class="su-field" placeholder="Search the found set…">
+        <div class="flex flex-wrap gap-2">
+          <span class="su-chip bg-su-success-bg text-su-success-fg">synced</span>
+          <span class="su-chip bg-su-info-bg text-su-info-fg">3 related</span>
+          <span class="su-chip bg-su-warning-bg text-su-warning-fg">draft</span>
+          <span class="su-chip bg-su-danger-bg text-su-danger-fg">conflict</span>
+        </div>
+        <p class="text-sm">
+          <span class="text-su-fg">Primary text,</span>
+          <span class="text-su-muted">secondary text,</span>
+          <span class="text-su-subtle">subtle text.</span>
+        </p>
+        <footer class="flex justify-end border-t border-su-border-subtle pt-3">
+          <a href="#" class="text-sm font-medium text-su-accent">Open record →</a>
+        </footer>
+      </article>
+
+      <div class="su-panel p-4 text-sm text-su-muted">
+        <code class="font-su-mono text-su-fg">su-panel</code> — shadow-su-lg, rounded-su, border-su-border.
+      </div>
+    </section>
+
+    <!-- Cluster 2: identical markup inside a scoped dark island.
+         No JS, no page state — [data-su-mode="dark"] flips the variables
+         for this subtree only (multi-level scoping). -->
+    <section class="flex flex-col gap-3">
+      <p class="text-xs text-su-subtle uppercase tracking-wide">scoped dark island (no page state)</p>
+
+      <div data-su-mode="dark" class="bg-su-bg text-su-fg rounded-su p-5 flex flex-col gap-3">
+        <article class="su-card p-5 flex flex-col gap-4">
+          <header class="flex items-baseline justify-between">
+            <h3 class="font-su-display font-bold text-lg">Record 42 — Vinyl</h3>
+            <time class="text-xs text-su-subtle">Jul 16, 2026</time>
+          </header>
+          <section class="text-sm text-su-muted leading-relaxed">
+            Same compiled CSS, same markup — only the variables changed:
+            <a href="#" class="text-su-accent-2 font-medium">record link</a>
+            is now the dark-mode cyan.
+          </section>
+          <div class="flex flex-wrap gap-2">
+            <button class="su-btn-primary">Save</button>
+            <button class="su-btn-soft">Duplicate</button>
+            <button class="su-btn-ghost">Discard</button>
+            <button class="su-btn-primary" disabled>Locked</button>
+          </div>
+          <input class="su-field" placeholder="Search the found set…">
+          <div class="flex flex-wrap gap-2">
+            <span class="su-chip bg-su-success-bg text-su-success-fg">synced</span>
+            <span class="su-chip bg-su-info-bg text-su-info-fg">3 related</span>
+            <span class="su-chip bg-su-warning-bg text-su-warning-fg">draft</span>
+            <span class="su-chip bg-su-danger-bg text-su-danger-fg">conflict</span>
+          </div>
+          <p class="text-sm">
+            <span class="text-su-fg">Primary text,</span>
+            <span class="text-su-muted">secondary text,</span>
+            <span class="text-su-subtle">subtle text.</span>
+          </p>
+          <footer class="flex justify-end border-t border-su-border-subtle pt-3">
+            <a href="#" class="text-sm font-medium text-su-accent">Open record →</a>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="px-6 pb-8 md:px-10 text-xs text-su-subtle">
+    tokens.css (contract defaults) → themes/speed.css (data-su-theme="speed") → demo.css
+    (compiled from uno.config.ts — every colour/shape/font utility resolves to var(--su-*)).
+    Toggle "default" to see the whitelabel contract values with the exact same compiled CSS.
+  </footer>
+
+  <script>
+    // Demo-only controls. In products this is useSuTheme()'s job.
+    const html = document.documentElement
+    document.getElementById('mode-toggle').addEventListener('click', () => {
+      html.dataset.suMode = html.dataset.suMode === 'dark' ? 'light' : 'dark'
+    })
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      if (html.dataset.suTheme) delete html.dataset.suTheme
+      else html.dataset.suTheme = 'speed'
+    })
+  </script>
+</body>
+</html>

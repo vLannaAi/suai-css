@@ -1,0 +1,78 @@
+/* ============================================================================
+   SUAI THEME: speed — first canonical theme (v1 draft)
+   First consumer: i3speedex. Ported from noy-db-ui showcase "Speed" palette
+   (examples/showcase/app/assets/themes.css), translated to the --su- contract.
+   ----------------------------------------------------------------------------
+   Voice: crimson racing. Neutrals are crimson-tinted (not straight slate):
+   text is a very dark red, grays warm toward the accent hue, so the whole
+   page sits in one temperature. DM Sans throughout; Saira for brand only.
+   Cyan is the data accent (accent-2) — chrome is crimson, data is cyan.
+   ----------------------------------------------------------------------------
+   Usage: load AFTER tokens.css, then  <html data-su-theme="speed">
+   (add data-su-mode="dark" for dark). Fonts are NOT bundled here — the app
+   loads DM Sans + Saira (webfont or system fallback applies otherwise).
+   Only tokens that DIFFER from the contract defaults are set (lean rule).
+   ========================================================================= */
+
+[data-su-theme="speed"] {
+  /* surfaces & neutrals (light) */
+  --su-bg: #ffffff;
+  --su-bg-accent: #f8f3f5;
+  --su-fg: #33101c;
+  --su-muted: #8b6a75;
+  --su-subtle: #b39aa4;
+  --su-border: #eee0e4;
+  --su-border-subtle: #f4eaed;
+
+  /* accents — two kingdoms: crimson chrome, cyan data */
+  --su-accent: #bb0231;
+  --su-accent-fg: #ffffff;
+  --su-accent-2: #0891b2;
+
+  /* typography */
+  --su-font-body: 'DM Sans', ui-sans-serif, sans-serif;
+  --su-font-display: 'DM Sans', ui-sans-serif, sans-serif;
+  --su-font-brand: 'Saira', sans-serif;
+  --su-font-mono: ui-monospace, 'Cascadia Code', monospace;
+  --su-display-weight: 700;
+  --su-display-spacing: -0.02em;
+  --su-display-transform: none;
+
+  /* shape & elevation */
+  --su-radius: 6px;
+  --su-radius-control: 5px;
+  --su-shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+
+  /* component-scoped (outside the contract; components fall back to
+     var(--su-accent) etc. when a theme doesn't set these) */
+  --su-thead-bg: rgba(187, 2, 49, 0.82);
+  --su-thead-blur: 10px;
+}
+
+/* Dark — mode attribute on the same element or any ancestor/descendant scope.
+   Status tokens are NOT restated: the contract's [data-su-mode="dark"] block
+   already provides the exact dark status set Speed used. */
+[data-su-theme="speed"][data-su-mode="dark"],
+[data-su-theme="speed"] [data-su-mode="dark"] {
+  --su-bg: #190e13;
+  --su-bg-accent: #2a1a21;
+  --su-fg: #f7eef1;
+  --su-muted: #b499a3;
+  --su-subtle: #8a6b77;
+  --su-border: #4a2f3a;
+  --su-border-subtle: #2a1a21;
+  --su-accent: #e0173f;
+  --su-accent-fg: #ffffff;
+  --su-accent-2: #22d3ee;
+  --su-shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --su-thead-bg: rgba(224, 23, 63, 0.80);
+}
+
+/* ============================================================================
+   NOT PORTED (belongs to the consumer/component layer, not the theme):
+   - Flat detail cards (.nui-card { box-shadow: none }) — component choice;
+     express as --su-shadow-card: none in the consumer if wanted globally.
+   - Detail-value sizing (dd font-size/weight) and edit-mode input contrast
+     (accent-mixed borders + focus ring) — ui-suai component styles; revisit
+     as component tokens if a second theme needs to tune the same knobs.
+   ========================================================================= */

@@ -1,0 +1,72 @@
+/**
+ * PLA (ปลา - Fish) Theme - Dark Mode Variables
+ * Material Design 3 inspired
+ * Only color variables change in dark mode
+ */
+
+:root {
+  /* ============================================================================
+     PRIMARY COLORS
+     ========================================================================= */
+  --suai-primary: #93c5fd;
+  --suai-primary-hover: #bfdbfe;
+  --suai-primary-active: #60a5fa;
+  --suai-primary-container: #1e3a8a;
+
+  /* ============================================================================
+     GRAY SCALE (Inverted for Dark Mode)
+     ========================================================================= */
+  --suai-gray-100: #1C1B1F;
+  --suai-gray-200: #2B2930;
+  --suai-gray-300: #49454F;
+  --suai-gray-400: #605D66;
+  --suai-gray-500: #79747E;
+  --suai-gray-600: #938F99;
+  --suai-gray-700: #AEA9B4;
+  --suai-gray-800: #CAC4D0;
+  --suai-gray-900: #E6E1E5;
+
+  /* ============================================================================
+     SEMANTIC COLORS
+     ========================================================================= */
+  --suai-success: #81c784;
+  --suai-success-container: #1b5e20;
+  --suai-info: #4fc3f7;
+  --suai-info-container: #01579b;
+  --suai-warning: #ffb74d;
+  --suai-warning-container: #e65100;
+  --suai-danger: #e57373;
+  --suai-danger-container: #b71c1c;
+
+  /* ============================================================================
+     SURFACE/BACKGROUND COLORS
+     ========================================================================= */
+  --suai-surface: #1C1B1F;
+  --suai-surface-variant: #2B2930;
+  --suai-surface-hover: #49454F;
+  --suai-surface-container: #211F26;
+  --suai-surface-container-high: #2B2930;
+  --suai-surface-container-highest: #49454F;
+
+  /* ============================================================================
+     TEXT COLORS
+     ========================================================================= */
+  --suai-text: #E6E1E5;
+  --suai-text-muted: #CAC4D0;
+  --suai-text-subtle: #AEA9B4;
+  --suai-text-on-primary: #371E73;
+
+  /* ============================================================================
+     BORDER COLORS
+     ========================================================================= */
+  --suai-border: #79747E;
+  --suai-border-subtle: #49454F;
+
+  /* ============================================================================
+     SHADOWS (Enhanced for Dark Mode)
+     ========================================================================= */
+  --suai-shadow-sm: 0px 1px 3px 1px rgba(0, 0, 0, 0.45), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+  --suai-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.45), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+  --suai-shadow-md: 0px 4px 8px 3px rgba(0, 0, 0, 0.45), 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+  --suai-shadow-lg: 0px 6px 10px 4px rgba(0, 0, 0, 0.45), 0px 2px 3px 0px rgba(0, 0, 0, 0.3);
+}

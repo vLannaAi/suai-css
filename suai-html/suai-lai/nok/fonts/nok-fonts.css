@@ -1,0 +1,15 @@
+/**
+ * NOK (นก - Bird) Theme - Font Declarations
+ * Noto Sans Thai Flex Variable Font
+ * Axes: wght (100-900), wdth (62.5%-100%)
+ */
+
+/* Noto Sans Thai Flex - Variable font with weight + width axes for Thai/Latin (Bootstrap) */
+@font-face {
+  font-family: 'Noto Sans Thai';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  font-stretch: 62.5% 100%;
+  src: url('./noto-sans-thai-flex.woff2') format('woff2');
+}

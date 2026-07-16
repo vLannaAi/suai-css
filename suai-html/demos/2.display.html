@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+  <html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUAI Display Elements - Tables, Lists, Progress & Interactive Components</title>
+  <link rel="stylesheet" href="../suai.css">
+  <script src="theme-demo.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>SUAI Display Elements</h1>
+    <h5>Tables, Lists, Progress Indicators & Interactive Components</h5>
+
+    <nav>
+      <a href="1.text.html">1. Text</a>
+      <a>2. Display</a>
+      <a href="3.form.html">3. Form</a>
+      <a href="4.media.html">4. Media</a>
+      <a href="5.layout.html">5. Layout</a>
+      <a href="6.theme.html">6. Theme</a>
+    </nav>
+
+
+  </header>
+
+  <main>
+    <!-- SECTION 1: TABLES & DATA DISPLAY -->
+    <section id="tables">
+      <h2>Tables & Data Display</h2>
+      <p>Structured data presentation with comprehensive table elements. Features zebra striping, hover effects, and proper semantic markup.</p>
+
+      <!-- Visual Demo -->
+      <h3>Visual Demo</h3>
+      <div>
+
+        <h4>Financial Performance Table</h4>
+        <table>
+          <caption>Q4 2025 Sales Performance by Product Category</caption>
+          <colgroup>
+            <col style="width: 30%">
+            <col style="width: 20%">
+            <col style="width: 25%">
+            <col style="width: 25%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th style="text-align: right">Units Sold</th>
+              <th style="text-align: right">Revenue</th>
+              <th style="text-align: right">Growth</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Enterprise Suite</strong></td>
+              <td style="text-align: right">1,234</td>
+              <td style="text-align: right">$456,789</td>
+              <td style="text-align: right; color: var(--pla-success)">+12.5%</td>
+            </tr>
+            <tr>
+              <td><strong>Developer Tools</strong></td>
+              <td style="text-align: right">3,456</td>
+              <td style="text-align: right">$234,567</td>
+              <td style="text-align: right; color: var(--pla-success)">+8.3%</td>
+            </tr>
+            <tr>
+              <td><strong>Cloud Services</strong></td>
+              <td style="text-align: right">2,345</td>
+              <td style="text-align: right">$567,890</td>
+              <td style="text-align: right; color: var(--pla-success)">+15.7%</td>
+            </tr>
+            <tr>
+              <td><strong>Mobile Apps</strong></td>
+              <td style="text-align: right">5,678</td>
+              <td style="text-align: right">$123,456</td>
+              <td style="text-align: right; color: var(--pla-warning)">+2.1%</td>
+            </tr>
+            <tr>
+              <td><strong>Legacy Products</strong></td>
+              <td style="text-align: right">987</td>
+              <td style="text-align: right">$45,678</td>
+              <td style="text-align: right; color: var(--pla-danger)">-5.2%</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Total</th>
+              <td style="text-align: right"><strong>13,700</strong></td>
+              <td style="text-align: right"><strong>$1,428,380</strong></td>
+              <td style="text-align: right; color: var(--pla-success)"><strong>+8.9%</strong></td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <h4>Team Contact Directory</h4>
+        <table>
+          <caption>Development Team Contact Information</caption>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Department</th>
+              <th>Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sarah Chen</td>
+              <td>Lead Developer</td>
+              <td>Frontend</td>
+              <td>Bangkok</td>
+            </tr>
+            <tr>
+              <td>Marcus Johnson</td>
+              <td>Senior Engineer</td>
+              <td>Backend</td>
+              <td>Singapore</td>
+            </tr>
+            <tr>
+              <td>Yuki Tanaka</td>
+              <td>UI/UX Designer</td>
+              <td>Design</td>
+              <td>Tokyo</td>
+            </tr>
+            <tr>
+              <td>Priya Sharma</td>
+              <td>DevOps Engineer</td>
+              <td>Infrastructure</td>
+              <td>Mumbai</td>
+            </tr>
+            <tr>
+              <td>Alex Martinez</td>
+              <td>QA Lead</td>
+              <td>Quality</td>
+              <td>Manila</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <!-- Reference Table -->
+      <h3>Element Reference</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>&lt;table&gt;</code></td>
+            <td>Tabular data container</td>
+            <td>Structured data with rows and columns</td>
+          </tr>
+          <tr>
+            <td><code>&lt;caption&gt;</code></td>
+            <td>Table title/description</td>
+            <td>Provide context for table data (accessibility)</td>
+          </tr>
+          <tr>
+            <td><code>&lt;colgroup&gt;</code></td>
+            <td>Column group container</td>
+            <td>Group columns for styling or semantic grouping</td>
+          </tr>
+          <tr>
+            <td><code>&lt;col&gt;</code></td>
+            <td>Column definition</td>
+            <td>Define column properties (width, style)</td>
+          </tr>
+          <tr>
+            <td><code>&lt;thead&gt;</code></td>
+            <td>Table header section</td>
+            <td>Column headers and labels</td>
+          </tr>
+          <tr>
+            <td><code>&lt;tbody&gt;</code></td>
+            <td>Table body section</td>
+            <td>Main data rows</td>
+          </tr>
+          <tr>
+            <td><code>&lt;tfoot&gt;</code></td>
+            <td>Table footer section</td>
+            <td>Summary rows, totals, calculations</td>
+          </tr>
+          <tr>
+            <td><code>&lt;tr&gt;</code></td>
+            <td>Table row</td>
+            <td>Single row of data cells</td>
+          </tr>
+          <tr>
+            <td><code>&lt;th&gt;</code></td>
+            <td>Table header cell</td>
+            <td>Column or row header</td>
+          </tr>
+          <tr>
+            <td><code>&lt;td&gt;</code></td>
+            <td>Table data cell</td>
+            <td>Individual data value</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 2: LISTS -->
+    <section id="lists">
+      <h2>Lists</h2>
+      <p>Ordered, unordered, and definition lists for content organization. Supports nesting and complex hierarchies.</p>
+
+      <!-- Visual Demo -->
+      <h3>Visual Demo</h3>
+      <div>
+
+        <h4>Unordered List</h4>
+        <ul>
+          <li>Frontend Development
+            <ul>
+              <li>HTML5 semantic markup</li>
+              <li>CSS3 with modern features
+                <ul>
+                  <li>Grid & Flexbox layouts</li>
+                  <li>Custom properties (variables)</li>
+                  <li>Animations & transitions</li>
+                </ul>
+              </li>
+              <li>JavaScript (ES6+)</li>
+            </ul>
+          </li>
+          <li>Backend Development
+            <ul>
+              <li>Node.js & Express</li>
+              <li>Python & Django</li>
+              <li>Database design</li>
+            </ul>
+          </li>
+          <li>DevOps & Infrastructure
+            <ul>
+              <li>CI/CD pipelines</li>
+              <li>Cloud deployment (AWS, GCP)</li>
+              <li>Container orchestration</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h4>Ordered List</h4>
+        <ol>
+          <li>Clone the repository
+            <ol>
+              <li>Open terminal</li>
+              <li>Run <code>git clone [repository-url]</code></li>
+              <li>Navigate to project directory</li>
+            </ol>
+          </li>
+          <li>Install dependencies
+            <ol>
+              <li>Run <code>npm install</code></li>
+              <li>Wait for packages to download</li>
+            </ol>
+          </li>
+          <li>Configure environment
+            <ol>
+              <li>Copy <code>.env.example</code> to <code>.env</code></li>
+              <li>Update environment variables</li>
+              <li>Set API keys and secrets</li>
+            </ol>
+          </li>
+          <li>Start development server
+            <ol>
+              <li>Run <code>npm run dev</code></li>
+              <li>Open browser to <code>http://localhost:3000</code></li>
+            </ol>
+          </li>
+        </ol>
+
+        <h4>Definition List - API Reference</h4>
+        <dl>
+          <dt><code>setTheme(themeName)</code></dt>
+          <dd><strong>Type:</strong> Function</dd>
+          <dd><strong>Parameters:</strong>
+            <ul>
+              <li><code>themeName</code> (string) - Name of theme: 'pla' or 'nok'</li>
+            </ul>
+          </dd>
+          <dd><strong>Returns:</strong> void</dd>
+          <dd><strong>Description:</strong> Switches the active SUAI theme at runtime without page reload.</dd>
+
+          <dt><code>setMode(modeName)</code></dt>
+          <dd><strong>Type:</strong> Function</dd>
+          <dd><strong>Parameters:</strong>
+            <ul>
+              <li><code>modeName</code> (string) - Mode: 'light', 'dark', or 'system'</li>
+            </ul>
+          </dd>
+          <dd><strong>Returns:</strong> void</dd>
+          <dd><strong>Description:</strong> Changes the color mode. System mode follows OS preference.</dd>
+
+          <dt><code>toggleMode()</code></dt>
+          <dd><strong>Type:</strong> Function</dd>
+          <dd><strong>Parameters:</strong> None</dd>
+          <dd><strong>Returns:</strong> string - The new active mode</dd>
+          <dd><strong>Description:</strong> Toggles between light and dark modes.</dd>
+        </dl>
+
+        <h4>Definition List - Glossary</h4>
+        <dl>
+          <dt><dfn>SUAI</dfn></dt>
+          <dd>Semantic Utility Adaptive Interface - A CSS framework designed for the AI era, focusing on semantic HTML and visual-only UX.</dd>
+
+          <dt><dfn>Material Design 3</dfn></dt>
+          <dd>Google's latest design system featuring dynamic color, improved accessibility, and refined typography.</dd>
+
+          <dt><dfn>Progressive Web App (PWA)</dfn></dt>
+          <dd>Web applications that use modern web capabilities to deliver app-like experiences, including offline functionality and install prompts.</dd>
+
+          <dt><dfn>Semantic HTML</dfn></dt>
+          <dd>HTML markup that conveys meaning beyond presentation, using appropriate elements like <code>&lt;article&gt;</code>, <code>&lt;nav&gt;</code>, and <code>&lt;section&gt;</code>.</dd>
+        </dl>
+
+      </div>
+
+      <!-- Reference Table -->
+      <h3>Element Reference</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>&lt;ul&gt;</code></td>
+            <td>Unordered list</td>
+            <td>List items where order doesn't matter</td>
+          </tr>
+          <tr>
+            <td><code>&lt;ol&gt;</code></td>
+            <td>Ordered list</td>
+            <td>Sequential steps, rankings, ordered items</td>
+          </tr>
+          <tr>
+            <td><code>&lt;li&gt;</code></td>
+            <td>List item</td>
+            <td>Individual item in ul or ol</td>
+          </tr>
+          <tr>
+            <td><code>&lt;dl&gt;</code></td>
+            <td>Definition list</td>
+            <td>Term-definition pairs, key-value data</td>
+          </tr>
+          <tr>
+            <td><code>&lt;dt&gt;</code></td>
+            <td>Definition term</td>
+            <td>Term being defined, dictionary entry, API name</td>
+          </tr>
+          <tr>
+            <td><code>&lt;dd&gt;</code></td>
+            <td>Definition description</td>
+            <td>Definition, description, value for the term</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 3: QUOTATIONS -->
+    <section id="quotations">
+      <h2>Quotations</h2>
+      <p>Block quotations with proper semantic markup. Features Roboto Flex slant and Material Design 3 primary color accents.</p>
+
+      <!-- Visual Demo -->
+      <h3>Visual Demo</h3>
+      <div>
+
+        <h4>Standard Quote</h4>
+        <blockquote>
+          <p>The best way to predict the future is to invent it.</p>
+          <cite>— Alan Kay</cite>
+        </blockquote>
+
+        <h4>Long-form Quote</h4>
+        <blockquote>
+          <p>SUAI represents a paradigm shift in how we think about CSS frameworks. Instead of fighting against semantic HTML, we embrace it. Instead of adding complexity through countless utility classes, we let CSS do what it was designed to do: style meaningful markup with powerful, cascading rules.</p>
+          <footer>
+            <cite>SUAI Design Philosophy</cite>, 2025
+          </footer>
+        </blockquote>
+
+        <h4>Technical Quote</h4>
+        <blockquote>
+          <p>Progressive enhancement is a strategy for web design that emphasizes core webpage content first. This strategy then progressively adds more nuanced and technically rigorous layers of presentation and features on top of the content as the end-user's browser/internet connection allow.</p>
+          <cite>— MDN Web Docs</cite>
+        </blockquote>
+
+        <h4>Inline Quote</h4>
+        <p>
+          The HTML specification states that <q>User agents must not consider the blockquote element to be a quotation citation.</q>
+          This is why we use the <code>&lt;cite&gt;</code> element for attributions.
+        </p>
+
+      </div>
+
+      <!-- Reference Table -->
+      <h3>Element Reference</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>&lt;blockquote&gt;</code></td>
+            <td>Block quotation</td>
+            <td>Extended quotes, excerpts from other sources</td>
+          </tr>
+          <tr>
+            <td><code>&lt;q&gt;</code></td>
+            <td>Inline quotation</td>
+            <td>Short quotes within paragraphs (auto-adds quotes)</td>
+          </tr>
+          <tr>
+            <td><code>&lt;cite&gt;</code></td>
+            <td>Citation/attribution</td>
+            <td>Title of work, author name, source reference</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 4: PROGRESS & MEASUREMENT -->
+    <section id="progress-meter">
+      <h2>Progress & Measurement</h2>
+      <p>Visual indicators for task completion, loading states, and value measurements with semantic color coding.</p>
+
+      <!-- Visual Demo -->
+      <h3>Visual Demo</h3>
+      <div>
+
+        <h4>Progress Bars - Determinate State</h4>
+
+        <p data-value="0%">Installation progress:
+          <progress max="100" value="0">0%</progress>
+        </p>
+        <p data-value="35%">File upload:
+          <progress max="100" value="35">35%</progress>
+        </p>
+        <p data-value="70%">Build process:
+          <progress max="100" value="70">70%</progress>
+        </p>
+        <p data-value="100%">Deployment:
+          <progress max="100" value="100">100%</progress>
+        </p>
+
+        <h4>Progress Bar - Indeterminate State</h4>
+        <p data-value="Processing...">Loading:
+          <progress>Processing...</progress>
+        </p>
+
+        <h4>Meter Elements - Value Gauges</h4>
+
+        <p data-value="85%">Battery level (optimal):
+          <meter min="0" max="100" low="20" high="80" optimum="90" value="85">85%</meter>
+        </p>
+        <p data-value="65%">Disk usage (suboptimal):
+          <meter min="0" max="100" low="50" high="80" optimum="20" value="65">65%</meter>
+        </p>
+        <p data-value="92%">Storage warning (critical):
+          <meter min="0" max="100" low="50" high="80" optimum="20" value="92">92%</meter>
+        </p>
+        <p data-value="45°C">CPU temperature:
+          <meter min="0" max="100" low="60" high="80" optimum="40" value="45">45°C</meter>
+        </p>
+        <p data-value="4.2 / 16 GB">Memory usage:
+          <meter min="0" max="16" low="8" high="12" optimum="4" value="4.2">4.2 GB</meter>
+        </p>
+
+      </div>
+
+      <!-- Reference Table -->
+      <h3>Element Reference</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>&lt;progress&gt;</code></td>
+            <td>Task completion indicator</td>
+            <td>File uploads, installations, multi-step processes</td>
+          </tr>
+          <tr>
+            <td><code>&lt;progress&gt;</code> (no value)</td>
+            <td>Indeterminate progress</td>
+            <td>Loading states where duration is unknown</td>
+          </tr>
+          <tr>
+            <td><code>&lt;meter&gt;</code></td>
+            <td>Scalar measurement gauge</td>
+            <td>Disk usage, battery level, ratings, temperatures</td>
+          </tr>
+          <tr>
+            <td><code>meter[optimum]</code></td>
+            <td>Optimal value indicator</td>
+            <td>Define the optimal range (shows green when in range)</td>
+          </tr>
+          <tr>
+            <td><code>meter[low/high]</code></td>
+            <td>Warning thresholds</td>
+            <td>Define suboptimal (yellow) and critical (red) ranges</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 5: INTERACTIVE ELEMENTS -->
+    <section id="interactive">
+      <h2>Interactive Elements</h2>
+      <p>Native HTML interactive components for progressive disclosure, autocomplete suggestions, and dynamic content. Features smooth animations and Material Design 3 styling.</p>
+
+      <!-- Visual Demo -->
+      <h3>Visual Demo</h3>
+      <div>
+
+        <h4>Details/Summary - Simple Accordion</h4>
+
+        <details>
+          <summary>What is SUAI?</summary>
+          <p>SUAI (Semantic Utility Adaptive Interface) is a CSS framework designed for the AI era, focusing on semantic HTML and visual-only UX. It provides beautiful styling for standard HTML elements without requiring utility classes.</p>
+        </details>
+
+        <details>
+          <summary>How does SUAI differ from other CSS frameworks?</summary>
+          <p>Unlike utility-first frameworks like Tailwind CSS, SUAI styles HTML elements directly based on their semantic meaning. This approach is ideal for AI-generated content and reduces the complexity of maintaining countless utility classes.</p>
+        </details>
+
+        <details>
+          <summary>What themes are available?</summary>
+          <p>SUAI currently offers two themes:</p>
+          <ul>
+            <li><strong>Pla</strong> (Fish) - Material Design 3 inspired with blue primary color</li>
+            <li><strong>Nok</strong> (Bird) - Bootstrap inspired with traditional styling</li>
+          </ul>
+          <p>Each theme supports both light and dark modes.</p>
+        </details>
+
+        <h4>Details/Summary - Nested Accordion</h4>
+
+        <details>
+          <summary>Advanced Features</summary>
+          <div>
+            <p>SUAI includes several advanced features for modern web development:</p>
+
+            <details>
+              <summary>Theme System</summary>
+              <p>Switch between Pla and Nok themes at runtime using the SUAI JavaScript API. Themes can be changed without page reload, and preferences are stored in localStorage.</p>
+            </details>
+
+            <details>
+              <summary>Typography</summary>
+              <p>Uses Roboto Flex variable font with automatic optical sizing. The slant axis (-10°) is used for italic elements instead of fake oblique styles, providing better typography.</p>
+            </details>
+
+            <details>
+              <summary>Color System</summary>
+              <p>Material Design 3 color palette with semantic colors:</p>
+              <ul>
+                <li>Primary: #3b82f6 (MD3 Blue)</li>
+                <li>Success: Green</li>
+                <li>Warning: Orange</li>
+                <li>Danger: Red</li>
+                <li>Info: Light Blue</li>
+              </ul>
+            </details>
+
+            <details>
+              <summary>PWA Support</summary>
+              <p>All fonts and assets are available locally, making SUAI perfect for Progressive Web Apps that need offline functionality.</p>
+            </details>
+          </div>
+        </details>
+
+        <h4>Datalist - Autocomplete Suggestions</h4>
+
+        <p><label for="browser-choice">Choose your preferred browser:</label></p>
+        <input list="browsers" id="browser-choice" name="browser" placeholder="Type to search...">
+        <datalist id="browsers">
+          <option value="Chrome">
+          <option value="Firefox">
+          <option value="Safari">
+          <option value="Edge">
+          <option value="Opera">
+          <option value="Brave">
+          <option value="Vivaldi">
+        </datalist>
+
+        <p style="margin-top: var(--pla-spacing-3);"><label for="framework-choice">Select a CSS framework:</label></p>
+        <input list="frameworks" id="framework-choice" name="framework" placeholder="Start typing...">
+        <datalist id="frameworks">
+          <option value="SUAI (Semantic Utility Adaptive Interface)">
+          <option value="Bootstrap">
+          <option value="Tailwind CSS">
+          <option value="Foundation">
+          <option value="Bulma">
+          <option value="Material UI">
+          <option value="Ant Design">
+          <option value="Chakra UI">
+        </datalist>
+
+        <p style="margin-top: var(--pla-spacing-3);"><label for="color-choice">Pick a Material Design 3 color:</label></p>
+        <input list="md3-colors" id="color-choice" name="color" placeholder="Select color...">
+        <datalist id="md3-colors">
+          <option value="#3b82f6" label="Blue">
+          <option value="#2e7d32" label="Green">
+          <option value="#f57c00" label="Orange">
+          <option value="#c62828" label="Red">
+          <option value="#0288d1" label="Light Blue">
+          <option value="#7b1fa2" label="Purple">
+          <option value="#c2185b" label="Pink">
+        </datalist>
+
+        <p><small>Note: The <code>&lt;datalist&gt;</code> provides autocomplete suggestions. Browser implementation varies - some show a dropdown, others filter as you type.</small></p>
+
+      </div>
+
+      <!-- Reference Table -->
+      <h3>Element Reference</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>&lt;details&gt;</code></td>
+            <td>Disclosure widget container</td>
+            <td>Accordion panels, expandable sections, FAQs</td>
+          </tr>
+          <tr>
+            <td><code>&lt;summary&gt;</code></td>
+            <td>Disclosure widget trigger</td>
+            <td>Clickable heading for details element</td>
+          </tr>
+          <tr>
+            <td><code>details[open]</code></td>
+            <td>Open state indicator</td>
+            <td>Target expanded state with CSS</td>
+          </tr>
+          <tr>
+            <td><code>&lt;datalist&gt;</code></td>
+            <td>Predefined options container</td>
+            <td>Autocomplete suggestions for input fields</td>
+          </tr>
+          <tr>
+            <td><code>input[list]</code></td>
+            <td>Input with autocomplete</td>
+            <td>Link input to datalist via list attribute</td>
+          </tr>
+          <tr>
+            <td><code>&lt;option&gt;</code></td>
+            <td>Datalist option</td>
+            <td>Individual suggestion in datalist</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 6: DIALOG & MODALS -->
+    <section id="dialog">
+      <h2>Dialog & Modals</h2>
+      <p>Native HTML5 dialog element for modal and non-modal dialogs. Features Material Design 3 backdrop, smooth animations, and elevation shadows.</p>
+
+      <!-- Visual Demo -->
+      <h3>Visual Demo</h3>
+      <div>
+
+        <h4>Modal Dialog</h4>
+
+        <p>
+          <button onclick="document.getElementById('example-dialog').showModal()">Open Example Dialog</button>
+        </p>
+
+        <dialog id="example-dialog">
+          <header style="padding: var(--pla-spacing-3); background-color: var(--pla-surface-container); border-bottom: var(--pla-border-width) solid var(--pla-outline-variant); margin: 0;">
+            <h3 style="margin: 0;">Welcome to SUAI</h3>
+          </header>
+
+          <div style="padding: var(--pla-spacing-3);">
+            <p>This is a native HTML5 <code>&lt;dialog&gt;</code> element styled with Material Design 3 principles.</p>
+            <p>Features include:</p>
+            <ul>
+              <li>Backdrop blur effect with scrim overlay</li>
+              <li>Smooth slide-up animation</li>
+              <li>Elevation shadow (level 3)</li>
+              <li>Rounded corners and proper spacing</li>
+            </ul>
+            <p>The dialog uses <code>::backdrop</code> pseudo-element for the overlay effect:</p>
+            <ul>
+              <li>Light mode: <code>rgba(0, 0, 0, 0.32)</code></li>
+              <li>Dark mode: <code>rgba(0, 0, 0, 0.54)</code></li>
+              <li>Blur: <code>backdrop-filter: blur(4px)</code></li>
+            </ul>
+          </div>
+
+          <footer style="display: flex; gap: var(--pla-spacing-2); justify-content: flex-end; padding: var(--pla-spacing-3); background-color: var(--pla-surface-variant); border-top: var(--pla-border-width) solid var(--pla-outline-variant); margin: 0;">
+            <button onclick="document.getElementById('example-dialog').close()" style="padding: var(--pla-spacing-2) var(--pla-spacing-3);">Close</button>
+            <button onclick="document.getElementById('example-dialog').close()" style="padding: var(--pla-spacing-2) var(--pla-spacing-3); background-color: var(--pla-primary); color: white; border: none; border-radius: var(--pla-border-radius);">Accept</button>
+          </footer>
+        </dialog>
+
+        <h4>Confirmation Dialog</h4>
+
+        <p>
+          <button onclick="document.getElementById('confirm-dialog').showModal()">Delete Item</button>
+        </p>
+
+        <dialog id="confirm-dialog">
+          <header style="padding: var(--pla-spacing-3); background-color: var(--pla-surface-container); border-bottom: var(--pla-border-width) solid var(--pla-outline-variant); margin: 0;">
+            <h3 style="margin: 0; color: var(--pla-danger);">Confirm Deletion</h3>
+          </header>
+
+          <div style="padding: var(--pla-spacing-3);">
+            <p>Are you sure you want to delete this item? This action cannot be undone.</p>
+            <p><strong>Warning:</strong> All associated data will be permanently removed.</p>
+          </div>
+
+          <footer style="display: flex; gap: var(--pla-spacing-2); justify-content: flex-end; padding: var(--pla-spacing-3); background-color: var(--pla-surface-variant); border-top: var(--pla-border-width) solid var(--pla-outline-variant); margin: 0;">
+            <button onclick="document.getElementById('confirm-dialog').close()">Cancel</button>
+            <button onclick="document.getElementById('confirm-dialog').close()" style="background-color: var(--pla-danger); color: white; border: none; padding: var(--pla-spacing-2) var(--pla-spacing-3); border-radius: var(--pla-border-radius);">Delete</button>
+          </footer>
+        </dialog>
+
+        <p><small>Note: Dialog uses native <code>.showModal()</code> and <code>.close()</code> methods. The backdrop can be clicked to close in browsers that support it. Press <kbd>Esc</kbd> to dismiss.</small></p>
+
+      </div>
+
+      <!-- Reference Table -->
+      <h3>Element Reference</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>&lt;dialog&gt;</code></td>
+            <td>Modal or non-modal dialog</td>
+            <td>Alerts, confirmations, forms, lightboxes</td>
+          </tr>
+          <tr>
+            <td><code>dialog::backdrop</code></td>
+            <td>Dialog overlay background</td>
+            <td>Style the backdrop behind modal dialogs</td>
+          </tr>
+          <tr>
+            <td><code>.showModal()</code></td>
+            <td>Open as modal dialog</td>
+            <td>JavaScript method to display dialog modally</td>
+          </tr>
+          <tr>
+            <td><code>.show()</code></td>
+            <td>Open as non-modal dialog</td>
+            <td>JavaScript method for non-blocking dialogs</td>
+          </tr>
+          <tr>
+            <td><code>.close()</code></td>
+            <td>Close dialog</td>
+            <td>JavaScript method to dismiss dialog</td>
+          </tr>
+          <tr>
+            <td><code>Esc key</code></td>
+            <td>Close modal dialog</td>
+            <td>Built-in keyboard accessibility</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 7: DEFINITIONS -->
+    <section id="definitions">
+      <h2>Definitions & Descriptions</h2>
+      <p>Semantic markup for defining terms and concepts. The <code>&lt;dfn&gt;</code> element uses Roboto Flex slant for visual distinction.</p>
+
+      <!-- Visual Demo -->
+      <h3>Visual Demo</h3>
+      <div>
+
+        <h4>Inline Definitions</h4>
+        <p>
+          A <dfn>Progressive Web App (PWA)</dfn> is a type of application software delivered through the web, built using common web technologies including HTML, CSS, and JavaScript.
+        </p>
+
+        <p>
+          The <dfn><abbr title="Document Object Model">DOM</abbr></dfn> is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content.
+        </p>
+
+        <p>
+          <dfn>Semantic HTML</dfn> refers to the use of HTML markup to reinforce the semantics, or meaning, of the information in web pages rather than merely to define its presentation or look.
+        </p>
+
+        <h4>Technical Glossary</h4>
+        <dl>
+          <dt><dfn>CSS Custom Properties</dfn></dt>
+          <dd>Also known as CSS variables, these are entities defined by CSS authors that contain specific values to be reused throughout a document. They are set using custom property notation (e.g., <code>--main-color: black;</code>) and accessed using the <code>var()</code> function.</dd>
+
+          <dt><dfn>Variable Font</dfn></dt>
+          <dd>A single font file that behaves like multiple fonts. OpenType variable fonts allow different variations of a typeface to be incorporated into one file, with axes like weight, width, slant, and optical size controllable via CSS.</dd>
+
+          <dt><dfn>Material Design</dfn></dt>
+          <dd>A design language developed by Google in 2014. Material Design 3 is the latest version, featuring dynamic color, improved accessibility, and refined components based on Material You design principles.</dd>
+
+          <dt><dfn>Semantic Versioning</dfn></dt>
+          <dd>A versioning scheme for software that uses a three-part number: MAJOR.MINOR.PATCH. Increment the MAJOR version for incompatible API changes, MINOR for backwards-compatible functionality, and PATCH for backwards-compatible bug fixes.</dd>
+        </dl>
+
+      </div>
+
+      <!-- Reference Table -->
+      <h3>Element Reference</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>&lt;dfn&gt;</code></td>
+            <td>Defining instance of a term</td>
+            <td>First occurrence of a term being defined</td>
+          </tr>
+          <tr>
+            <td><code>&lt;abbr&gt;</code></td>
+            <td>Abbreviation or acronym</td>
+            <td>Shortened forms with title attribute for expansion</td>
+          </tr>
+          <tr>
+            <td><code>&lt;dfn&gt;&lt;abbr&gt;</code></td>
+            <td>Defined abbreviation</td>
+            <td>Combine when defining an abbreviation</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <footer>
+    <h3>About SUAI Themes & Modes</h3>
+
+    <p>This page uses <strong>suai-css</strong> with the following configuration:</p>
+    <ul>
+      <li>Theme: <strong>pla</strong> (Fish - Material Design 3 inspired)</li>
+      <li>Mode: <strong>light</strong></li>
+      <li>No JavaScript required for styling</li>
+      <li>Tag-based styling - no classes needed for basic elements</li>
+    </ul>
+
+    <h4>Production Setup (V3.0 Modular)</h4>
+    <p>Link all required CSS files for your chosen theme and mode:</p>
+
+    <pre><code>&lt;!-- Common styles (required) --&gt;
+&lt;link rel="stylesheet" href="suai-html/suai.css"&gt;
+
+&lt;!-- PLA Light theme --&gt;
+&lt;link rel="stylesheet" href="suai-html/suai-lai/pla/fonts/pla-fonts.css"&gt;
+&lt;link rel="stylesheet" href="suai-html/suai-lai/pla/pla-base.css"&gt;
+&lt;link rel="stylesheet" href="suai-html/suai-lai/pla/pla-light-vars.css"&gt;
+
+&lt;!-- Or NOK Dark theme --&gt;
+&lt;link rel="stylesheet" href="suai-html/suai-lai/nok/fonts/nok-fonts.css"&gt;
+&lt;link rel="stylesheet" href="suai-html/suai-lai/nok/nok-base.css"&gt;
+&lt;link rel="stylesheet" href="suai-html/suai-lai/nok/nok-dark-vars.css"&gt;
+
+&lt;html data-theme="nok" data-mode="dark"&gt;</code></pre>
+
+    <h4>Interactive Theme Switching</h4>
+    <p>For <strong>demo/interactive switching</strong>, use the theme switcher (not required for production):</p>
+
+    <pre><code>&lt;script src="theme-demo.js"&gt;&lt;/script&gt;
+&lt;button onclick="suaiSet('pla', 'dark')"&gt;PLA Dark&lt;/button&gt;
+&lt;button onclick="suaiSet('nok', 'light')"&gt;NOK Light&lt;/button&gt;
+&lt;button onclick="suaiSet('maa', 'light')"&gt;MAA Light&lt;/button&gt;</code></pre>
+
+    <p><a href="./text.html">View Text Elements demo →</a></p>
+
+    <hr>
+
+    <p><small>SUAI Framework © 2025 - Mobile-first, visual-only UX | <a href="../">Back to main showcase</a></small></p>
+  </footer>
+</body>
+</html>

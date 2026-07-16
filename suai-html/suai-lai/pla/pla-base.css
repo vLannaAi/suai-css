@@ -1,0 +1,216 @@
+/**
+ * PLA (ปลา - Fish) Theme - Base Overrides
+ * Material Design 3 specific patterns and overrides
+ *
+ * This file contains PLA-specific design decisions that differ from the common baseline:
+ * - Colored heading hierarchy
+ * - Elevation shadows on interactive elements
+ * - Slanted font variations for emphasis
+ * - Striped table rows
+ * - Material Design form styling
+ */
+
+/* ============================================================================
+   TYPOGRAPHY - MATERIAL DESIGN COLORED HEADINGS
+   ========================================================================= */
+
+h1 {
+  color: var(--suai-primary);
+}
+
+h2 {
+  color: color-mix(in srgb, var(--suai-primary) 80%, var(--suai-text) 20%);
+}
+
+h3 {
+  color: color-mix(in srgb, var(--suai-primary) 60%, var(--suai-text) 40%);
+}
+
+h4 {
+  color: color-mix(in srgb, var(--suai-primary) 40%, var(--suai-text) 60%);
+}
+
+h5 {
+  color: color-mix(in srgb, var(--suai-primary) 20%, var(--suai-text) 80%);
+}
+
+/* h6 stays default text color */
+
+/* ============================================================================
+   TYPOGRAPHY - MATERIAL DESIGN EMPHASIS WITH SLANT
+   ========================================================================= */
+
+/* Material Design uses slant variation for emphasis instead of true italic */
+strong {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 1.05em;
+}
+
+em {
+  font-family: var(--suai-font-family);
+  font-weight: var(--suai-font-weight-semibold);
+  font-style: normal;
+  font-variation-settings: 'slnt' -10;
+  color: var(--suai-primary);
+}
+
+i {
+  font-family: var(--suai-font-family);
+  font-style: normal;
+  font-variation-settings: 'slnt' -10;
+  opacity: 0.9;
+}
+
+cite {
+  font-variation-settings: 'slnt' -10;
+  color: var(--suai-info);
+  transition: var(--suai-transition-fast);
+}
+
+cite:hover {
+  color: var(--suai-primary);
+}
+
+q {
+  font-family: var(--suai-font-family);
+  font-style: normal;
+  font-variation-settings: 'slnt' -10;
+}
+
+blockquote {
+  font-family: var(--suai-font-family);
+  font-variation-settings: 'slnt' -10;
+}
+
+/* ============================================================================
+   TABLES - MATERIAL DESIGN STRIPED ROWS
+   ========================================================================= */
+
+tbody tr:nth-child(even) {
+  background-color: var(--suai-surface-variant);
+}
+
+tbody tr:nth-child(even):hover {
+  background-color: var(--suai-surface-hover);
+}
+
+/* ============================================================================
+   BUTTONS - MATERIAL DESIGN ELEVATION
+   ========================================================================= */
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  box-shadow: var(--suai-shadow-sm);
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  box-shadow: var(--suai-shadow);
+}
+
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active {
+  box-shadow: var(--suai-shadow-sm);
+}
+
+input[type="reset"] {
+  background-color: transparent;
+  color: var(--suai-primary);
+  border: 2px solid var(--suai-border);
+  box-shadow: none;
+}
+
+input[type="reset"]:hover {
+  background-color: var(--suai-surface-hover);
+  box-shadow: none;
+}
+
+/* ============================================================================
+   INPUTS - MATERIAL DESIGN BOTTOM BORDER STYLE
+   ========================================================================= */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+textarea,
+select {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid var(--suai-border);
+  border-radius: 0;
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-bottom-color: var(--suai-primary);
+  box-shadow: none;
+}
+
+/* ============================================================================
+   CODE BLOCKS - MATERIAL DESIGN ELEVATION
+   ========================================================================= */
+
+pre {
+  box-shadow: var(--suai-shadow-sm);
+}
+
+/* ============================================================================
+   CARDS & ELEVATED SURFACES
+   ========================================================================= */
+
+article {
+  background-color: var(--suai-surface);
+  border-radius: var(--suai-border-radius);
+  padding: var(--suai-spacing-4);
+  box-shadow: var(--suai-shadow-sm);
+  transition: var(--suai-transition);
+}
+
+article:hover {
+  box-shadow: var(--suai-shadow);
+}
+
+/* ============================================================================
+   DETAILS - MATERIAL DESIGN ELEVATION
+   ========================================================================= */
+
+details {
+  box-shadow: var(--suai-shadow-sm);
+}
+
+details[open] {
+  box-shadow: var(--suai-shadow);
+}
+
+/* ============================================================================
+   FORMS - MATERIAL DESIGN ELEVATION
+   ========================================================================= */
+
+form {
+  box-shadow: var(--suai-shadow-sm);
+}
+
+/* ============================================================================
+   LAYOUT OVERRIDES (if needed)
+   ========================================================================= */
+
+/* PLA-specific layout adjustments can go here */

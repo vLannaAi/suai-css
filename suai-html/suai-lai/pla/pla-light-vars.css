@@ -1,0 +1,141 @@
+/**
+ * PLA (ปลา - Fish) Theme - Light Mode Variables
+ * Material Design 3 inspired
+ * Roboto Flex variable font (wght + wdth axes)
+ */
+
+:root {
+  /* ============================================================================
+     PRIMARY COLORS
+     ========================================================================= */
+  --suai-primary: #3b82f6;
+  --suai-primary-hover: #2563eb;
+  --suai-primary-active: #1d4ed8;
+  --suai-primary-container: #dbeafe;
+
+
+  /* ============================================================================
+     GRAY SCALE (Material Design Scale)
+     ========================================================================= */
+  --suai-gray-100: #F5F5F5;
+  --suai-gray-200: #EEEEEE;
+  --suai-gray-300: #E0E0E0;
+  --suai-gray-400: #BDBDBD;
+  --suai-gray-500: #9E9E9E;
+  --suai-gray-600: #757575;
+  --suai-gray-700: #616161;
+  --suai-gray-800: #424242;
+  --suai-gray-900: #212121;
+
+  /* ============================================================================
+     SEMANTIC COLORS
+     ========================================================================= */
+  --suai-success: #2e7d32;
+  --suai-success-container: #e8f5e9;
+  --suai-info: #0288d1;
+  --suai-info-container: #e1f5fe;
+  --suai-warning: #f57c00;
+  --suai-warning-container: #fff3e0;
+  --suai-danger: #c62828;
+  --suai-danger-container: #ffebee;
+
+  /* ============================================================================
+     SURFACE/BACKGROUND COLORS
+     ========================================================================= */
+  --suai-surface: #FFFFFF;
+  --suai-surface-variant: var(--suai-gray-100);
+  --suai-surface-hover: var(--suai-gray-200);
+  --suai-surface-container: var(--suai-gray-200);
+  --suai-surface-container-high: var(--suai-gray-300);
+  --suai-surface-container-highest: var(--suai-gray-400);
+
+  /* ============================================================================
+     TEXT COLORS
+     ========================================================================= */
+  --suai-text: var(--suai-gray-900);
+  --suai-text-muted: var(--suai-gray-700);
+  --suai-text-subtle: var(--suai-gray-600);
+  --suai-text-on-primary: #FFFFFF;
+
+  /* ============================================================================
+     BORDER COLORS
+     ========================================================================= */
+  --suai-border: var(--suai-gray-400);
+  --suai-border-subtle: var(--suai-gray-300);
+
+  /* ============================================================================
+     SHADOWS (Material Design Elevation)
+     ========================================================================= */
+  --suai-shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --suai-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --suai-shadow-md: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+  --suai-shadow-lg: 0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 6px 10px 4px rgba(0, 0, 0, 0.15);
+
+  /* ============================================================================
+     TYPOGRAPHY - FONT FAMILY
+     ========================================================================= */
+  --suai-font-family: 'Roboto Flex', 'Roboto', 'Noto Sans', sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
+  --suai-font-monospace: "Roboto Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* ============================================================================
+     TYPOGRAPHY - FONT SIZES
+     ========================================================================= */
+  --suai-font-size-base: 1rem;
+  --suai-font-size-sm: 0.875rem;
+  --suai-font-size-lg: 1.125rem;
+
+  --suai-h1: 2.5rem;
+  --suai-h2: 2rem;
+  --suai-h3: 1.75rem;
+  --suai-h4: 1.5rem;
+  --suai-h5: 1.25rem;
+  --suai-h6: 1rem;
+
+  /* ============================================================================
+     TYPOGRAPHY - LINE HEIGHTS
+     ========================================================================= */
+  --suai-line-height-base: 1.5;
+  --suai-line-height-sm: 1.4;
+  --suai-line-height-lg: 1.75;
+
+  /* ============================================================================
+     TYPOGRAPHY - FONT WEIGHTS
+     ========================================================================= */
+  --suai-font-weight-light: 300;
+  --suai-font-weight-normal: 400;
+  --suai-font-weight-medium: 500;
+  --suai-font-weight-semibold: 600;
+  --suai-font-weight-bold: 700;
+
+  /* ============================================================================
+     SPACING SCALE
+     ========================================================================= */
+  --suai-spacing-1: 0.25rem;
+  --suai-spacing-2: 0.5rem;
+  --suai-spacing-3: 1rem;
+  --suai-spacing-4: 1.5rem;
+  --suai-spacing-5: 3rem;
+
+  /* ============================================================================
+     BORDERS - WIDTH & RADIUS
+     ========================================================================= */
+  --suai-border-width: 1px;
+  --suai-border-radius: 0.75rem;
+  --suai-border-radius-sm: 0.5rem;
+  --suai-border-radius-lg: 1rem;
+  --suai-border-radius-full: 9999px;
+
+  /* ============================================================================
+     TRANSITIONS
+     ========================================================================= */
+  --suai-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --suai-transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ============================================================================
+     LAYOUT DIMENSIONS
+     ========================================================================= */
+  --suai-layout-max-width: 1200px;
+  --suai-layout-sidebar-width: 280px;
+  --suai-layout-aside-width: 300px;
+  --suai-layout-aside-width-desktop: 350px;
+}

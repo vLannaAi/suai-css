@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUAI Form Elements - Comprehensive Form Controls Showcase</title>
+  <link rel="stylesheet" href="../suai.css">
+  <script src="theme-demo.js"></script>
+
+</head>
+<body>
+
+  <header>
+    <h1>SUAI Form Elements</h1>
+    <h5>Comprehensive Form Controls & Validation</h5>
+
+    <nav>
+      <a href="1.text.html">1. Text</a>
+      <a href="2.display.html">2. Display</a>
+      <a>3. Form</a>
+      <a href="4.media.html">4. Media</a>
+      <a href="5.layout.html">5. Layout</a>
+      <a href="6.theme.html">6. Theme</a>
+    </nav>
+
+  </header>
+
+  <main>
+    <!-- SECTION 1: FORM BASICS & TEXT INPUTS -->
+    <section id="text-inputs">
+      <h2>Form Basics & Text Inputs</h2>
+      <p>Essential text input fields with various types, validation states, and helper text. Uses semantic HTML with <code>&lt;small&gt;</code> for info and <code>&lt;strong&gt;</code> for errors.</p>
+
+      <form>
+        <h3>Basic Text Input</h3>
+        <div>
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter your username" required>
+          <small>Must be 3-20 characters, alphanumeric only</small>
+        </div>
+
+        <div>
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          <small>We'll never share your email with anyone</small>
+        </div>
+
+        <div>
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter password" required minlength="8">
+          <small>Minimum 8 characters required</small>
+        </div>
+
+        <div>
+          <label for="tel">Phone Number</label>
+          <input type="tel" id="tel" name="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="555-123-4567">
+          <small>Format: 555-123-4567</small>
+        </div>
+
+        <div>
+          <label for="url">Website</label>
+          <input type="url" id="url" name="url" placeholder="https://example.com">
+        </div>
+
+        <div>
+          <label for="search">Search</label>
+          <input type="search" id="search" name="search" placeholder="Search...">
+        </div>
+
+        <div>
+          <label for="number">Quantity</label>
+          <input type="number" id="number" name="quantity" min="1" max="10" value="1" required>
+          <small>Choose between 1 and 10</small>
+        </div>
+
+        <h3>Validation States</h3>
+        <div>
+          <label for="valid-email">Valid Email (type a valid email)</label>
+          <input type="email" id="valid-email" name="valid-email" value="user@example.com">
+        </div>
+
+        <div>
+          <label for="invalid-email">Invalid Email (type an invalid email)</label>
+          <input type="email" id="invalid-email" name="invalid-email" value="not-an-email">
+          <strong>Please enter a valid email address</strong>
+        </div>
+
+        <div>
+          <label for="readonly-input">Read-only Input</label>
+          <input type="text" id="readonly-input" name="readonly" value="Cannot be edited" readonly>
+        </div>
+
+        <div>
+          <label for="disabled-input">Disabled Input</label>
+          <input type="text" id="disabled-input" name="disabled" value="Cannot interact" disabled>
+        </div>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>&lt;input type="text"&gt;</td>
+            <td>Single-line text entry</td>
+            <td>General text input (names, titles, etc.)</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="email"&gt;</td>
+            <td>Email address entry</td>
+            <td>Email fields with automatic validation</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="password"&gt;</td>
+            <td>Password entry (obscured)</td>
+            <td>Sensitive text that should be hidden</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="tel"&gt;</td>
+            <td>Telephone number entry</td>
+            <td>Phone numbers with mobile keyboard</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="url"&gt;</td>
+            <td>URL entry</td>
+            <td>Web addresses with validation</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="search"&gt;</td>
+            <td>Search field</td>
+            <td>Search inputs with clear button</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="number"&gt;</td>
+            <td>Numeric entry with spinner</td>
+            <td>Numeric values with min/max constraints</td>
+          </tr>
+          <tr>
+            <td>&lt;small&gt;</td>
+            <td>Helper/informational text</td>
+            <td>Non-critical info, format hints, character limits</td>
+          </tr>
+          <tr>
+            <td>&lt;strong&gt;</td>
+            <td>Error message (strong importance)</td>
+            <td>Validation errors, critical warnings</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 2: TEXTAREA -->
+    <section id="textarea">
+      <h2>Textarea - Multi-line Text Input</h2>
+      <p>Multi-line text entry for longer content like comments, descriptions, and messages.</p>
+
+      <form>
+        <h3>Basic Textarea</h3>
+        <div>
+          <label for="bio">Biography</label>
+          <textarea id="bio" name="bio" rows="4" placeholder="Tell us about yourself..." required></textarea>
+          <small>Maximum 500 characters</small>
+        </div>
+
+        <div>
+          <label for="comments">Comments</label>
+          <textarea id="comments" name="comments" rows="6" placeholder="Enter your comments here..."></textarea>
+        </div>
+
+        <div>
+          <label for="disabled-textarea">Disabled Textarea</label>
+          <textarea id="disabled-textarea" name="disabled-textarea" rows="3" disabled>This textarea is disabled</textarea>
+        </div>
+
+        <div>
+          <label for="readonly-textarea">Read-only Textarea</label>
+          <textarea id="readonly-textarea" name="readonly-textarea" rows="3" readonly>This textarea is read-only</textarea>
+        </div>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>&lt;textarea&gt;</td>
+            <td>Multi-line text entry</td>
+            <td>Long-form text like comments, descriptions, messages</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 3: SELECTION CONTROLS -->
+    <section id="selection-controls">
+      <h2>Selection Controls - Checkbox & Radio</h2>
+      <p>Binary choices (checkbox) and mutually exclusive options (radio). Styled with modern <code>accent-color</code> property.</p>
+
+      <form>
+        <h3>Checkboxes</h3>
+        <fieldset>
+          <legend>Select your interests</legend>
+          <div>
+            <input type="checkbox" id="interest-coding" name="interests" value="coding" checked>
+            <label for="interest-coding">Coding</label>
+          </div>
+          <div>
+            <input type="checkbox" id="interest-design" name="interests" value="design">
+            <label for="interest-design">Design</label>
+          </div>
+          <div>
+            <input type="checkbox" id="interest-writing" name="interests" value="writing">
+            <label for="interest-writing">Writing</label>
+          </div>
+          <div>
+            <input type="checkbox" id="interest-music" name="interests" value="music" disabled>
+            <label for="interest-music">Music (disabled)</label>
+          </div>
+        </fieldset>
+
+        <h3>Radio Buttons</h3>
+        <fieldset>
+          <legend>Choose your plan</legend>
+          <div>
+            <input type="radio" id="plan-free" name="plan" value="free" checked>
+            <label for="plan-free">Free Plan</label>
+          </div>
+          <div>
+            <input type="radio" id="plan-pro" name="plan" value="pro">
+            <label for="plan-pro">Pro Plan ($9/month)</label>
+          </div>
+          <div>
+            <input type="radio" id="plan-enterprise" name="plan" value="enterprise">
+            <label for="plan-enterprise">Enterprise Plan ($29/month)</label>
+          </div>
+          <div>
+            <input type="radio" id="plan-beta" name="plan" value="beta" disabled>
+            <label for="plan-beta">Beta Plan (disabled)</label>
+          </div>
+        </fieldset>
+
+        <h3>Agreement Checkbox</h3>
+        <div>
+          <input type="checkbox" id="terms" name="terms" required>
+          <label for="terms">I agree to the Terms and Conditions</label>
+          <small>Required to proceed</small>
+        </div>
+
+        <div>
+          <input type="checkbox" id="newsletter" name="newsletter">
+          <label for="newsletter">Subscribe to newsletter</label>
+        </div>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>&lt;input type="checkbox"&gt;</td>
+            <td>Binary choice (on/off)</td>
+            <td>Multiple selections, toggles, agreements</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="radio"&gt;</td>
+            <td>Mutually exclusive choice</td>
+            <td>Single selection from multiple options</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 4: DROPDOWNS & LISTS -->
+    <section id="dropdowns">
+      <h2>Dropdowns & Lists - Select & Datalist</h2>
+      <p>Dropdown menus for single or multiple selections, and autocomplete suggestions with datalist.</p>
+
+      <form>
+        <h3>Select Dropdown</h3>
+        <div>
+          <label for="country">Country</label>
+          <select id="country" name="country" required>
+            <option value="">-- Select a country --</option>
+            <option value="us">United States</option>
+            <option value="uk">United Kingdom</option>
+            <option value="ca">Canada</option>
+            <option value="au">Australia</option>
+            <option value="de">Germany</option>
+            <option value="fr">France</option>
+            <option value="jp">Japan</option>
+          </select>
+          <small>Choose your country of residence</small>
+        </div>
+
+        <h3>Select with Optgroup</h3>
+        <div>
+          <label for="car">Choose a car</label>
+          <select id="car" name="car">
+            <option value="">-- Select --</option>
+            <optgroup label="German Cars">
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+              <option value="bmw">BMW</option>
+            </optgroup>
+            <optgroup label="American Cars">
+              <option value="ford">Ford</option>
+              <option value="chevrolet">Chevrolet</option>
+              <option value="tesla">Tesla</option>
+            </optgroup>
+            <optgroup label="Japanese Cars">
+              <option value="toyota">Toyota</option>
+              <option value="honda">Honda</option>
+              <option value="nissan">Nissan</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <h3>Multiple Select</h3>
+        <div>
+          <label for="skills">Select your skills</label>
+          <select id="skills" name="skills" multiple>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="js">JavaScript</option>
+            <option value="react">React</option>
+            <option value="vue">Vue</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="sql">SQL</option>
+          </select>
+          <small>Hold Ctrl/Cmd to select multiple options</small>
+        </div>
+
+        <h3>Datalist - Autocomplete</h3>
+        <div>
+          <label for="browser">Choose your browser</label>
+          <input list="browsers" id="browser" name="browser" placeholder="Type to search...">
+          <datalist id="browsers">
+            <option value="Chrome">
+            <option value="Firefox">
+            <option value="Safari">
+            <option value="Edge">
+            <option value="Opera">
+            <option value="Brave">
+          </datalist>
+          <small>Start typing to see suggestions</small>
+        </div>
+
+        <div>
+          <label for="language">Programming Language</label>
+          <input list="languages" id="language" name="language" placeholder="Select or type...">
+          <datalist id="languages">
+            <option value="JavaScript">
+            <option value="Python">
+            <option value="Java">
+            <option value="C++">
+            <option value="Ruby">
+            <option value="Go">
+            <option value="Rust">
+            <option value="TypeScript">
+          </datalist>
+        </div>
+
+        <h3>Disabled Select</h3>
+        <div>
+          <label for="disabled-select">Disabled Dropdown</label>
+          <select id="disabled-select" disabled>
+            <option>Cannot interact</option>
+          </select>
+        </div>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>&lt;select&gt;</td>
+            <td>Dropdown selection</td>
+            <td>Choose from predefined list of options</td>
+          </tr>
+          <tr>
+            <td>&lt;option&gt;</td>
+            <td>Select option item</td>
+            <td>Individual choices within select</td>
+          </tr>
+          <tr>
+            <td>&lt;optgroup&gt;</td>
+            <td>Grouped options</td>
+            <td>Organize related options in categories</td>
+          </tr>
+          <tr>
+            <td>&lt;datalist&gt;</td>
+            <td>Autocomplete suggestions</td>
+            <td>Provide suggestions while allowing custom input</td>
+          </tr>
+          <tr>
+            <td>select[multiple]</td>
+            <td>Multiple selection list</td>
+            <td>Select multiple items from a list</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 5: SPECIALIZED INPUTS -->
+    <section id="specialized-inputs">
+      <h2>Specialized Inputs - Range, Color, Date & File</h2>
+      <p>Specialized input types for ranges, colors, dates/times, and file uploads.</p>
+
+      <form>
+        <h3>Range Slider</h3>
+        <div>
+          <label for="volume">Volume</label>
+          <input type="range" id="volume" name="volume" min="0" max="100" value="50">
+          <small>Adjust volume level (0-100)</small>
+        </div>
+
+        <div>
+          <label for="brightness">Brightness</label>
+          <input type="range" id="brightness" name="brightness" min="0" max="100" value="75" step="5">
+        </div>
+
+        <h3>Color Picker</h3>
+        <div>
+          <label for="favorite-color">Favorite Color</label>
+          <input type="color" id="favorite-color" name="color" value="#6750a4">
+        </div>
+
+        <div>
+          <label for="theme-color">Theme Color</label>
+          <input type="color" id="theme-color" name="theme-color" value="#1976d2">
+        </div>
+
+        <h3>Date & Time Inputs</h3>
+        <div>
+          <label for="birthdate">Date of Birth</label>
+          <input type="date" id="birthdate" name="birthdate" required>
+        </div>
+
+        <div>
+          <label for="appointment">Appointment Time</label>
+          <input type="datetime-local" id="appointment" name="appointment">
+        </div>
+
+        <div>
+          <label for="meeting-time">Meeting Time</label>
+          <input type="time" id="meeting-time" name="meeting-time">
+        </div>
+
+        <div>
+          <label for="birth-month">Birth Month</label>
+          <input type="month" id="birth-month" name="birth-month">
+        </div>
+
+        <div>
+          <label for="project-week">Project Week</label>
+          <input type="week" id="project-week" name="project-week">
+        </div>
+
+        <h3>File Upload</h3>
+        <div>
+          <label for="avatar">Profile Picture</label>
+          <input type="file" id="avatar" name="avatar" accept="image/*">
+          <small>JPG, PNG or GIF (max 2MB)</small>
+        </div>
+
+        <div>
+          <label for="documents">Upload Documents</label>
+          <input type="file" id="documents" name="documents" multiple accept=".pdf,.doc,.docx">
+          <small>Select one or more files</small>
+        </div>
+
+        <div>
+          <label for="resume">Resume/CV</label>
+          <input type="file" id="resume" name="resume" accept=".pdf" required>
+        </div>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>&lt;input type="range"&gt;</td>
+            <td>Slider for numeric range</td>
+            <td>Select value from continuous range (volume, brightness)</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="color"&gt;</td>
+            <td>Color picker</td>
+            <td>Select colors with visual picker</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="date"&gt;</td>
+            <td>Date picker</td>
+            <td>Select calendar date</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="datetime-local"&gt;</td>
+            <td>Date and time picker</td>
+            <td>Select specific date and time</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="time"&gt;</td>
+            <td>Time picker</td>
+            <td>Select time of day</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="month"&gt;</td>
+            <td>Month picker</td>
+            <td>Select year and month</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="week"&gt;</td>
+            <td>Week picker</td>
+            <td>Select week of year</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="file"&gt;</td>
+            <td>File upload</td>
+            <td>Upload files from device</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 6: BUTTONS & ACTIONS -->
+    <section id="buttons">
+      <h2>Buttons & Actions</h2>
+      <p>Interactive buttons for form submission, navigation, and general actions.</p>
+
+      <form>
+        <h3>Button Types</h3>
+        <div>
+          <button type="reset">Reset Button</button>
+          <button type="button">Regular Button</button>
+          <button type="submit">Submit Button</button>
+        </div>
+
+        <div>
+          <button disabled>Disabled Button</button>
+        </div>
+
+        <h3>Input Buttons</h3>
+        <div>
+          <input type="reset" value="Reset Form">
+          <input type="button" value="Input Button">
+          <input type="submit" value="Submit Form">
+        </div>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>&lt;button type="submit"&gt;</td>
+            <td>Form submission</td>
+            <td>Submit form data to server</td>
+          </tr>
+          <tr>
+            <td>&lt;button type="reset"&gt;</td>
+            <td>Form reset</td>
+            <td>Clear form to default values</td>
+          </tr>
+          <tr>
+            <td>&lt;button type="button"&gt;</td>
+            <td>Generic button action</td>
+            <td>JavaScript actions, no form submission</td>
+          </tr>
+          <tr>
+            <td>&lt;input type="submit"&gt;</td>
+            <td>Submit input button</td>
+            <td>Alternative to button element for submit</td>
+          </tr>
+          <tr>
+            <td><strong>Button Order (MD3)</strong></td>
+            <td>Material Design 3 convention</td>
+            <td>Dismissive/Cancel LEFT, Primary/Submit RIGHT (auto right-aligned)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 7: FORM STRUCTURE -->
+    <section id="form-structure">
+      <h2>Form Structure - Fieldset, Legend & Label</h2>
+      <p>Semantic grouping and labeling of form controls for better organization and accessibility.</p>
+
+      <form>
+        <h3>Fieldset with Legend</h3>
+        <fieldset>
+          <legend>Personal Information</legend>
+
+          <div>
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first-name" required>
+          </div>
+
+          <div>
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last-name" required>
+          </div>
+
+          <div>
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" min="18" max="120">
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Contact Details</legend>
+
+          <div>
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" name="contact-email" required>
+          </div>
+
+          <div>
+            <label for="contact-phone">Phone</label>
+            <input type="tel" id="contact-phone" name="contact-phone">
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Preferences</legend>
+
+          <div>
+            <input type="checkbox" id="pref-email-updates" name="email-updates">
+            <label for="pref-email-updates">Receive email updates</label>
+          </div>
+
+          <div>
+            <input type="checkbox" id="pref-sms" name="sms">
+            <label for="pref-sms">Receive SMS notifications</label>
+          </div>
+        </fieldset>
+
+        <h3>Fieldset with Helper Text and Error Messages</h3>
+        <fieldset>
+          <legend>Account Setup</legend>
+
+          <div>
+            <label for="setup-username">Username</label>
+            <input type="text" id="setup-username" name="setup-username" pattern="[a-zA-Z0-9_]{3,20}" required>
+            <small>3-20 characters: letters, numbers, underscores only</small>
+          </div>
+
+          <div>
+            <label for="setup-email">Email Address</label>
+            <input type="email" id="setup-email" name="setup-email" value="invalid-email" required>
+            <small>Use a valid email format</small>
+            <strong>Please enter a valid email address</strong>
+          </div>
+
+          <div>
+            <label for="setup-password">Password</label>
+            <input type="password" id="setup-password" name="setup-password" minlength="8" required>
+            <small>Minimum 8 characters, include letters and numbers</small>
+          </div>
+
+          <div>
+            <label for="setup-confirm">Confirm Password</label>
+            <input type="password" id="setup-confirm" name="setup-confirm" minlength="8" required>
+            <strong>Passwords must match</strong>
+          </div>
+        </fieldset>
+
+        <h3>Nested Fieldsets with Validation</h3>
+        <fieldset>
+          <legend>Shipping Information</legend>
+
+          <div>
+            <label for="ship-address">Street Address</label>
+            <input type="text" id="ship-address" name="ship-address" required>
+            <small>Include apartment or suite number if applicable</small>
+          </div>
+
+          <div>
+            <label for="ship-city">City</label>
+            <input type="text" id="ship-city" name="ship-city" required>
+          </div>
+
+          <div>
+            <label for="ship-zip">ZIP Code</label>
+            <input type="text" id="ship-zip" name="ship-zip" pattern="[0-9]{5}" value="123" required>
+            <small>5-digit ZIP code</small>
+            <strong>ZIP code must be exactly 5 digits</strong>
+          </div>
+
+          <fieldset>
+            <legend>Delivery Options</legend>
+
+            <div>
+              <input type="radio" id="standard" name="delivery" value="standard" checked>
+              <label for="standard">Standard (5-7 days)</label>
+              <small>Free shipping</small>
+            </div>
+
+            <div>
+              <input type="radio" id="express" name="delivery" value="express">
+              <label for="express">Express (2-3 days)</label>
+              <small>Additional $15</small>
+            </div>
+
+            <div>
+              <input type="radio" id="overnight" name="delivery" value="overnight">
+              <label for="overnight">Overnight</label>
+              <small>Additional $35</small>
+            </div>
+          </fieldset>
+        </fieldset>
+
+        <h3>Disabled Fieldset</h3>
+        <fieldset disabled>
+          <legend>Billing Information (Unavailable)</legend>
+
+          <div>
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" name="card-number">
+          </div>
+
+          <div>
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv">
+          </div>
+        </fieldset>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>&lt;fieldset&gt;</td>
+            <td>Group of related form controls</td>
+            <td>Logically group related inputs together</td>
+          </tr>
+          <tr>
+            <td>&lt;legend&gt;</td>
+            <td>Title/caption for fieldset</td>
+            <td>Describe the purpose of the grouped controls</td>
+          </tr>
+          <tr>
+            <td>&lt;label&gt;</td>
+            <td>Label for form control</td>
+            <td>Describe what each input field is for</td>
+          </tr>
+          <tr>
+            <td>label::after (*)</td>
+            <td>Required field indicator</td>
+            <td>Automatically shown when input has 'required' attribute</td>
+          </tr>
+          <tr>
+            <td>fieldset &lt;small&gt;</td>
+            <td>Helper text inside fieldset</td>
+            <td>Provide hints, format info, or constraints for fields</td>
+          </tr>
+          <tr>
+            <td>fieldset &lt;strong&gt;</td>
+            <td>Error message inside fieldset</td>
+            <td>Show validation errors for fields within the group</td>
+          </tr>
+          <tr>
+            <td>fieldset:disabled</td>
+            <td>Disabled field group</td>
+            <td>Disable all controls within a fieldset at once</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 8: VALIDATION & OUTPUT -->
+    <section id="validation">
+      <h2>Form Validation & Output</h2>
+      <p>HTML5 validation with visual feedback, validation states, and the <code>&lt;output&gt;</code> element for calculations.</p>
+
+      <form>
+        <h3>Required Fields</h3>
+        <div>
+          <label for="required-text">Required Text Field</label>
+          <input type="text" id="required-text" name="required-text" required>
+          <small>This field is required</small>
+        </div>
+
+        <div>
+          <label for="optional-text">Optional Text Field</label>
+          <input type="text" id="optional-text" name="optional-text">
+          <small>This field is optional</small>
+        </div>
+
+        <h3>Pattern Validation</h3>
+        <div>
+          <label for="zipcode">ZIP Code</label>
+          <input type="text" id="zipcode" name="zipcode" pattern="[0-9]{5}" placeholder="12345" required>
+          <small>Must be exactly 5 digits</small>
+          <strong>Please enter a valid 5-digit ZIP code</strong>
+        </div>
+
+        <div>
+          <label for="username-pattern">Username</label>
+          <input type="text" id="username-pattern" name="username-pattern" pattern="[a-zA-Z0-9]{3,16}" placeholder="johndoe" required>
+          <small>3-16 alphanumeric characters</small>
+          <strong>Username must be 3-16 alphanumeric characters</strong>
+        </div>
+
+        <h3>Min/Max Validation</h3>
+        <div>
+          <label for="age-validate">Age</label>
+          <input type="number" id="age-validate" name="age" min="18" max="100" required>
+          <small>Must be between 18 and 100</small>
+          <strong>Age must be between 18 and 100</strong>
+        </div>
+
+        <div>
+          <label for="password-validate">Password</label>
+          <input type="password" id="password-validate" name="password" minlength="8" maxlength="32" required>
+          <small>8-32 characters required</small>
+          <strong>Password must be between 8 and 32 characters</strong>
+        </div>
+
+        <h3>Output Element - Calculations</h3>
+        <div>
+          <label for="calc-a">First Number</label>
+          <input type="number" id="calc-a" name="a" value="0">
+        </div>
+
+        <div>
+          <label for="calc-b">Second Number</label>
+          <input type="number" id="calc-b" name="b" value="0">
+        </div>
+
+        <p>
+          <strong>Sum:</strong>
+          <output name="result" for="calc-a calc-b">0</output>
+        </p>
+
+        <div>
+          <label for="range-input">Range Value</label>
+          <input type="range" id="range-input" name="range-input" min="0" max="100" value="50">
+        </div>
+
+        <p>
+          <strong>Current Value:</strong>
+          <output name="range-output" for="range-input">50</output>
+        </p>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Element/Attribute</th>
+            <th>Semantic Meaning</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>required</td>
+            <td>Field must be filled</td>
+            <td>Mandatory form fields</td>
+          </tr>
+          <tr>
+            <td>pattern</td>
+            <td>Regex validation pattern</td>
+            <td>Custom format validation (phone, zip, username)</td>
+          </tr>
+          <tr>
+            <td>min / max</td>
+            <td>Minimum/maximum value</td>
+            <td>Numeric or date range constraints</td>
+          </tr>
+          <tr>
+            <td>minlength / maxlength</td>
+            <td>Character count limits</td>
+            <td>String length validation</td>
+          </tr>
+          <tr>
+            <td>:valid</td>
+            <td>Input passes validation</td>
+            <td>CSS styling for valid state</td>
+          </tr>
+          <tr>
+            <td>:invalid</td>
+            <td>Input fails validation</td>
+            <td>CSS styling for invalid state (shows error)</td>
+          </tr>
+          <tr>
+            <td>:user-invalid</td>
+            <td>Invalid after user interaction</td>
+            <td>Show errors only after user has tried to input</td>
+          </tr>
+          <tr>
+            <td>&lt;output&gt;</td>
+            <td>Calculation result</td>
+            <td>Display computed values from form inputs</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 9: REAL-WORLD EXAMPLES -->
+    <section id="real-world">
+      <h2>Real-World Form Examples</h2>
+      <p>Complete, production-ready form examples demonstrating best practices.</p>
+
+      <h3>Login Form</h3>
+      <form>
+          <fieldset>
+            <legend>Sign In</legend>
+
+            <div>
+              <label for="login-email">Email Address</label>
+              <input type="email" id="login-email" name="email" required autocomplete="email">
+            </div>
+
+            <div>
+              <label for="login-password">Password</label>
+              <input type="password" id="login-password" name="password" required autocomplete="current-password" minlength="8">
+            </div>
+
+            <div>
+              <input type="checkbox" id="remember-me" name="remember">
+              <label for="remember-me">Remember me</label>
+            </div>
+
+            <div>
+              <button type="button">Forgot Password?</button>
+              <button type="submit">Sign In</button>
+            </div>
+          </fieldset>
+        </form>
+
+        <h3>Registration Form</h3>
+        <form>
+          <fieldset>
+            <legend>Create Account</legend>
+
+            <div>
+              <label for="reg-firstname">First Name</label>
+              <input type="text" id="reg-firstname" name="firstname" required>
+            </div>
+
+            <div>
+              <label for="reg-lastname">Last Name</label>
+              <input type="text" id="reg-lastname" name="lastname" required>
+            </div>
+
+            <div>
+              <label for="reg-email">Email Address</label>
+              <input type="email" id="reg-email" name="email" required>
+              <small>We'll send a verification email</small>
+            </div>
+
+            <div>
+              <label for="reg-password">Password</label>
+              <input type="password" id="reg-password" name="password" required minlength="8">
+              <small>Minimum 8 characters</small>
+            </div>
+
+            <div>
+              <label for="reg-confirm-password">Confirm Password</label>
+              <input type="password" id="reg-confirm-password" name="confirm-password" required minlength="8">
+            </div>
+
+            <div>
+              <label for="reg-country">Country</label>
+              <select id="reg-country" name="country" required>
+                <option value="">-- Select --</option>
+                <option value="us">United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="ca">Canada</option>
+                <option value="au">Australia</option>
+              </select>
+            </div>
+
+            <div>
+              <input type="checkbox" id="reg-terms" name="terms" required>
+              <label for="reg-terms">I agree to the Terms of Service and Privacy Policy</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="reg-newsletter" name="newsletter">
+              <label for="reg-newsletter">Send me product updates and news</label>
+            </div>
+
+            <div>
+              <button type="reset">Clear Form</button>
+              <button type="submit">Create Account</button>
+            </div>
+          </fieldset>
+        </form>
+
+        <h3>Contact Form</h3>
+        <form>
+          <fieldset>
+            <legend>Get in Touch</legend>
+
+            <div>
+              <label for="contact-name">Your Name</label>
+              <input type="text" id="contact-name" name="name" required>
+            </div>
+
+            <div>
+              <label for="contact-email-form">Email Address</label>
+              <input type="email" id="contact-email-form" name="email" required>
+            </div>
+
+            <div>
+              <label for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" name="subject" required>
+            </div>
+
+            <div>
+              <label for="contact-department">Department</label>
+              <select id="contact-department" name="department">
+                <option value="">-- Select --</option>
+                <option value="sales">Sales</option>
+                <option value="support">Technical Support</option>
+                <option value="billing">Billing</option>
+                <option value="general">General Inquiry</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="6" required></textarea>
+              <small>Please provide as much detail as possible</small>
+            </div>
+
+            <div>
+              <label for="contact-attachment">Attachment (optional)</label>
+              <input type="file" id="contact-attachment" name="attachment" accept=".pdf,.jpg,.png">
+            </div>
+
+            <div>
+              <button type="reset">Clear</button>
+              <button type="submit">Send Message</button>
+            </div>
+          </fieldset>
+        </form>
+
+        <h3>Survey Form</h3>
+        <form>
+          <fieldset>
+            <legend>Customer Satisfaction Survey</legend>
+
+            <div>
+              <label for="survey-satisfaction">How satisfied are you with our service?</label>
+              <select id="survey-satisfaction" name="satisfaction" required>
+                <option value="">-- Select --</option>
+                <option value="5">Very Satisfied</option>
+                <option value="4">Satisfied</option>
+                <option value="3">Neutral</option>
+                <option value="2">Dissatisfied</option>
+                <option value="1">Very Dissatisfied</option>
+              </select>
+            </div>
+
+            <fieldset>
+              <legend>How did you hear about us?</legend>
+              <div>
+                <input type="radio" id="source-search" name="source" value="search">
+                <label for="source-search">Search Engine</label>
+              </div>
+              <div>
+                <input type="radio" id="source-social" name="source" value="social">
+                <label for="source-social">Social Media</label>
+              </div>
+              <div>
+                <input type="radio" id="source-friend" name="source" value="friend">
+                <label for="source-friend">Friend or Colleague</label>
+              </div>
+              <div>
+                <input type="radio" id="source-ad" name="source" value="ad">
+                <label for="source-ad">Advertisement</label>
+              </div>
+            </fieldset>
+
+            <div>
+              <label for="survey-comments">Additional Comments</label>
+              <textarea id="survey-comments" name="comments" rows="4"></textarea>
+            </div>
+
+            <div>
+              <input type="checkbox" id="survey-followup" name="followup">
+              <label for="survey-followup">I'd like to be contacted for follow-up</label>
+            </div>
+
+            <div>
+              <button type="submit">Submit Survey</button>
+            </div>
+          </fieldset>
+        </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Form Type</th>
+            <th>Key Elements</th>
+            <th>Best Practices</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Login Form</td>
+            <td>email, password, checkbox (remember)</td>
+            <td>Use autocomplete, provide "forgot password" option</td>
+          </tr>
+          <tr>
+            <td>Registration Form</td>
+            <td>name, email, password, terms checkbox</td>
+            <td>Validate password strength, confirm password field</td>
+          </tr>
+          <tr>
+            <td>Contact Form</td>
+            <td>name, email, subject, message textarea</td>
+            <td>Clear subject selection, allow attachments</td>
+          </tr>
+          <tr>
+            <td>Survey Form</td>
+            <td>radio groups, rating selects, textarea</td>
+            <td>Mix of required/optional, offer follow-up option</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <h2>Form Element Summary</h2>
+    <p>This page demonstrates all HTML form elements styled with the SUAI pla theme (Material Design 3).</p>
+    <p><strong>Key Principles:</strong></p>
+    <ul>
+      <li><strong>Semantic HTML:</strong> Use <code>&lt;small&gt;</code> for helper text, <code>&lt;strong&gt;</code> for error messages - no classes needed</li>
+      <li><strong>Validation:</strong> Leverage HTML5 attributes (required, pattern, min/max) with CSS-only visual feedback</li>
+      <li><strong>Accessibility:</strong> Proper <code>&lt;label&gt;</code> associations, fieldset grouping, and ARIA support</li>
+      <li><strong>Material Design 3:</strong> Filled text field pattern, elevation shadows, semantic color system</li>
+      <li><strong>Progressive Enhancement:</strong> Works without JavaScript, enhanced with CSS features</li>
+    </ul>
+    <p><small>Part of the SUAI (Semantic Utility Adaptive Interface) framework</small></p>
+  </footer>
+</body>
+</html>

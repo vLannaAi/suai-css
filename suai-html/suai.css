@@ -1,0 +1,835 @@
+/**
+ * SUAI CSS V3.0 - Common Styles (Theme-Agnostic)
+ * Semantic Utility Adaptive Interface
+ * Version: 3.0 (Modular Architecture)
+ *
+ * This file contains shared component styles that work with any theme.
+ * All styles use unified --suai-* CSS variables.
+ *
+ * USAGE:
+ * Load this file along with:
+ * - {theme}/fonts/{theme}-fonts.css
+ * - {theme}/{theme}-base.css
+ * - {theme}/{theme}-{mode}-vars.css
+ *
+ * THEMES AVAILABLE:
+ * - pla (ปลา - Fish): Material Design 3 inspired
+ * - nok (นก - Bird): Bootstrap 5.3 inspired
+ * - maa (ม้า - Horse): iOS/Apple HIG inspired
+ */
+
+/* ============================================================================
+   BASE RESET & BODY
+   ========================================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: var(--suai-font-family);
+  font-size: var(--suai-font-size-base);
+  font-optical-sizing: auto;
+  line-height: var(--suai-line-height-base);
+  color: var(--suai-text);
+  background-color: var(--suai-surface);
+  max-width: var(--suai-layout-max-width, 1200px);
+  margin: 0 auto;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+@media (max-width: 767px) {
+  body {
+    padding: 2rem 1rem;
+  }
+}
+
+/* ============================================================================
+   TYPOGRAPHY
+   ========================================================================= */
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: var(--suai-spacing-2);
+  font-weight: var(--suai-font-weight-normal);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: var(--suai-h1);
+  font-weight: var(--suai-font-weight-bold);
+}
+
+h2 {
+  font-size: var(--suai-h2);
+  font-weight: var(--suai-font-weight-bold);
+}
+
+h3 {
+  font-size: var(--suai-h3);
+  font-weight: var(--suai-font-weight-semibold);
+}
+
+h4 {
+  font-size: var(--suai-h4);
+  font-weight: var(--suai-font-weight-semibold);
+}
+
+h5 {
+  font-size: var(--suai-h5);
+  font-weight: var(--suai-font-weight-medium);
+}
+
+h6 {
+  font-size: var(--suai-h6);
+  font-weight: var(--suai-font-weight-medium);
+}
+
+/* Paragraphs */
+p {
+  margin-top: 0;
+  margin-bottom: var(--suai-spacing-3);
+}
+
+/* Blockquotes */
+blockquote {
+  margin: 0 0 var(--suai-spacing-3);
+  padding: var(--suai-spacing-2) var(--suai-spacing-3);
+  border-left: 4px solid var(--suai-primary);
+  background-color: var(--suai-primary-container);
+  font-size: var(--suai-font-size-lg);
+  color: var(--suai-text-muted);
+  border-radius: var(--suai-border-radius-sm);
+  font-style: normal;
+}
+
+/* Horizontal Rule */
+hr {
+  margin: var(--suai-spacing-4) 0;
+  border: 0;
+  border-top: var(--suai-border-width) solid var(--suai-border);
+}
+
+/* Inline Text Elements */
+strong {
+  font-weight: var(--suai-font-weight-bold);
+}
+
+b {
+  font-weight: var(--suai-font-weight-semibold);
+}
+
+em {
+  font-weight: var(--suai-font-weight-semibold);
+  font-style: italic;
+}
+
+i {
+  font-style: italic;
+}
+
+u {
+  text-decoration: underline;
+}
+
+s {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+del {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+ins {
+  text-decoration: underline;
+  background-color: var(--suai-success-container);
+}
+
+small {
+  font-size: var(--suai-font-size-sm);
+  color: var(--suai-text-muted);
+}
+
+mark {
+  background-color: var(--suai-warning-container);
+  color: var(--suai-text);
+  padding: 0.1em 0.3em;
+  border-radius: var(--suai-border-radius-sm);
+}
+
+abbr {
+  text-decoration: underline dotted;
+  text-decoration-color: var(--suai-border);
+  cursor: help;
+}
+
+code {
+  font-family: var(--suai-font-monospace);
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+  background-color: var(--suai-surface-variant);
+  border: var(--suai-border-width) solid var(--suai-border-subtle);
+  border-radius: var(--suai-border-radius-sm);
+}
+
+kbd {
+  font-family: var(--suai-font-monospace);
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+  background-color: var(--suai-gray-800);
+  color: var(--suai-gray-100);
+  border: var(--suai-border-width) solid var(--suai-border);
+  border-radius: var(--suai-border-radius-sm);
+  box-shadow: var(--suai-shadow-sm);
+}
+
+var {
+  font-family: var(--suai-font-monospace);
+  font-style: italic;
+}
+
+samp {
+  font-family: var(--suai-font-monospace);
+}
+
+q {
+  quotes: """ """ "'" "'";
+  font-style: italic;
+}
+
+q::before {
+  content: open-quote;
+}
+
+q::after {
+  content: close-quote;
+}
+
+cite {
+  font-style: italic;
+  color: var(--suai-text-muted);
+}
+
+sub, sup {
+  font-size: 0.75em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+time {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================================
+   LISTS
+   ========================================================================= */
+
+ul, ol {
+  margin-top: 0;
+  margin-bottom: var(--suai-spacing-3);
+  padding-left: var(--suai-spacing-4);
+}
+
+li {
+  margin-bottom: var(--suai-spacing-1);
+}
+
+dl {
+  margin-top: 0;
+  margin-bottom: var(--suai-spacing-3);
+}
+
+dt {
+  font-weight: var(--suai-font-weight-medium);
+  margin-bottom: var(--suai-spacing-1);
+}
+
+dd {
+  margin-bottom: var(--suai-spacing-2);
+  margin-left: 0;
+  padding-left: var(--suai-spacing-3);
+}
+
+/* ============================================================================
+   LINKS
+   ========================================================================= */
+
+a {
+  color: var(--suai-primary);
+  text-decoration: none;
+  transition: var(--suai-transition-fast);
+}
+
+a:hover {
+  color: var(--suai-primary-hover);
+  text-decoration: underline;
+}
+
+a:active {
+  color: var(--suai-primary-active);
+  opacity: 0.8;
+}
+
+/* ============================================================================
+   TABLES
+   ========================================================================= */
+
+table {
+  width: 100%;
+  margin-bottom: var(--suai-spacing-3);
+  border-collapse: collapse;
+  background-color: var(--suai-surface);
+  border-radius: var(--suai-border-radius);
+  overflow: hidden;
+}
+
+caption {
+  padding: var(--suai-spacing-2);
+  text-align: left;
+  font-weight: var(--suai-font-weight-semibold);
+  color: var(--suai-text);
+}
+
+thead {
+  background-color: var(--suai-surface-container);
+}
+
+tbody {
+  border-top: calc(var(--suai-border-width) * 2) solid var(--suai-border);
+}
+
+tfoot {
+  border-top: calc(var(--suai-border-width) * 2) solid var(--suai-border);
+  background-color: var(--suai-surface-variant);
+}
+
+tr {
+  border-bottom: var(--suai-border-width) solid var(--suai-border-subtle);
+}
+
+tr:hover {
+  background-color: var(--suai-surface-hover);
+}
+
+th, td {
+  padding: var(--suai-spacing-3);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  font-weight: var(--suai-font-weight-semibold);
+  color: var(--suai-text);
+  border-bottom: calc(var(--suai-border-width) * 2) solid var(--suai-border);
+}
+
+/* ============================================================================
+   FORMS
+   ========================================================================= */
+
+form {
+  padding: var(--suai-spacing-4);
+  background-color: var(--suai-surface-variant);
+  border-radius: var(--suai-border-radius);
+  margin-top: var(--suai-spacing-3);
+  margin-bottom: var(--suai-spacing-4);
+  border: var(--suai-border-width) solid var(--suai-border-subtle);
+}
+
+form > * + * {
+  margin-top: var(--suai-spacing-3);
+}
+
+fieldset {
+  border: var(--suai-border-width) solid var(--suai-border);
+  border-radius: var(--suai-border-radius);
+  padding: var(--suai-spacing-3);
+  margin-bottom: var(--suai-spacing-3);
+}
+
+legend {
+  font-weight: var(--suai-font-weight-semibold);
+  padding: 0 var(--suai-spacing-1);
+  color: var(--suai-text);
+}
+
+label {
+  display: block;
+  font-weight: var(--suai-font-weight-medium);
+  margin-bottom: var(--suai-spacing-1);
+  color: var(--suai-text);
+}
+
+/* ============================================================================
+   BUTTONS
+   ========================================================================= */
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  display: inline-block;
+  padding: var(--suai-spacing-2) calc(var(--suai-spacing-3) * 1.5);
+  font-family: inherit;
+  font-size: var(--suai-font-size-base);
+  font-weight: var(--suai-font-weight-medium);
+  line-height: var(--suai-line-height-base);
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  border-radius: var(--suai-border-radius);
+  background-color: var(--suai-primary);
+  color: var(--suai-text-on-primary);
+  transition: var(--suai-transition);
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  background-color: var(--suai-primary-hover);
+}
+
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active {
+  background-color: var(--suai-primary-active);
+}
+
+button:disabled,
+input[type="button"]:disabled,
+input[type="submit"]:disabled,
+input[type="reset"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================================================
+   INPUT ELEMENTS
+   ========================================================================= */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="color"],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  padding: var(--suai-spacing-2) var(--suai-spacing-3);
+  font-family: inherit;
+  font-size: var(--suai-font-size-base);
+  line-height: var(--suai-line-height-base);
+  color: var(--suai-text);
+  background-color: var(--suai-surface);
+  border: var(--suai-border-width) solid var(--suai-border);
+  border-radius: var(--suai-border-radius);
+  transition: var(--suai-transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--suai-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--suai-surface-variant);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+select {
+  cursor: pointer;
+}
+
+/* Checkboxes and Radio Buttons */
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  margin-right: var(--suai-spacing-1);
+  cursor: pointer;
+}
+
+/* ============================================================================
+   CODE BLOCKS
+   ========================================================================= */
+
+pre {
+  margin: 0 0 var(--suai-spacing-3);
+  padding: var(--suai-spacing-3);
+  background-color: var(--suai-surface-container);
+  border: var(--suai-border-width) solid var(--suai-border);
+  border-radius: var(--suai-border-radius);
+  overflow-x: auto;
+  font-family: var(--suai-font-monospace);
+  font-size: 0.875em;
+  line-height: 1.5;
+}
+
+pre code {
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: inherit;
+}
+
+/* ============================================================================
+   MEDIA ELEMENTS
+   ========================================================================= */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+figure {
+  margin: 0 0 var(--suai-spacing-3);
+}
+
+figcaption {
+  margin-top: var(--suai-spacing-1);
+  font-size: var(--suai-font-size-sm);
+  color: var(--suai-text-muted);
+  text-align: center;
+}
+
+audio,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+/* ============================================================================
+   SECTIONS & SEMANTIC ELEMENTS
+   ========================================================================= */
+
+article,
+section,
+aside {
+  margin-bottom: var(--suai-spacing-4);
+}
+
+header,
+footer {
+  background-color: var(--suai-primary);
+  color: var(--suai-text-on-primary);
+}
+
+header h1, header h2, header h3, header h4, header h5, header h6, header p,
+footer h1, footer h2, footer h3, footer h4, footer h5, footer h6, footer p {
+  padding: var(--suai-spacing-3) var(--suai-spacing-4);
+  color: var(--suai-text-on-primary);
+}
+nav {
+  display: flex;
+  gap: var(--suai-spacing-3);
+  background-color: var(--suai-primary-container);
+}
+
+nav a {
+
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--suai-spacing-3) var(--suai-spacing-3);
+
+  color: var(--suai-primary);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: var(--suai-font-weight-semibold);
+  font-size: var(--suai-font-size-md);
+}
+
+nav a:hover {
+  background-color: var(--suai-primary);
+  color: var(--suai-text-on-primary);
+  text-decoration: none;
+transition: var(--suai-transition);
+border-bottom: 4px solid var(--suai-primary);
+}
+
+a:not([href]) {
+  color: var(--suai-primary);
+  border-bottom: 4px solid var(--suai-primary);
+}
+
+main {
+  padding: var(--suai-spacing-3) var(--suai-spacing-3);
+  display: block;
+}
+
+
+/* ============================================================================
+   UTILITY ELEMENTS
+   ========================================================================= */
+
+address {
+  font-style: normal;
+  margin-bottom: var(--suai-spacing-3);
+}
+
+details {
+  margin-bottom: var(--suai-spacing-3);
+  padding: var(--suai-spacing-3);
+  background-color: var(--suai-surface-variant);
+  border: var(--suai-border-width) solid var(--suai-border);
+  border-radius: var(--suai-border-radius);
+}
+
+summary {
+  font-weight: var(--suai-font-weight-semibold);
+  cursor: pointer;
+  user-select: none;
+}
+
+details[open] summary {
+  margin-bottom: var(--suai-spacing-2);
+}
+
+dialog {
+  padding: var(--suai-spacing-4);
+  border: var(--suai-border-width) solid var(--suai-border);
+  border-radius: var(--suai-border-radius);
+  background-color: var(--suai-surface);
+  box-shadow: var(--suai-shadow-lg);
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================================
+   LAYOUT SYSTEM - Theme-Agnostic Responsive Layouts
+   ========================================================================= */
+
+/* Basic Layout: Header + Main + Footer */
+body[data-layout="basic"] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0;
+}
+
+body[data-layout="basic"] > header {
+  padding: var(--suai-spacing-3) var(--suai-spacing-4);
+  background-color: var(--suai-surface-container);
+  border-bottom: var(--suai-border-width) solid var(--suai-border);
+}
+
+body[data-layout="basic"] > main {
+  flex: 1;
+  padding: var(--suai-spacing-4);
+}
+
+body[data-layout="basic"] > footer {
+  padding: var(--suai-spacing-3) var(--suai-spacing-4);
+  background-color: var(--suai-surface-variant);
+  border-top: var(--suai-border-width) solid var(--suai-border);
+}
+
+/* Side Navigation Layout */
+body[data-layout="side-nav"] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0;
+}
+
+body[data-layout="side-nav"] > nav {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: var(--suai-layout-sidebar-width, 280px);
+  height: 100vh;
+  background-color: var(--suai-surface-container);
+  border-right: var(--suai-border-width) solid var(--suai-border);
+  transition: left 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
+  padding: var(--suai-spacing-4);
+}
+
+body[data-layout="side-nav"][data-nav-open="true"] > nav {
+  left: 0;
+}
+
+body[data-layout="side-nav"] > main {
+  flex: 1;
+  padding: var(--suai-spacing-4);
+}
+
+/* Desktop: Side nav always visible */
+@media (min-width: 768px) {
+  body[data-layout="side-nav"] > nav {
+    position: static;
+    left: 0;
+  }
+
+  body[data-layout="side-nav"] {
+    flex-direction: row;
+  }
+
+  body[data-layout="side-nav"] > main {
+    flex: 1;
+  }
+}
+
+/* With Aside Layout */
+body[data-layout="with-aside"] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0;
+}
+
+body[data-layout="with-aside"] > main {
+  flex: 1;
+  padding: var(--suai-spacing-4);
+}
+
+body[data-layout="with-aside"] > aside {
+  padding: var(--suai-spacing-4);
+  background-color: var(--suai-surface-variant);
+  border-top: var(--suai-border-width) solid var(--suai-border);
+}
+
+/* Desktop: Aside becomes sidebar */
+@media (min-width: 1024px) {
+  body[data-layout="with-aside"] {
+    flex-direction: row;
+  }
+
+  body[data-layout="with-aside"] > main {
+    flex: 1;
+  }
+
+  body[data-layout="with-aside"] > aside {
+    width: var(--suai-layout-aside-width-desktop, 350px);
+    border-top: none;
+    border-left: var(--suai-border-width) solid var(--suai-border);
+  }
+}
+
+/* Articles Grid Layout */
+body[data-layout="articles"] > main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--suai-spacing-4);
+  padding: var(--suai-spacing-4);
+}
+
+@media (min-width: 768px) {
+  body[data-layout="articles"] > main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  body[data-layout="articles"] > main {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+body[data-layout="articles"] article {
+  padding: var(--suai-spacing-4);
+  background-color: var(--suai-surface-container);
+  border: var(--suai-border-width) solid var(--suai-border);
+  border-radius: var(--suai-border-radius);
+}
+
+/* Sections Layout */
+body[data-layout="sections"] {
+  padding: 0;
+}
+
+body[data-layout="sections"] > section {
+  padding: var(--suai-spacing-5) var(--suai-spacing-4);
+  border-bottom: var(--suai-border-width) solid var(--suai-border);
+}
+
+body[data-layout="sections"] > section:nth-child(even) {
+  background-color: var(--suai-surface-variant);
+}
+
+body[data-layout="sections"] > section:last-child {
+  border-bottom: none;
+}
+
+/* Bottom Toolbar Layout (Mobile) */
+body[data-layout="toolbar"] > nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--suai-surface-container);
+  border-top: var(--suai-border-width) solid var(--suai-border);
+  padding: var(--suai-spacing-2);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-around;
+}
+
+body[data-layout="toolbar"] > main {
+  padding-bottom: 80px; /* Space for fixed toolbar */
+}
+
+/* Desktop: Toolbar becomes top nav */
+@media (min-width: 768px) {
+  body[data-layout="toolbar"] > nav {
+    position: static;
+    border-top: none;
+    border-bottom: var(--suai-border-width) solid var(--suai-border);
+    justify-content: flex-start;
+    gap: var(--suai-spacing-3);
+  }
+
+  body[data-layout="toolbar"] > main {
+    padding-bottom: var(--suai-spacing-4);
+  }
+}
+
+/* ============================================================================
+   END OF SUAI COMMON STYLES
+   ========================================================================= */

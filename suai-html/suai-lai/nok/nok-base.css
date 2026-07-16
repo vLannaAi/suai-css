@@ -1,0 +1,176 @@
+/**
+ * NOK (นก - Bird) Theme - Base Overrides
+ * Bootstrap 5.3 specific patterns and overrides
+ *
+ * This file contains NOK-specific design decisions that differ from the common baseline:
+ * - Flat design with borders (no elevation shadows)
+ * - Full-border inputs (not bottom-only)
+ * - Striped tables with visible borders
+ * - Bootstrap-style buttons with borders
+ */
+
+/* ============================================================================
+   TYPOGRAPHY - BOOTSTRAP UNIFORM TEXT COLORS
+   ========================================================================= */
+
+/* Bootstrap keeps heading colors uniform (no gradient like Material) */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--suai-text);
+}
+
+/* ============================================================================
+   TABLES - BOOTSTRAP STRIPED WITH BORDERS
+   ========================================================================= */
+
+table {
+  border: var(--suai-border-width) solid var(--suai-border);
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--suai-surface);
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--suai-surface-variant);
+}
+
+th, td {
+  border: var(--suai-border-width) solid var(--suai-border-subtle);
+}
+
+/* ============================================================================
+   BUTTONS - BOOTSTRAP FLAT DESIGN WITH BORDERS
+   ========================================================================= */
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  box-shadow: none;
+  border: var(--suai-border-width) solid var(--suai-primary);
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  box-shadow: none;
+  border-color: var(--suai-primary-hover);
+}
+
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+input[type="reset"] {
+  background-color: transparent;
+  color: var(--suai-text);
+  border: var(--suai-border-width) solid var(--suai-border);
+}
+
+input[type="reset"]:hover {
+  background-color: var(--suai-surface-variant);
+}
+
+/* ============================================================================
+   INPUTS - BOOTSTRAP FULL BORDERS
+   ========================================================================= */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="color"],
+textarea,
+select {
+  /* Full border (not just bottom like Material Design) */
+  border: var(--suai-border-width) solid var(--suai-border);
+  background-color: var(--suai-surface);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--suai-primary);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* ============================================================================
+   FORMS - BOOTSTRAP BORDERED STYLE
+   ========================================================================= */
+
+form {
+  border: var(--suai-border-width) solid var(--suai-border);
+  box-shadow: none;
+}
+
+fieldset {
+  background-color: var(--suai-surface);
+}
+
+/* ============================================================================
+   CODE BLOCKS - BOOTSTRAP BORDERED
+   ========================================================================= */
+
+pre {
+  border: var(--suai-border-width) solid var(--suai-border);
+  box-shadow: none;
+}
+
+/* ============================================================================
+   BLOCKQUOTES - BOOTSTRAP STYLE
+   ========================================================================= */
+
+blockquote {
+  font-size: var(--suai-font-size-lg);
+  font-style: normal;
+}
+
+/* ============================================================================
+   CARDS & SURFACES - BOOTSTRAP FLAT WITH BORDERS
+   ========================================================================= */
+
+article {
+  background-color: var(--suai-surface);
+  border: var(--suai-border-width) solid var(--suai-border);
+  border-radius: var(--suai-border-radius);
+  padding: var(--suai-spacing-4);
+  box-shadow: none;
+}
+
+article:hover {
+  border-color: var(--suai-border);
+  box-shadow: var(--suai-shadow-sm);
+}
+
+/* ============================================================================
+   DETAILS - BOOTSTRAP BORDERED
+   ========================================================================= */
+
+details {
+  box-shadow: none;
+}
+
+/* ============================================================================
+   HORIZONTAL RULE - BOOTSTRAP THICKER
+   ========================================================================= */
+
+hr {
+  opacity: 0.25;
+  border-top-width: 2px;
+}
+
+/* ============================================================================
+   LAYOUT OVERRIDES (if needed)
+   ========================================================================= */
+
+/* NOK-specific layout adjustments can go here */
