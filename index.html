@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-su-theme="pla" data-su-mode="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUAI (สวย) — CSS framework demos</title>
+  <link rel="stylesheet" href="suai-html/suai.bundle.css">
+  <script src="suai-html/suai-theme.js" defer></script>
+</head>
+<body>
+
+  <div class="su-switcher" aria-label="Theme controls">
+    <fieldset class="su-switcher-group su-switcher-skin">
+      <legend>Skin</legend>
+      <button type="button" data-su-set-theme="pla">PLA</button>
+      <button type="button" data-su-set-theme="nok">NOK</button>
+      <button type="button" data-su-set-theme="maa">MAA</button>
+      <button type="button" data-su-set-theme="kob">KOB</button>
+    </fieldset>
+    <fieldset class="su-switcher-group su-switcher-mode">
+      <legend>Mode</legend>
+      <button type="button" data-su-set-mode="light">Light</button>
+      <button type="button" data-su-set-mode="dark">Dark</button>
+    </fieldset>
+  </div>
+
+  <header>
+    <h1>SUAI (สวย)</h1>
+    <p>A progressive-enhancement CSS framework in four stages. Pick a Skin and Mode above — every demo below re-skins live from the same <code>--su-*</code> token contract.</p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>Stage 1 — Semantic HTML, zero JavaScript</h2>
+      <p>Plain semantic HTML styled by a single generated <code>suai.bundle.css</code>. No build tools and no JavaScript required to render; the Skin / Mode switcher is an optional progressive enhancement.</p>
+      <nav>
+        <ul>
+          <li><a href="suai-html/demos/1.text.html">1. Text elements</a></li>
+          <li><a href="suai-html/demos/2.display.html">2. Display elements</a></li>
+          <li><a href="suai-html/demos/3.form.html">3. Form controls</a></li>
+          <li><a href="suai-html/demos/4.media.html">4. Media elements</a></li>
+          <li><a href="suai-html/demos/5.layout.html">5. Layout elements</a></li>
+          <li><a href="suai-html/demos/6.theme.html">6. Theme reference</a></li>
+        </ul>
+      </nav>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>Stage 2 — Token contract (UnoCSS)</h2>
+      <p>The canonical <code>--su-*</code> token contract consumed as UnoCSS utility classes that compile to <code>var(--su-*)</code>, so compiled component CSS re-skins at runtime with no rebuild.</p>
+      <ul>
+        <li><a href="suai-css/demo/kob-demo.html">KOB token-contract demo</a></li>
+      </ul>
+    </section>
+
+  </main>
+
+</body>
+</html>
