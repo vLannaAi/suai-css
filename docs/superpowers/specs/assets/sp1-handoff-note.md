@@ -1,4 +1,4 @@
-# SP-1 handoff note (draft — for posting to vLannaAi/suai-css#1)
+# SP-1 handoff note (posted to vLannaAi/suai-css#1 on 2026-07-17)
 
 Stage 1 (`suai-html`) migration to the `--su-*` token contract is complete. All 6 demo pages (`suai-html/demos/*.html`) now link a single generated `suai.bundle.css` and render all 4 skins — pla (Material 3), nok (Bootstrap 5.3), maa (Apple HIG), kob (crimson) — across both light and dark mode, scoped by `data-su-theme` + `data-su-mode` on `<html>`, with zero JavaScript required. An optional `suai-theme.js` provides a progressive-enhancement switcher for the demos only.
 
