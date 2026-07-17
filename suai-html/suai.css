@@ -541,6 +541,15 @@ input[type="radio"]:focus-visible {
   outline: 2px solid var(--su-accent);
   outline-offset: 2px;
 }
+/* A label right after a checkbox/radio sits inline beside it (base labels are
+   block, which would otherwise stack the text under the control). */
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  display: inline;
+  margin-bottom: 0;
+  font-weight: 400;
+  cursor: pointer;
+}
 
 /* File input — the picker button wears the skin's primary button. */
 input[type="file"] { cursor: pointer; font-size: var(--su-font-size); }
