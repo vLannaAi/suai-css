@@ -1507,6 +1507,13 @@ footer h1, footer h2, footer h3, footer h4, footer h5, footer h6, footer p {
 [data-su-theme] footer :is(h1, h2, h3, h4, h5, h6, p, small, a, strong, em, b, i, code, time, span, li):not(nav, nav *) {
   color: var(--su-accent-fg);
 }
+/* code/kbd inside the accent banner: the neutral --su-bg-accent chip is
+   unreadable on the accent colour, so tint it from the on-accent foreground. */
+header :is(code, kbd), footer :is(code, kbd) {
+  background-color: color-mix(in srgb, var(--su-accent-fg) 15%, transparent);
+  border-color: color-mix(in srgb, var(--su-accent-fg) 35%, transparent);
+  color: var(--su-accent-fg);
+}
 nav {
   display: flex;
   gap: var(--su-space-3);
@@ -1783,61 +1790,63 @@ body[data-layout="toolbar"] > main {
 }
 
 /* ============================================================================
-   THEME SWITCHER (demo control). Styled entirely from --su-* tokens so it
-   re-skins with the page. suai-theme.js marks the active skin/mode button with
-   aria-pressed="true"; the styling below is all that turns that into a visible
-   selection. Without JS the buttons are inert (the switcher needs JS to work).
+   THEME SWITCHER (demo control) — deliberately minimal: no frames, no chips,
+   no rounded buttons. Plain-text controls that sit above the page, separated
+   from the header by whitespace. suai-theme.js marks the active skin/mode
+   button with aria-pressed="true"; the active state shows as accent-coloured,
+   bold, underlined text (the buttons are inert without that JS).
    ========================================================================= */
 .su-switcher {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--su-space-3);
-  align-items: flex-end;
+  gap: var(--su-space-4);
+  align-items: baseline;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--su-space-3) var(--su-space-3) 0;
+  margin: 0 auto var(--su-space-4); /* bottom margin separates it from the header banner */
+  padding: var(--su-space-3) var(--su-space-4) 0;
 }
 .su-switcher-group {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
   gap: var(--su-space-2);
   margin: 0;
-  border: var(--su-border-w) solid var(--su-border);
-  border-radius: var(--su-radius);
-  padding: var(--su-space-2) var(--su-space-3);
+  border: 0;
+  padding: 0;
 }
 .su-switcher-group > legend {
-  padding: 0 var(--su-space-1);
+  float: none;
+  width: auto;
+  padding: 0;
+  margin-right: var(--su-space-1);
   font-size: var(--su-font-size-sm);
-  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--su-muted);
+  letter-spacing: 0.08em;
+  color: var(--su-subtle);
 }
 .su-switcher button {
   margin: 0;
-  padding: var(--su-space-1) var(--su-space-3);
+  padding: var(--su-space-1) 0;
   font: inherit;
   font-size: var(--su-font-size-sm);
-  line-height: 1.6;
-  color: var(--su-fg);
-  background: var(--su-bg);
-  border: var(--su-border-w) solid var(--su-border);
-  border-radius: var(--su-radius-control);
+  color: var(--su-muted);
+  background: none;
+  border: 0;
+  border-radius: 0;
   box-shadow: none;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 .su-switcher button:hover {
-  border-color: var(--su-accent);
-  color: var(--su-accent);
+  color: var(--su-fg);
+  background: none;
   box-shadow: none;
 }
 .su-switcher button[aria-pressed="true"] {
-  background: var(--su-accent);
-  border-color: var(--su-accent);
-  color: var(--su-accent-fg);
+  color: var(--su-accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  background: none;
   box-shadow: none;
 }
 
