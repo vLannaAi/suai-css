@@ -76,3 +76,11 @@
      (accent-mixed borders + focus ring) — ui-suai component styles; revisit
      as component tokens if a second theme needs to tune the same knobs.
    ========================================================================= */
+
+/* Side-nav sliding drawer: semi-transparent so the content shows through.
+   Mobile only (where the drawer overlays content). */
+@media (max-width: 767px) {
+  [data-su-theme="kob"] [data-layout="side-nav"] > nav {
+    background-color: color-mix(in srgb, var(--su-bg-accent) 80%, transparent);
+  }
+}
