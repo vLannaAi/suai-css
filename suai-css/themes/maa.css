@@ -10,8 +10,9 @@
 
 /* MAA (ม้า) — iOS 18 / Apple HIG. Ported to --su-* contract. */
 [data-su-theme="maa"] {
-  --su-accent: #007aff;
+  --su-accent: #059669;              /* emerald-600 — recoloured chrome accent (was Apple blue) */
   --su-accent-fg: #ffffff;
+  --su-accent-2: #7c3aed;            /* violet data accent — two kingdoms: emerald chrome, violet data */
   --su-bg: #ffffff;
   --su-bg-accent: #f2f2f7;
   --su-fg: rgba(0,0,0,.85);
@@ -36,7 +37,7 @@
 
 /* Dark — colors only; shape/type/spacing are mode-invariant by contract. */
 [data-su-theme="maa"][data-su-mode="dark"] {
-  --su-accent: #0a84ff;
+  --su-accent: #34d399; --su-accent-fg: #04231a; --su-accent-2: #a78bfa;
   --su-bg: #000000; --su-bg-accent: #1c1c1e;
   --su-fg: rgba(255,255,255,.85); --su-muted: rgba(235,235,245,.6); --su-subtle: rgba(235,235,245,.3);
   --su-border: #38383a; --su-border-subtle: rgba(84,84,88,.6);
@@ -181,7 +182,7 @@
 [data-su-theme="maa"] textarea:focus,
 [data-su-theme="maa"] select:focus {
   background-color: color-mix(in srgb, var(--su-fg) 6%, var(--su-bg-accent));
-  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.18);
 }
 
 [data-su-theme="maa"] input:disabled,
