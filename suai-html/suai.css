@@ -582,11 +582,14 @@ nav {
   display: flex;
   gap: var(--su-space-3);
   background-color: color-mix(in srgb, var(--su-accent) 12%, var(--su-bg));
+  overflow-x: auto; /* tabs scroll rather than break onto two lines when they don't fit */
 }
 
 nav a {
 
   flex: 1;
+  min-width: max-content; /* keep the whole label on one line; equal widths when they fit */
+  white-space: nowrap;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -891,6 +894,9 @@ body[data-layout] { min-height: 100vh; } /* data-layout applied directly to <bod
   display: flex;
   justify-content: space-around;
 }
+/* The bottom tab bar should always show all tabs — let them shrink to fit
+   (override the base min-width) with tighter side padding, rather than scroll. */
+[data-layout="toolbar"] > nav a { min-width: 0; padding-inline: var(--su-space-2); }
 /* Desktop: toolbar becomes a top nav in normal flow */
 @media (min-width: 768px) {
   [data-layout="toolbar"] > nav {
