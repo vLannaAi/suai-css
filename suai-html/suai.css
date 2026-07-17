@@ -534,6 +534,18 @@ figcaption {
   text-align: center;
 }
 
+/* Centre media that is narrower than its figure so the centred caption lines
+   up under it (block media is left-aligned by default). Handles media wrapped
+   in <picture> too. */
+figure > picture { display: block; }
+figure img,
+figure > video,
+figure > audio,
+figure > svg,
+figure > canvas {
+  margin-inline: auto;
+}
+
 audio,
 video {
   max-width: 100%;
