@@ -396,8 +396,8 @@
 
 /* NOK (นก) — Bootstrap 5.3. Ported to --su-* contract. */
 [data-su-theme="nok"] {
-  --su-accent: #d97706;              /* amber-600 — recoloured chrome accent (was Bootstrap blue) */
-  --su-accent-fg: #2b1a00;           /* dark warm foreground, readable on bright amber */
+  --su-accent: #b45309;              /* burnt amber — deep enough to carry white text (~5:1) */
+  --su-accent-fg: #ffffff;           /* white on burnt amber, not black-on-yellow */
   --su-accent-2: #0891b2;            /* cyan data accent — two kingdoms: warm chrome, cool data */
   --su-bg: #ffffff;
   --su-bg-accent: #f8f9fa;
@@ -421,7 +421,7 @@
 
 /* Dark — colors only; shape/type/spacing are mode-invariant by contract. */
 [data-su-theme="nok"][data-su-mode="dark"] {
-  --su-accent: #fbbf24; --su-accent-fg: #2b1a00; --su-accent-2: #22d3ee;
+  --su-accent: #c2680a; --su-accent-fg: #ffffff; --su-accent-2: #22d3ee;
   --su-bg: #212529; --su-bg-accent: #343a40;
   --su-fg: #dee2e6; --su-muted: #adb5bd; --su-subtle: #6c757d;
   --su-border: #495057; --su-border-subtle: #343a40;
@@ -509,7 +509,7 @@
 [data-su-theme="nok"] textarea:focus,
 [data-su-theme="nok"] select:focus {
   border-color: var(--su-accent);
-  box-shadow: 0 0 0 0.25rem rgba(217, 119, 6, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(180, 83, 9, 0.28);
 }
 
 /* Forms — Bootstrap bordered style */
@@ -603,7 +603,7 @@
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 [data-su-theme="nok"] :is(input, textarea, select):focus {
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), 0 0 0 0.25rem rgba(217, 119, 6, 0.25);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), 0 0 0 0.25rem rgba(180, 83, 9, 0.28);
 }
 [data-su-theme="nok"] input[type="checkbox"],
 [data-su-theme="nok"] input[type="radio"] { box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12); }
