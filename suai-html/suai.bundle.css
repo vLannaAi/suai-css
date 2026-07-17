@@ -1666,10 +1666,18 @@ body[data-layout] { min-height: 100vh; } /* data-layout applied directly to <bod
   overflow-y: auto;
   padding: var(--su-space-4);
 }
-[data-layout="side-nav"] > nav:target { left: 0; }
 [data-layout="side-nav"] > nav a { flex: none; text-align: left; }
 
-/* Desktop: permanent left sidebar (nav joins the grid) */
+/* Drawer is toggled by a hidden checkbox — pure CSS, no URL/hash change and no
+   scroll jump (the older :target approach navigated the fragment, which made
+   the page scroll on every open/close). */
+[data-layout="side-nav"] .su-drawer-toggle { position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none; }
+[data-layout="side-nav"] .su-drawer-toggle:checked ~ nav { left: 0; }
+[data-layout="side-nav"] .su-drawer-open,
+[data-layout="side-nav"] .su-drawer-close { cursor: pointer; font-weight: 600; }
+[data-layout="side-nav"] .su-drawer-close { color: var(--su-accent); }
+
+/* Desktop: permanent left sidebar (nav joins the grid); the toggle is hidden. */
 @media (min-width: 768px) {
   [data-layout="side-nav"] {
     grid-template-columns: 280px 1fr;
@@ -1686,6 +1694,8 @@ body[data-layout] { min-height: 100vh; } /* data-layout applied directly to <bod
     width: auto;
     transition: none;
   }
+  [data-layout="side-nav"] .su-drawer-open,
+  [data-layout="side-nav"] .su-drawer-close { display: none; }
 }
 
 /* With Aside — header (top), main + related aside, footer (bottom). Mobile:
