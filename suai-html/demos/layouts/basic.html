@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-su-theme="pla" data-su-mode="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic layout — SUAI</title>
+  <link rel="stylesheet" href="../../suai.bundle.css">
+  <script src="../../suai-theme.js" defer></script>
+</head>
+<body class="su-layout-page">
+
+  <div class="su-switcher" aria-label="Theme controls">
+    <div class="su-switcher-group su-switcher-skin" role="group" aria-label="Skin">
+      <span class="su-switcher-label">Skin</span>
+      <button type="button" data-su-set-theme="pla">PLA</button>
+      <button type="button" data-su-set-theme="nok">NOK</button>
+      <button type="button" data-su-set-theme="maa">MAA</button>
+      <button type="button" data-su-set-theme="kob">KOB</button>
+    </div>
+    <div class="su-switcher-group su-switcher-mode" role="group" aria-label="Mode">
+      <span class="su-switcher-label">Mode</span>
+      <button type="button" data-su-set-mode="light">Light</button>
+      <button type="button" data-su-set-mode="dark">Dark</button>
+    </div>
+  </div>
+
+  <div data-layout="basic">
+    <header>
+      <h1>Basic Layout</h1>
+      <p>Header, main and footer in a single column — the footer stays pinned to the bottom even when content is short.</p>
+    </header>
+
+    <main>
+      <p><a href="../5.layout.html">&larr; Back to layouts gallery</a></p>
+      <h2>Main content</h2>
+      <p>The simplest page shell: a header at the top, a flexible main area that grows to fill the viewport, and a footer that sits at the bottom of the screen.</p>
+      <p>Because <code>main</code> takes the remaining height, the footer never floats up into the middle of the page on short content — a classic "sticky footer" without any extra wrappers.</p>
+      <h3>When to use</h3>
+      <ul>
+        <li>Content pages, articles, documentation</li>
+        <li>Anything that needs a header and a footer but no sidebar</li>
+      </ul>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 SUAI &middot; basic layout</p>
+    </footer>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-su-theme="pla" data-su-mode="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles grid layout — SUAI</title>
+  <link rel="stylesheet" href="../../suai.bundle.css">
+  <script src="../../suai-theme.js" defer></script>
+</head>
+<body class="su-layout-page">
+
+  <div class="su-switcher" aria-label="Theme controls">
+    <div class="su-switcher-group su-switcher-skin" role="group" aria-label="Skin">
+      <span class="su-switcher-label">Skin</span>
+      <button type="button" data-su-set-theme="pla">PLA</button>
+      <button type="button" data-su-set-theme="nok">NOK</button>
+      <button type="button" data-su-set-theme="maa">MAA</button>
+      <button type="button" data-su-set-theme="kob">KOB</button>
+    </div>
+    <div class="su-switcher-group su-switcher-mode" role="group" aria-label="Mode">
+      <span class="su-switcher-label">Mode</span>
+      <button type="button" data-su-set-mode="light">Light</button>
+      <button type="button" data-su-set-mode="dark">Dark</button>
+    </div>
+  </div>
+
+  <div data-layout="articles">
+    <header>
+      <h1>Latest News</h1>
+      <p>A responsive card grid: 1 column on mobile, 2 on tablet, 3 on desktop.</p>
+    </header>
+
+    <main>
+      <article>
+        <h2>Release 3.1</h2>
+        <p>New token contract and four re-skinnable themes ship this week.</p>
+        <footer>2 hours ago</footer>
+      </article>
+      <article>
+        <h2>Design tokens</h2>
+        <p>How the <code>--su-*</code> contract keeps components theme-agnostic.</p>
+        <footer>Yesterday</footer>
+      </article>
+      <article>
+        <h2>Dark mode</h2>
+        <p>Mode is handled once by the theme layer &mdash; no per-component variants.</p>
+        <footer>2 days ago</footer>
+      </article>
+      <article>
+        <h2>Accessibility</h2>
+        <p>Semantic HTML first: the demos style bare elements, no utility classes.</p>
+        <footer>3 days ago</footer>
+      </article>
+      <article>
+        <h2>Performance</h2>
+        <p>One committed bundle, zero runtime dependencies for consumers.</p>
+        <footer>Last week</footer>
+      </article>
+      <article>
+        <h2>Roadmap</h2>
+        <p>Stage 3 and 4 bring the JS and Vue component layers.</p>
+        <footer>Last week</footer>
+      </article>
+    </main>
+
+    <footer>
+      <p><a href="../5.layout.html">&larr; Back to layouts gallery</a> &middot; &copy; 2026 SUAI &middot; articles layout</p>
+    </footer>
+  </div>
+
+</body>
+</html>

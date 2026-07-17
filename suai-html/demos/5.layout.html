@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" data-su-theme="pla" data-su-mode="light">
-  <head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SUAI Layout Elements - Mobile-First Responsive Layouts</title>
+  <title>SUAI Layout Patterns</title>
   <link rel="stylesheet" href="../suai.bundle.css">
   <script src="../suai-theme.js" defer></script>
+  <style>
+    /* Live layout preview: a real embedded page. The layout's media queries
+       key off the IFRAME width, so drag the resize handle (bottom-right) to
+       narrow it and watch the layout switch to its mobile form. */
+    .su-layout-frame {
+      display: block;
+      width: 100%;
+      height: 460px;
+      min-width: 320px;
+      min-height: 260px;
+      max-width: 100%;
+      border: var(--su-border-w) solid var(--su-border);
+      border-radius: var(--su-radius);
+      background: var(--su-bg);
+      resize: both;
+      overflow: hidden;
+    }
+    .su-layout-card { margin-block: var(--su-space-4); }
+    .su-layout-card > .su-open { margin: 0 0 var(--su-space-2); }
+  </style>
 </head>
-
-<style> 
-  demo {
-    display: block;
-    border: 2px solid #444;
-    box-shadow: 10px 10px 8px #888888;
-    padding: 0px;
-    margin-bottom: 20px;
-  }
-</style>
 <body>
 
   <div class="su-switcher" aria-label="Theme controls">
@@ -35,8 +45,8 @@
   </div>
 
   <header>
-    <h1>SUAI Layout Elements</h1>
-    <h5>Mobile-First Responsive Layouts with Semantic HTML</h5>
+    <h1>SUAI Layout Patterns</h1>
+    <h5>Full-page responsive layouts with semantic HTML</h5>
 
     <nav>
       <a href="1.text.html">1. Text</a>
@@ -46,708 +56,53 @@
       <a aria-current="page">5. Layout</a>
       <a href="6.theme.html">6. Theme</a>
     </nav>
-
   </header>
 
   <main>
-    <!-- SECTION 1: BASIC LAYOUT -->
-    <section id="basic-layout">
-      <h2>Basic Layout: Header + Main + Footer</h2>
-      <p>The fundamental page structure using semantic HTML5 elements. Mobile-first, single column layout.</p>
+    <p>Each layout is its own <strong>full page</strong> (a real <code>&lt;body data-layout="&hellip;"&gt;</code> shell), previewed below in a live, embedded iframe. Pick a <strong>Skin</strong> and <strong>Mode</strong> above and every preview re-skins at once. Because each preview is a real page, its responsive breakpoints follow the <em>iframe</em> width &mdash; <strong>drag the resize handle at a preview's bottom-right corner</strong> to make it narrow and watch it switch to its mobile form. Or open any layout full-screen.</p>
 
-      <demo>
-        <header>
-          <h2>Page Header</h2>
-        </header>
-
-        <main>
-          <h3>Main Content Area</h3>
-          <p>This is the primary content area. On mobile, it takes full width and flows naturally.</p>
-          <p>The layout uses pure semantic HTML with zero classes. All styling is done through element selectors and combinators.</p>
-        </main>
-
-        <footer>
-          <p>Page Footer - Copyright 2025</p>
-        </footer>
-      </demo>
-
-        <small>Structure: &lt;header&gt; + &lt;main&gt; + &lt;footer&gt;</small>
-
-        <details>
-          <summary>View HTML Structure</summary>
-          <pre>&lt;div&gt;
-  &lt;header&gt;
-    &lt;h2&gt;Page Header&lt;/h2&gt;
-  &lt;/header&gt;
-
-  &lt;main&gt;
-    &lt;h3&gt;Main Content Area&lt;/h3&gt;
-    &lt;p&gt;Content...&lt;/p&gt;
-  &lt;/main&gt;
-
-  &lt;footer&gt;
-    &lt;p&gt;Page Footer&lt;/p&gt;
-  &lt;/footer&gt;
-&lt;/div&gt;</pre>
-        </details>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Element</th>
-            <th>Semantic Meaning</th>
-            <th>When to Use</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>&lt;header&gt;</td>
-            <td>Introductory content container</td>
-            <td>Page/section header with title, logo, navigation</td>
-          </tr>
-          <tr>
-            <td>&lt;main&gt;</td>
-            <td>Dominant content of document</td>
-            <td>Primary content area (only one per page)</td>
-          </tr>
-          <tr>
-            <td>&lt;footer&gt;</td>
-            <td>Footer for nearest sectioning element</td>
-            <td>Copyright, links, contact info</td>
-          </tr>
-        </tbody>
-      </table>
+    <section class="su-layout-card">
+      <h2>Basic</h2>
+      <p>Header, main and footer in one column, with the footer pinned to the bottom (sticky footer).</p>
+      <p class="su-open"><a href="layouts/basic.html" target="_blank" rel="noopener">Open full page &#8599;</a></p>
+      <iframe class="su-layout-frame" src="layouts/basic.html" title="Basic layout preview" loading="lazy"></iframe>
     </section>
 
-    <!-- SECTION 2: SIDE NAVIGATION -->
-    <section id="side-nav">
-      <h2>Side Navigation Layout</h2>
-      <p>Mobile-first responsive navigation with layered design. <strong>On mobile:</strong> Hidden drawer that slides in. <strong>On tablet+:</strong> Permanent sidebar extending full height, layered behind header/footer with shadow effects. Try clicking the menu button!</p>
-
-      <demo>
-        <div data-layout="side-nav">
-          <header>
-            <a href="#drawer-1" aria-label="Open menu">Menu</a>
-            <h2>App Header</h2>
-          </header>
-
-          <nav id="drawer-1">
-            <a href="#" aria-label="Close menu">Close</a>
-            <h3>Navigation</h3>
-            <a href="#home">Home</a>
-            <a href="#dashboard">Dashboard</a>
-            <a href="#products">Products</a>
-            <a href="#analytics">Analytics</a>
-            <a href="#settings">Settings</a>
-            <a href="#help">Help</a>
-          </nav>
-
-          <main>
-            <h3>Dashboard Content</h3>
-            <p>Main application content area. The navigation drawer slides in from the left on mobile.</p>
-            <p>On tablet and desktop (≥768px), the navigation becomes a permanent sidebar using CSS Grid.</p>
-            <p>Resize your browser to see the responsive behavior!</p>
-          </main>
-
-          <footer>
-            <p>App Footer</p>
-          </footer>
-        </div>
-      </demo>
-
-        <small>Structure: &lt;header&gt; + &lt;nav&gt; + &lt;main&gt; + &lt;footer&gt; | Mobile: Drawer | Desktop: Layered grid (nav full-height behind header/footer)</small>
-
-        <details>
-          <summary>View CSS Selectors (No Classes!)</summary>
-          <pre>/* Mobile: Hidden drawer */
-form &gt; div[data-layout="side-nav"] &gt; nav {
-  position: fixed;
-  left: 0;
-  transform: translateX(-100%);
-  transition: transform 0.3s;
-}
-
-/* Tablet+: Layered grid layout */
-@media (min-width: 768px) {
-  form &gt; div[data-layout="side-nav"] {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-  }
-
-  /* Nav extends full height, layered behind header/footer */
-  form &gt; div[data-layout="side-nav"] &gt; nav {
-    position: static;
-    transform: none;
-    grid-row: 1 / -1; /* Full height */
-    z-index: 10; /* Behind header/footer */
-  }
-
-  /* Footer spans full width over nav */
-  form &gt; div[data-layout="side-nav"] &gt; footer {
-    grid-column: 1 / -1; /* Full width */
-    z-index: 20; /* Above nav */
-  }
-}</pre>
-        </details>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Element</th>
-            <th>Semantic Meaning</th>
-            <th>When to Use</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>&lt;nav&gt;</td>
-            <td>Navigation links section</td>
-            <td>Major navigation blocks, site/app navigation</td>
-          </tr>
-          <tr>
-            <td>data-* attributes</td>
-            <td>Custom data attributes</td>
-            <td>Store state for CSS selectors (data-nav-open="true")</td>
-          </tr>
-        </tbody>
-      </table>
+    <section class="su-layout-card">
+      <h2>Side navigation</h2>
+      <p>App shell: header on top, a left sidebar, main content, footer on the bottom. Mobile: the sidebar is a <code>:target</code> drawer (tap <em>Menu</em>). Desktop (&ge;768px): permanent sidebar.</p>
+      <p class="su-open"><a href="layouts/side-nav.html" target="_blank" rel="noopener">Open full page &#8599;</a></p>
+      <iframe class="su-layout-frame" src="layouts/side-nav.html" title="Side navigation layout preview" loading="lazy"></iframe>
     </section>
 
-    <!-- SECTION 3: MAIN WITH ASIDE -->
-    <section id="with-aside">
-      <h2>Main Content with Sidebar (Aside)</h2>
-      <p><strong>Mobile:</strong> Aside appears above main. <strong>Tablet+:</strong> Aside becomes right sidebar using CSS Grid.</p>
-
-      <demo>
-        <div data-layout="with-aside">
-          <header>
-            <h2>Blog Post</h2>
-          </header>
-
-          <main>
-            <h3>Article Title: Understanding Semantic HTML</h3>
-            <p>The main article content goes here. This is the primary content that users came to read.</p>
-            <p>On mobile devices, this appears below the aside. On larger screens (≥768px), it shifts to the left with the aside on the right.</p>
-            <p>The layout automatically adapts using CSS Grid and media queries, with no classes or JavaScript required.</p>
-            <p>This demonstrates the power of semantic HTML combined with modern CSS Grid layout techniques.</p>
-          </main>
-
-          <aside>
-            <h4>Related Links</h4>
-            <nav>
-              <a href="#article1">Related Article 1</a>
-              <a href="#article2">Related Article 2</a>
-              <a href="#article3">Related Article 3</a>
-            </nav>
-
-            <h4>About Author</h4>
-            <p>Jane Developer, Web Standards Enthusiast</p>
-          </aside>
-
-          <footer>
-            <p>Published: January 7, 2025</p>
-          </footer>
-        </div>
-
-        <small>Structure: &lt;header&gt; + &lt;main&gt; + &lt;aside&gt; + &lt;footer&gt; | Mobile: Stacked | Desktop: Grid with sidebar</small>
-
-        <details>
-          <summary>View CSS Selectors</summary>
-          <pre>/* Mobile: Stacked */
-form &gt; div[data-layout="with-aside"] {
-  display: flex;
-  flex-direction: column;
-}
-
-form &gt; div[data-layout="with-aside"] &gt; aside {
-  order: 1; /* Aside first */
-}
-
-form &gt; div[data-layout="with-aside"] &gt; main {
-  order: 2; /* Main second */
-}
-
-/* Tablet+: Sidebar */
-@media (min-width: 768px) {
-  form &gt; div[data-layout="with-aside"] {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-  }
-}</pre>
-        </details>
-      </demo>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Element</th>
-            <th>Semantic Meaning</th>
-            <th>When to Use</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>&lt;aside&gt;</td>
-            <td>Tangentially related content</td>
-            <td>Sidebars, callouts, related links, ads</td>
-          </tr>
-          <tr>
-            <td>&lt;main&gt;</td>
-            <td>Primary content</td>
-            <td>Main article, primary content area</td>
-          </tr>
-        </tbody>
-      </table>
+    <section class="su-layout-card">
+      <h2>Content with aside</h2>
+      <p>Main content plus a related <code>aside</code>. Stacked on mobile; the aside becomes a right sidebar at &ge;1024px.</p>
+      <p class="su-open"><a href="layouts/with-aside.html" target="_blank" rel="noopener">Open full page &#8599;</a></p>
+      <iframe class="su-layout-frame" src="layouts/with-aside.html" title="Content with aside layout preview" loading="lazy"></iframe>
     </section>
 
-    <!-- SECTION 4: ARTICLES IN MAIN -->
-    <section id="articles">
-      <h2>Multiple Articles in Main</h2>
-      <p>Articles are self-contained compositions. <strong>Mobile:</strong> Stacked. <strong>Desktop:</strong> 2-column grid.</p>
-
-      <demo>
-        <div data-layout="articles-grid">
-          <header>
-            <h2>Latest News</h2>
-          </header>
-
-          <main>
-            <article>
-              <header>
-                <h3>Article 1: CSS Grid Layout</h3>
-              </header>
-              <p>CSS Grid revolutionized web layouts by providing a two-dimensional layout system. Unlike Flexbox which is one-dimensional...</p>
-              <footer>
-                <p>By John Smith • 2 hours ago</p>
-              </footer>
-            </article>
-
-            <article>
-              <header>
-                <h3>Article 2: Semantic HTML Benefits</h3>
-              </header>
-              <p>Using semantic HTML improves accessibility, SEO, and maintainability. Elements like article, section, and aside...</p>
-              <footer>
-                <p>By Sarah Jones • 5 hours ago</p>
-              </footer>
-            </article>
-
-            <article>
-              <header>
-                <h3>Article 3: Mobile-First Design</h3>
-              </header>
-              <p>Mobile-first approach starts with mobile layout and progressively enhances for larger screens using media queries...</p>
-              <footer>
-                <p>By Mike Chen • 1 day ago</p>
-              </footer>
-            </article>
-
-            <article>
-              <header>
-                <h3>Article 4: Zero-Class CSS</h3>
-              </header>
-              <p>Modern CSS selectors are powerful enough to style entire applications without classes. Attribute selectors, combinators...</p>
-              <footer>
-                <p>By Lisa Park • 2 days ago</p>
-              </footer>
-            </article>
-          </main>
-
-          <footer>
-            <p>News Feed © 2025</p>
-          </footer>
-        </div>
-
-        <small>Structure: &lt;main&gt; contains multiple &lt;article&gt; elements | Each article has &lt;header&gt; and &lt;footer&gt;</small>
-
-        <details>
-          <summary>View CSS Selectors</summary>
-          <pre>/* Style articles */
-form &gt; div &gt; main &gt; article {
-  background-color: var(--su-bg-accent);
-  padding: var(--su-space-3);
-  border-radius: var(--su-radius);
-}
-
-/* Article headers (different from page header) */
-form &gt; div &gt; main &gt; article &gt; header {
-  background: none;
-  padding: 0;
-  border-bottom: 1px solid var(--su-border);
-}
-
-/* Desktop: 2-column grid */
-@media (min-width: 1024px) {
-  form &gt; div[data-layout="articles-grid"] &gt; main {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--su-space-3);
-  }
-}</pre>
-        </details>
-      </demo>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Element</th>
-            <th>Semantic Meaning</th>
-            <th>When to Use</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>&lt;article&gt;</td>
-            <td>Self-contained composition</td>
-            <td>Blog posts, news items, forum posts, cards</td>
-          </tr>
-          <tr>
-            <td>&lt;article&gt; &lt;header&gt;</td>
-            <td>Header for article</td>
-            <td>Article title, author, publish date</td>
-          </tr>
-          <tr>
-            <td>&lt;article&gt; &lt;footer&gt;</td>
-            <td>Footer for article</td>
-            <td>Article metadata, tags, share buttons</td>
-          </tr>
-        </tbody>
-      </table>
+    <section class="su-layout-card">
+      <h2>Articles grid</h2>
+      <p>Main is a responsive card grid &mdash; one column on mobile, two on tablet, three on desktop.</p>
+      <p class="su-open"><a href="layouts/articles.html" target="_blank" rel="noopener">Open full page &#8599;</a></p>
+      <iframe class="su-layout-frame" src="layouts/articles.html" title="Articles grid layout preview" loading="lazy"></iframe>
     </section>
 
-    <!-- SECTION 5: SECTIONS IN MAIN -->
-    <section id="sections">
-      <h2>Sections in Main Content</h2>
-      <p>Sections group thematic content. Each section can have its own header.</p>
-
-      <demo>
-        <div data-layout="sections">
-          <header>
-            <h2>User Profile</h2>
-          </header>
-
-          <main>
-            <section>
-              <header>
-                <h3>Personal Information</h3>
-              </header>
-              <p><strong>Name:</strong> Jane Developer</p>
-              <p><strong>Email:</strong> jane@example.com</p>
-              <p><strong>Location:</strong> San Francisco, CA</p>
-            </section>
-
-            <section>
-              <header>
-                <h3>Account Settings</h3>
-              </header>
-              <p><strong>Membership:</strong> Premium</p>
-              <p><strong>Member Since:</strong> January 2023</p>
-              <p><strong>Two-Factor Auth:</strong> Enabled</p>
-            </section>
-
-            <section>
-              <header>
-                <h3>Privacy Preferences</h3>
-              </header>
-              <p><strong>Profile Visibility:</strong> Public</p>
-              <p><strong>Email Notifications:</strong> Enabled</p>
-              <p><strong>Data Sharing:</strong> Disabled</p>
-            </section>
-          </main>
-
-          <footer>
-            <p>Last updated: January 7, 2025</p>
-          </footer>
-        </div>
-
-        <small>Structure: &lt;main&gt; contains multiple &lt;section&gt; elements | Each section groups related content</small>
-
-        <details>
-          <summary>View CSS Selectors</summary>
-          <pre>/* Section spacing */
-form &gt; div &gt; main &gt; section {
-  margin-bottom: var(--su-space-4);
-}
-
-/* Section headers (different from page/article headers) */
-form &gt; div &gt; main &gt; section &gt; header {
-  background: none;
-  padding: 0;
-  margin-bottom: var(--su-space-2);
-}
-
-form &gt; div &gt; main &gt; section &gt; header h3 {
-  color: var(--su-accent);
-  font-size: 1.25rem;
-}</pre>
-        </details>
-      </demo>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Element</th>
-            <th>Semantic Meaning</th>
-            <th>When to Use</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>&lt;section&gt;</td>
-            <td>Thematic grouping of content</td>
-            <td>Chapters, tabs, thematic content groups</td>
-          </tr>
-          <tr>
-            <td>&lt;section&gt; &lt;header&gt;</td>
-            <td>Header for section</td>
-            <td>Section title, introduction</td>
-          </tr>
-        </tbody>
-      </table>
+    <section class="su-layout-card">
+      <h2>Sections</h2>
+      <p>Full-bleed stacked sections with alternating backgrounds &mdash; the classic landing-page rhythm.</p>
+      <p class="su-open"><a href="layouts/sections.html" target="_blank" rel="noopener">Open full page &#8599;</a></p>
+      <iframe class="su-layout-frame" src="layouts/sections.html" title="Sections layout preview" loading="lazy"></iframe>
     </section>
 
-    <!-- SECTION 6: BOTTOM TOOLBAR -->
-    <section id="bottom-toolbar">
-      <h2>Bottom Toolbar (Mobile Navigation)</h2>
-      <p>Common mobile pattern: bottom navigation bar. <strong>Mobile:</strong> Sticky bottom. <strong>Desktop:</strong> Becomes top toolbar.</p>
-
-      <demo>
-        <div data-layout="bottom-toolbar">
-          <header>
-            <h2>Mobile App</h2>
-          </header>
-
-          <main>
-            <h3>Home Feed</h3>
-            <p>This layout demonstrates the mobile bottom navigation pattern.</p>
-            <p>On mobile devices, the footer acts as a sticky bottom toolbar with navigation buttons.</p>
-            <p>On desktop (≥768px), it moves to the top as a toolbar.</p>
-            <p>Scroll down to see more content and notice how the toolbar behaves.</p>
-            <p>The bottom navigation pattern is common in mobile apps, providing easy thumb access to primary navigation actions.</p>
-            <p>Notice how smoothly it transitions from bottom to top when you resize your browser window above 768px.</p>
-          </main>
-
-          <footer>
-            <button aria-label="Home">
-              <span>Home</span>
-            </button>
-            <button aria-label="Search">
-              <span>Search</span>
-            </button>
-            <button aria-label="Add new item">
-              <span>Add</span>
-            </button>
-            <button aria-label="Likes">
-              <span>Like</span>
-            </button>
-            <button aria-label="User profile">
-              <span>Profile</span>
-            </button>
-          </footer>
-        </div>
-
-        <small>Structure: &lt;header&gt; + &lt;main&gt; + &lt;footer&gt; (sticky) | Mobile: Bottom bar | Desktop: Top toolbar</small>
-
-        <details>
-          <summary>View CSS Selectors</summary>
-          <pre>/* Mobile: Sticky bottom */
-form &gt; div[data-layout="bottom-toolbar"] &gt; footer {
-  position: sticky;
-  bottom: 0;
-  display: flex;
-  justify-content: space-around;
-}
-
-/* Desktop: Top toolbar */
-@media (min-width: 768px) {
-  form &gt; div[data-layout="bottom-toolbar"] &gt; footer {
-    position: static;
-    order: -1; /* Move to top */
-  }
-}</pre>
-        </details>
-      </demo>
-    </section>
-
-    <!-- SECTION 7: COMPLETE APP LAYOUT -->
-    <section id="complete-layout">
-      <h2>Complete App Layout</h2>
-      <p>Kitchen sink: All structural elements combined. <strong>Mobile:</strong> Stacked. <strong>Tablet+:</strong> Grid with nav sidebar and aside.</p>
-
-      <demo>
-        <div data-layout="side-nav" style="min-height: 500px;">
-          <header>
-            <a href="#drawer-2" aria-label="Open menu">Menu</a>
-            <h2>Full App Layout</h2>
-          </header>
-
-          <nav id="drawer-2">
-            <a href="#" aria-label="Close menu">Close</a>
-            <h3>Main Menu</h3>
-            <a href="#dashboard">Dashboard</a>
-            <a href="#projects">Projects</a>
-            <a href="#team">Team</a>
-            <a href="#reports">Reports</a>
-          </nav>
-
-          <main>
-            <section>
-              <header>
-                <h3>Dashboard Overview</h3>
-              </header>
-              <p>This demonstrates a complete application layout combining all semantic structural elements:</p>
-              <ul>
-                <li><strong>&lt;header&gt;</strong> - App header with menu button</li>
-                <li><strong>&lt;nav&gt;</strong> - Side navigation (drawer on mobile)</li>
-                <li><strong>&lt;main&gt;</strong> - Primary content area</li>
-                <li><strong>&lt;section&gt;</strong> - Content sections within main</li>
-                <li><strong>&lt;article&gt;</strong> - Self-contained items</li>
-                <li><strong>&lt;aside&gt;</strong> - Related sidebar content</li>
-                <li><strong>&lt;footer&gt;</strong> - Page/app footer</li>
-              </ul>
-            </section>
-
-            <section>
-              <header>
-                <h3>Recent Activity</h3>
-              </header>
-
-              <article>
-                <header>
-                  <h4>Project Alpha Updated</h4>
-                </header>
-                <p>New features added to the dashboard module.</p>
-                <footer>2 hours ago</footer>
-              </article>
-
-              <article>
-                <header>
-                  <h4>Team Meeting Scheduled</h4>
-                </header>
-                <p>Sprint planning meeting tomorrow at 10 AM.</p>
-                <footer>5 hours ago</footer>
-              </article>
-            </section>
-          </main>
-
-          <footer>
-            <p>App v1.0 © 2025 | <a href="#privacy">Privacy</a> | <a href="#terms">Terms</a></p>
-          </footer>
-        </div>
-
-        <small>Complete structure: &lt;header&gt; + &lt;nav&gt; + &lt;main&gt; (with &lt;section&gt; and &lt;article&gt;) + &lt;footer&gt;</small>
-      </demo>
-    </section>
-
-    <!-- SECTION 8: RESPONSIVE STRATEGY -->
-    <section id="responsive-strategy">
-      <h2>Mobile-First Responsive Strategy</h2>
-      <p>All layouts follow mobile-first principles with progressive enhancement through media queries.</p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Breakpoint</th>
-            <th>Strategy</th>
-            <th>Layout Changes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Mobile (&lt;768px)</td>
-            <td>Base styles, single column</td>
-            <td>Stacked layout, drawer nav, bottom toolbar</td>
-          </tr>
-          <tr>
-            <td>Tablet (≥768px)</td>
-            <td>Side-by-side layouts</td>
-            <td>Nav sidebar, aside visible, grid layouts</td>
-          </tr>
-          <tr>
-            <td>Desktop (≥1024px)</td>
-            <td>Multi-column, wider spaces</td>
-            <td>Article grids, wider aside, more spacing</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Key CSS Techniques Used</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Technique</th>
-            <th>Purpose</th>
-            <th>Example Selector</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Child combinator (&gt;)</td>
-            <td>Direct children only</td>
-            <td>form &gt; div &gt; header</td>
-          </tr>
-          <tr>
-            <td>Attribute selectors</td>
-            <td>Target by data attributes</td>
-            <td>div[data-layout="side-nav"]</td>
-          </tr>
-          <tr>
-            <td>Descendant combinator</td>
-            <td>Any nested element</td>
-            <td>main article header</td>
-          </tr>
-          <tr>
-            <td>Pseudo-classes</td>
-            <td>State-based styling</td>
-            <td>:hover, :last-child, :first-child</td>
-          </tr>
-          <tr>
-            <td>CSS Grid</td>
-            <td>2D layouts</td>
-            <td>grid-template-columns: 280px 1fr</td>
-          </tr>
-          <tr>
-            <td>Flexbox</td>
-            <td>1D layouts, alignment</td>
-            <td>display: flex; flex-direction: column</td>
-          </tr>
-          <tr>
-            <td>Media queries</td>
-            <td>Responsive breakpoints</td>
-            <td>@media (min-width: 768px)</td>
-          </tr>
-        </tbody>
-      </table>
+    <section class="su-layout-card">
+      <h2>Toolbar</h2>
+      <p>Mobile app shell: a fixed bottom tab bar on phones that becomes a top nav at &ge;768px.</p>
+      <p class="su-open"><a href="layouts/toolbar.html" target="_blank" rel="noopener">Open full page &#8599;</a></p>
+      <iframe class="su-layout-frame" src="layouts/toolbar.html" title="Toolbar layout preview" loading="lazy"></iframe>
     </section>
   </main>
-
-  <footer>
-    <h2>SUAI Layout Elements Summary</h2>
-    <p>This page demonstrates responsive, mobile-first layouts using pure semantic HTML with zero classes. All styling uses CSS selectors, combinators, and attribute selectors.</p>
-
-    <h3>Key Principles</h3>
-    <ul>
-      <li><strong>Mobile-First:</strong> Base styles for mobile, progressive enhancement for larger screens</li>
-      <li><strong>Semantic HTML:</strong> Right element for right purpose (nav, article, aside, section)</li>
-      <li><strong>Zero Classes:</strong> All styling through element selectors and combinators</li>
-      <li><strong>CSS Grid & Flexbox:</strong> Modern layout techniques for responsive design</li>
-      <li><strong>Progressive Enhancement:</strong> Works everywhere, better on modern browsers</li>
-    </ul>
-
-    <h3>Element Coverage</h3>
-    <pre>
-Layout Structure Elements:
-├── &lt;header&gt;    - Page/section headers
-├── &lt;nav&gt;       - Navigation blocks
-├── &lt;main&gt;      - Primary content (one per page)
-├── &lt;article&gt;   - Self-contained compositions
-├── &lt;section&gt;   - Thematic content groups
-├── &lt;aside&gt;     - Tangentially related content
-└── &lt;footer&gt;    - Page/section footers
-    </pre>
-
-    <p><small>SUAI Framework - Semantic, Utility, Adaptive Interface | PLA Theme (v1.0)</small></p>
-  </footer>
 
 </body>
 </html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-su-theme="pla" data-su-mode="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Side navigation layout — SUAI</title>
+  <link rel="stylesheet" href="../../suai.bundle.css">
+  <script src="../../suai-theme.js" defer></script>
+</head>
+<body class="su-layout-page">
+
+  <div class="su-switcher" aria-label="Theme controls">
+    <div class="su-switcher-group su-switcher-skin" role="group" aria-label="Skin">
+      <span class="su-switcher-label">Skin</span>
+      <button type="button" data-su-set-theme="pla">PLA</button>
+      <button type="button" data-su-set-theme="nok">NOK</button>
+      <button type="button" data-su-set-theme="maa">MAA</button>
+      <button type="button" data-su-set-theme="kob">KOB</button>
+    </div>
+    <div class="su-switcher-group su-switcher-mode" role="group" aria-label="Mode">
+      <span class="su-switcher-label">Mode</span>
+      <button type="button" data-su-set-mode="light">Light</button>
+      <button type="button" data-su-set-mode="dark">Dark</button>
+    </div>
+  </div>
+
+  <div data-layout="side-nav">
+    <header>
+      <a href="#drawer" aria-label="Open menu">Menu</a>
+      <h1>Dashboard</h1>
+    </header>
+
+    <nav id="drawer">
+      <a href="#" aria-label="Close menu">Close</a>
+      <h3>Navigation</h3>
+      <a href="#overview">Overview</a>
+      <a href="#projects">Projects</a>
+      <a href="#team">Team</a>
+      <a href="#reports">Reports</a>
+      <a href="#settings">Settings</a>
+    </nav>
+
+    <main>
+      <p><a href="../5.layout.html">&larr; Back to layouts gallery</a></p>
+      <h2>Dashboard content</h2>
+      <p>An application shell: header across the top, a navigation sidebar on the left, the main content area, and a footer across the bottom &mdash; placed with CSS Grid.</p>
+      <p><strong>On mobile</strong> the sidebar is a hidden drawer; tap <em>Menu</em> to slide it in and <em>Close</em> to dismiss it &mdash; no JavaScript, just <code>:target</code>. <strong>On tablet and desktop (&ge;768px)</strong> the sidebar is permanent.</p>
+      <h3>When to use</h3>
+      <ul>
+        <li>Admin panels and dashboards</li>
+        <li>Apps with a persistent primary navigation</li>
+      </ul>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 SUAI &middot; side-nav layout</p>
+    </footer>
+  </div>
+
+</body>
+</html>

@@ -667,30 +667,30 @@ dialog::backdrop {
    LAYOUT SYSTEM - Theme-Agnostic Responsive Layouts
    ========================================================================= */
 
-/* Basic Layout: Header + Main + Footer */
-body[data-layout="basic"] {
+/* Layouts are scoped to [data-layout="X"] (any container, not just <body>) so a
+   standalone demo page can carry the theme-switcher bar above a viewport-filling
+   layout wrapper, and the same file embeds cleanly in an iframe.
+   .su-layout-page is that wrapper: a full-bleed, full-height body whose
+   [data-layout] child fills the remaining space below the switcher. */
+body.su-layout-page {
+  max-width: none;
+  margin: 0;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+}
+body.su-layout-page > [data-layout] { flex: 1; min-height: 0; }
+body[data-layout] { min-height: 100vh; } /* data-layout applied directly to <body> */
+
+/* Basic Layout: Header + Main + Footer (sticky footer). Header/footer keep the
+   standard accent banner; the only structural job here is main filling the
+   viewport so the footer sits at the bottom. */
+[data-layout="basic"] {
+  display: flex;
+  flex-direction: column;
   padding: 0;
 }
-
-body[data-layout="basic"] > header {
-  padding: var(--su-space-3) var(--su-space-4);
-  background-color: var(--su-bg-accent);
-  border-bottom: var(--su-border-w) solid var(--su-border);
-}
-
-body[data-layout="basic"] > main {
-  flex: 1;
-  padding: var(--su-space-4);
-}
-
-body[data-layout="basic"] > footer {
-  padding: var(--su-space-3) var(--su-space-4);
-  background-color: var(--su-bg-accent);
-  border-top: var(--su-border-w) solid var(--su-border);
-}
+[data-layout="basic"] > main { flex: 1; padding: var(--su-space-4); }
 
 /* Side Navigation Layout — an app shell: header (top), nav (left sidebar),
    main, footer (bottom). Scoped to [data-layout] (not body) so the in-page
@@ -706,8 +706,6 @@ body[data-layout="basic"] > footer {
   padding: 0;
   overflow: hidden; /* clip the off-canvas drawer to the shell */
 }
-body[data-layout="side-nav"] { min-height: 100vh; } /* full-page usage fills the viewport */
-
 [data-layout="side-nav"] > header { grid-area: header; }
 [data-layout="side-nav"] > main   { grid-area: main; padding: var(--su-space-4); }
 [data-layout="side-nav"] > footer { grid-area: footer; }
@@ -750,89 +748,91 @@ body[data-layout="side-nav"] { min-height: 100vh; } /* full-page usage fills the
   }
 }
 
-/* With Aside Layout */
-body[data-layout="with-aside"] {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+/* With Aside — header (top), main + related aside, footer (bottom). Mobile:
+   stacked. Desktop (>=1024px): aside becomes a right sidebar. */
+[data-layout="with-aside"] {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "header" "main" "aside" "footer";
   padding: 0;
 }
-
-body[data-layout="with-aside"] > main {
-  flex: 1;
-  padding: var(--su-space-4);
-}
-
-body[data-layout="with-aside"] > aside {
+[data-layout="with-aside"] > header { grid-area: header; }
+[data-layout="with-aside"] > main   { grid-area: main; padding: var(--su-space-4); }
+[data-layout="with-aside"] > aside {
+  grid-area: aside;
   padding: var(--su-space-4);
   background-color: var(--su-bg-accent);
   border-top: var(--su-border-w) solid var(--su-border);
 }
-
-/* Desktop: Aside becomes sidebar */
+[data-layout="with-aside"] > footer { grid-area: footer; }
 @media (min-width: 1024px) {
-  body[data-layout="with-aside"] {
-    flex-direction: row;
+  [data-layout="with-aside"] {
+    grid-template-columns: 1fr 320px;
+    grid-template-areas:
+      "header header"
+      "main   aside"
+      "footer footer";
   }
-
-  body[data-layout="with-aside"] > main {
-    flex: 1;
-  }
-
-  body[data-layout="with-aside"] > aside {
-    width: 350px;
+  [data-layout="with-aside"] > aside {
     border-top: none;
     border-left: var(--su-border-w) solid var(--su-border);
   }
 }
 
-/* Articles Grid Layout */
-body[data-layout="articles"] > main {
+/* Articles — header, main is a responsive card grid (1 -> 2 -> 3 cols), footer. */
+[data-layout="articles"] {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+[data-layout="articles"] > main {
+  flex: 1;
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--su-space-4);
   padding: var(--su-space-4);
 }
-
 @media (min-width: 768px) {
-  body[data-layout="articles"] > main {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  [data-layout="articles"] > main { grid-template-columns: repeat(2, 1fr); }
 }
-
 @media (min-width: 1024px) {
-  body[data-layout="articles"] > main {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  [data-layout="articles"] > main { grid-template-columns: repeat(3, 1fr); }
 }
-
-body[data-layout="articles"] article {
+[data-layout="articles"] > main > article {
+  margin: 0;
   padding: var(--su-space-4);
   background-color: var(--su-bg-accent);
   border: var(--su-border-w) solid var(--su-border);
   border-radius: var(--su-radius);
 }
 
-/* Sections Layout */
-body[data-layout="sections"] {
+/* Sections — stacked full-bleed sections with alternating background. */
+[data-layout="sections"] {
+  display: flex;
+  flex-direction: column;
   padding: 0;
 }
-
-body[data-layout="sections"] > section {
+[data-layout="sections"] > section {
   padding: var(--su-space-5) var(--su-space-4);
   border-bottom: var(--su-border-w) solid var(--su-border);
 }
-
-body[data-layout="sections"] > section:nth-child(even) {
+[data-layout="sections"] > section:nth-of-type(even) {
   background-color: var(--su-bg-accent);
 }
+[data-layout="sections"] > section:last-of-type { border-bottom: none; }
 
-body[data-layout="sections"] > section:last-child {
-  border-bottom: none;
+/* Toolbar — header, nav (top on desktop, fixed bottom bar on mobile), main. */
+[data-layout="toolbar"] {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
 }
-
-/* Bottom Toolbar Layout (Mobile) */
-body[data-layout="toolbar"] > nav {
+[data-layout="toolbar"] > main {
+  flex: 1;
+  padding: var(--su-space-4);
+  padding-bottom: 80px; /* room for the fixed bottom bar (mobile) */
+}
+[data-layout="toolbar"] > nav {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -844,24 +844,16 @@ body[data-layout="toolbar"] > nav {
   display: flex;
   justify-content: space-around;
 }
-
-body[data-layout="toolbar"] > main {
-  padding-bottom: 80px; /* Space for fixed toolbar */
-}
-
-/* Desktop: Toolbar becomes top nav */
+/* Desktop: toolbar becomes a top nav in normal flow */
 @media (min-width: 768px) {
-  body[data-layout="toolbar"] > nav {
+  [data-layout="toolbar"] > nav {
     position: static;
     border-top: none;
     border-bottom: var(--su-border-w) solid var(--su-border);
     justify-content: flex-start;
     gap: var(--su-space-3);
   }
-
-  body[data-layout="toolbar"] > main {
-    padding-bottom: var(--su-space-4);
-  }
+  [data-layout="toolbar"] > main { padding-bottom: var(--su-space-4); }
 }
 
 /* ============================================================================

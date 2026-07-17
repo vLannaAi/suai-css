@@ -27,5 +27,14 @@
     if (th || md) sync();
   });
 
+  // Same-origin sync: when another document (e.g. the parent page or a sibling
+  // iframe) changes the stored skin/mode, re-skin this document too. Lets the
+  // gallery's switcher live-reskin every embedded layout preview.
+  window.addEventListener('storage', (e) => {
+    if (e.key === K && e.newValue) root.setAttribute('data-su-theme', e.newValue);
+    if (e.key === M && e.newValue) root.setAttribute('data-su-mode', e.newValue);
+    if (e.key === K || e.key === M) sync();
+  });
+
   sync(); // script is deferred → DOM is parsed when this runs
 })();

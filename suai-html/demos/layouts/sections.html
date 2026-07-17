@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-su-theme="pla" data-su-mode="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sections layout — SUAI</title>
+  <link rel="stylesheet" href="../../suai.bundle.css">
+  <script src="../../suai-theme.js" defer></script>
+</head>
+<body class="su-layout-page">
+
+  <div class="su-switcher" aria-label="Theme controls">
+    <div class="su-switcher-group su-switcher-skin" role="group" aria-label="Skin">
+      <span class="su-switcher-label">Skin</span>
+      <button type="button" data-su-set-theme="pla">PLA</button>
+      <button type="button" data-su-set-theme="nok">NOK</button>
+      <button type="button" data-su-set-theme="maa">MAA</button>
+      <button type="button" data-su-set-theme="kob">KOB</button>
+    </div>
+    <div class="su-switcher-group su-switcher-mode" role="group" aria-label="Mode">
+      <span class="su-switcher-label">Mode</span>
+      <button type="button" data-su-set-mode="light">Light</button>
+      <button type="button" data-su-set-mode="dark">Dark</button>
+    </div>
+  </div>
+
+  <div data-layout="sections">
+    <header>
+      <h1>Landing Page</h1>
+      <p><a href="../5.layout.html">&larr; Back to layouts gallery</a></p>
+    </header>
+
+    <section>
+      <h2>Hero</h2>
+      <p>Full-bleed stacked sections with alternating backgrounds &mdash; the classic marketing-page rhythm. Each <code>section</code> is a full-width band.</p>
+    </section>
+
+    <section>
+      <h2>Features</h2>
+      <p>Alternating sections get a subtle surface tint so bands separate visually without hard rules.</p>
+    </section>
+
+    <section>
+      <h2>Pricing</h2>
+      <p>Every band uses the same generous vertical padding for an even vertical rhythm down the page.</p>
+    </section>
+
+    <section>
+      <h2>Testimonials</h2>
+      <p>Because the tint keys off <code>--su-bg-accent</code>, the whole page re-skins with the active theme.</p>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 SUAI &middot; sections layout</p>
+    </footer>
+  </div>
+
+</body>
+</html>
