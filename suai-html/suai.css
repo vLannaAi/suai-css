@@ -571,9 +571,9 @@ footer h1, footer h2, footer h3, footer h4, footer h5, footer h6, footer p {
 }
 /* code/kbd inside the accent banner: the neutral --su-bg-accent chip is
    unreadable on the accent colour, so tint it from the on-accent foreground. */
-header :is(code, kbd), footer :is(code, kbd) {
+[data-su-theme] header :is(code, kbd), [data-su-theme] footer :is(code, kbd) {
   background-color: color-mix(in srgb, var(--su-accent-fg) 15%, transparent);
-  border-color: color-mix(in srgb, var(--su-accent-fg) 35%, transparent);
+  border: var(--su-border-w) solid color-mix(in srgb, var(--su-accent-fg) 35%, transparent);
   color: var(--su-accent-fg);
 }
 nav {
@@ -852,45 +852,51 @@ body[data-layout="toolbar"] > main {
 }
 
 /* ============================================================================
-   THEME SWITCHER (demo control) — deliberately minimal: no frames, no chips,
-   no rounded buttons. Plain-text controls that sit above the page, separated
-   from the header by whitespace. suai-theme.js marks the active skin/mode
-   button with aria-pressed="true"; the active state shows as accent-coloured,
-   bold, underlined text (the buttons are inert without that JS).
+   THEME SWITCHER (demo control) — a full-width, single-row top menu bar,
+   visually separated from the page by its own surface + bottom border. Its
+   typography is FIXED (a neutral system stack, not var(--su-font-*)) so the bar
+   looks identical across every skin. suai-theme.js marks the active skin/mode
+   button with aria-pressed="true"; active = accent, bold, underlined text
+   (the buttons are inert without that JS).
    ========================================================================= */
 .su-switcher {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: center;
   gap: var(--su-space-4);
-  align-items: baseline;
-  max-width: 1200px;
-  margin: 0 auto var(--su-space-4); /* bottom margin separates it from the header banner */
-  padding: var(--su-space-3) var(--su-space-4) 0;
+  width: 100%;
+  margin: 0 0 var(--su-space-4); /* gap separates the bar from the header banner */
+  padding: var(--su-space-2) var(--su-space-4);
+  background: var(--su-bg-accent);
+  border-bottom: var(--su-border-w) solid var(--su-border);
+  overflow-x: auto; /* stay one row; scroll on very narrow screens */
+  /* Fixed typography — independent of the active skin. */
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.4;
 }
 .su-switcher-group {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--su-space-2);
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--su-space-3);
   margin: 0;
   border: 0;
   padding: 0;
+  white-space: nowrap;
 }
-.su-switcher-group > legend {
-  float: none;
-  width: auto;
-  padding: 0;
-  margin-right: var(--su-space-1);
-  font-size: var(--su-font-size-sm);
+.su-switcher-label {
+  margin: 0 var(--su-space-1) 0 0;
+  font: inherit;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--su-subtle);
+  color: var(--su-muted);
 }
 .su-switcher button {
   margin: 0;
-  padding: var(--su-space-1) 0;
+  padding: 0;
   font: inherit;
-  font-size: var(--su-font-size-sm);
   color: var(--su-muted);
   background: none;
   border: 0;
@@ -907,7 +913,7 @@ body[data-layout="toolbar"] > main {
   color: var(--su-accent);
   font-weight: 700;
   text-decoration: underline;
-  text-underline-offset: 4px;
+  text-underline-offset: 3px;
   background: none;
   box-shadow: none;
 }
