@@ -1499,6 +1499,8 @@ footer {
 header h1, header h2, header h3, header h4, header h5, header h6, header p,
 footer h1, footer h2, footer h3, footer h4, footer h5, footer h6, footer p {
   padding: var(--su-space-3) var(--su-space-4);
+  margin: 0; /* spacing comes from the padding above; a leftover child margin
+                escapes the accent bg and leaves a gap (e.g. below footer) */
   color: var(--su-accent-fg);
 }
 /* When a theme is active, its heading-colour rules ([data-su-theme] h1{...})
