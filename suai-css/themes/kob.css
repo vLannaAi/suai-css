@@ -77,10 +77,12 @@
      as component tokens if a second theme needs to tune the same knobs.
    ========================================================================= */
 
-/* Side-nav sliding drawer: semi-transparent so the content shows through.
+/* Side-nav sliding drawer: translucent frosted glass — blur + saturate.
    Mobile only (where the drawer overlays content). */
 @media (max-width: 767px) {
   [data-su-theme="kob"] [data-layout="side-nav"] > nav {
-    background-color: color-mix(in srgb, var(--su-bg-accent) 80%, transparent);
+    background-color: color-mix(in srgb, var(--su-bg-accent) 68%, transparent);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
   }
 }

@@ -312,13 +312,10 @@
   opacity: 1;
 }
 
-/* Side-nav sliding drawer: iOS frosted-glass vibrancy — translucent + blur.
-   Mobile only (where the drawer overlays content); the desktop sidebar is a
-   solid column. */
+/* Side-nav sliding drawer: lightly semi-transparent (mobile only, where the
+   drawer overlays content); the desktop sidebar is a solid column. */
 @media (max-width: 767px) {
   [data-su-theme="maa"] [data-layout="side-nav"] > nav {
-    background-color: color-mix(in srgb, var(--su-bg-accent) 68%, transparent);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    backdrop-filter: blur(20px) saturate(180%);
+    background-color: color-mix(in srgb, var(--su-bg-accent) 90%, transparent);
   }
 }

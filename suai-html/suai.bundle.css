@@ -855,14 +855,11 @@
   opacity: 1;
 }
 
-/* Side-nav sliding drawer: iOS frosted-glass vibrancy — translucent + blur.
-   Mobile only (where the drawer overlays content); the desktop sidebar is a
-   solid column. */
+/* Side-nav sliding drawer: lightly semi-transparent (mobile only, where the
+   drawer overlays content); the desktop sidebar is a solid column. */
 @media (max-width: 767px) {
   [data-su-theme="maa"] [data-layout="side-nav"] > nav {
-    background-color: color-mix(in srgb, var(--su-bg-accent) 68%, transparent);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    backdrop-filter: blur(20px) saturate(180%);
+    background-color: color-mix(in srgb, var(--su-bg-accent) 90%, transparent);
   }
 }
 
@@ -947,11 +944,13 @@
      as component tokens if a second theme needs to tune the same knobs.
    ========================================================================= */
 
-/* Side-nav sliding drawer: semi-transparent so the content shows through.
+/* Side-nav sliding drawer: translucent frosted glass — blur + saturate.
    Mobile only (where the drawer overlays content). */
 @media (max-width: 767px) {
   [data-su-theme="kob"] [data-layout="side-nav"] > nav {
-    background-color: color-mix(in srgb, var(--su-bg-accent) 80%, transparent);
+    background-color: color-mix(in srgb, var(--su-bg-accent) 68%, transparent);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
   }
 }
 
@@ -1694,20 +1693,25 @@ body[data-layout] { min-height: 100vh; } /* data-layout applied directly to <bod
    the page scroll on every open/close). */
 [data-layout="side-nav"] .su-drawer-toggle { position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none; }
 [data-layout="side-nav"] .su-drawer-toggle:checked ~ nav { transform: translateX(0); }
+/* Menu / Close share one spot at the header's left, out of flow so the title
+   stays centred regardless. On-accent colour so they read like the title.
+   Close replaces Menu while the drawer is open. */
 [data-layout="side-nav"] .su-drawer-open,
-[data-layout="side-nav"] .su-drawer-close { display: inline-block; cursor: pointer; font-weight: 600; }
-/* Menu is taken out of flow (absolute, left) so the title stays centred in the
-   header whether or not Menu is present — it never shifts across the breakpoint.
-   On-accent colour so it reads like the title. */
-[data-layout="side-nav"] .su-drawer-open {
+[data-layout="side-nav"] .su-drawer-close {
   position: absolute;
   top: 50%;
   left: var(--su-space-4);
   transform: translateY(-50%);
   padding: 0;
+  cursor: pointer;
+  font-weight: 600;
   color: var(--su-accent-fg);
 }
-[data-layout="side-nav"] .su-drawer-close { padding: 0; color: var(--su-accent); }
+[data-layout="side-nav"] .su-drawer-close { display: none; }
+@media (max-width: 767px) {
+  [data-layout="side-nav"] .su-drawer-toggle:checked ~ header .su-drawer-open { display: none; }
+  [data-layout="side-nav"] .su-drawer-toggle:checked ~ header .su-drawer-close { display: block; }
+}
 /* Sidebar links: cancel the base nav hover border-bottom — a growing 4px border
    changes each row's height and makes the list jitter on hover. */
 [data-layout="side-nav"] > nav a:hover { border-bottom: 0; }
