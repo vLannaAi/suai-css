@@ -1615,6 +1615,7 @@ dialog::backdrop {
 body.su-layout-page {
   max-width: none;
   margin: 0;
+  padding: 0; /* override the mobile body padding — layout pages are full-bleed */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -1674,8 +1675,13 @@ body[data-layout] { min-height: 100vh; } /* data-layout applied directly to <bod
 [data-layout="side-nav"] .su-drawer-toggle { position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none; }
 [data-layout="side-nav"] .su-drawer-toggle:checked ~ nav { left: 0; }
 [data-layout="side-nav"] .su-drawer-open,
-[data-layout="side-nav"] .su-drawer-close { cursor: pointer; font-weight: 600; }
-[data-layout="side-nav"] .su-drawer-close { color: var(--su-accent); }
+[data-layout="side-nav"] .su-drawer-close { display: inline-block; cursor: pointer; font-weight: 600; }
+/* Menu inset matches the drawer's Close (both sit space-4 from their top-left). */
+[data-layout="side-nav"] .su-drawer-open { padding: var(--su-space-4); }
+[data-layout="side-nav"] .su-drawer-close { padding: 0; color: var(--su-accent); }
+/* Sidebar links: cancel the base nav hover border-bottom — a growing 4px border
+   changes each row's height and makes the list jitter on hover. */
+[data-layout="side-nav"] > nav a:hover { border-bottom: 0; }
 
 /* Desktop: permanent left sidebar (nav joins the grid); the toggle is hidden. */
 @media (min-width: 768px) {
