@@ -154,3 +154,59 @@
 
 /* Horizontal rule — Bootstrap thicker */
 [data-su-theme="nok"] hr { opacity: 0.25; border-top-width: 2px; }
+
+/* ============================================================================
+   NOK personality: rounded + elevated. Flat Bootstrap surfaces gain shadows and
+   become card-like containers; text stays left-aligned; the top nav is a row of
+   rounded tab "pills" with shadows.
+   ========================================================================= */
+[data-su-theme="nok"] {
+  --su-radius: 0.5rem;
+  --su-radius-lg: 0.75rem;
+}
+[data-su-theme="nok"] article { box-shadow: var(--su-shadow); }
+[data-su-theme="nok"] article:hover { box-shadow: var(--su-shadow-lg); }
+[data-su-theme="nok"] button,
+[data-su-theme="nok"] input[type="submit"],
+[data-su-theme="nok"] input[type="button"] { box-shadow: var(--su-shadow-sm); }
+[data-su-theme="nok"] button:hover,
+[data-su-theme="nok"] input[type="submit"]:hover,
+[data-su-theme="nok"] input[type="button"]:hover { box-shadow: var(--su-shadow); }
+[data-su-theme="nok"] pre,
+[data-su-theme="nok"] details,
+[data-su-theme="nok"] form { box-shadow: var(--su-shadow-sm); }
+/* Content sections become bordered, rounded, elevated containers */
+[data-su-theme="nok"] main > section {
+  background: var(--su-bg);
+  border: var(--su-border-w) solid var(--su-border);
+  border-radius: var(--su-radius-lg);
+  box-shadow: var(--su-shadow-sm);
+  padding: var(--su-space-4);
+  margin-bottom: var(--su-space-4);
+}
+/* No centred text */
+[data-su-theme="nok"] figcaption,
+[data-su-theme="nok"] th,
+[data-su-theme="nok"] td { text-align: left; }
+/* Top nav: rounded tab pills with shadow, left-aligned */
+[data-su-theme="nok"] header nav {
+  background: var(--su-bg-accent);
+  justify-content: flex-start;
+  gap: var(--su-space-2);
+  padding: var(--su-space-2);
+}
+[data-su-theme="nok"] header nav a {
+  flex: 0 0 auto;
+  text-align: left;
+  background: var(--su-bg);
+  border: var(--su-border-w) solid var(--su-border);
+  border-radius: var(--su-radius);
+  box-shadow: var(--su-shadow-sm);
+}
+[data-su-theme="nok"] header nav a:hover { box-shadow: var(--su-shadow); background: var(--su-bg-accent); }
+[data-su-theme="nok"] header nav a[aria-current="page"] {
+  background: var(--su-accent);
+  color: var(--su-accent-fg);
+  border-color: var(--su-accent);
+  opacity: 1;
+}

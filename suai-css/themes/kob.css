@@ -86,3 +86,49 @@
     backdrop-filter: blur(20px) saturate(180%);
   }
 }
+
+/* ============================================================================
+   KOB personality: sharp corners (no radius) + in-palette crimson gradients
+   with transparency. Chrome carries a crimson gradient; cards get a translucent
+   crimson wash; the top nav is a crimson gradient bar with a solid active tab.
+   ========================================================================= */
+[data-su-theme="kob"] {
+  --su-radius: 0;
+  --su-radius-sm: 0;
+  --su-radius-lg: 0;
+  --su-radius-full: 0;
+  --su-radius-control: 0;
+}
+[data-su-theme="kob"] header,
+[data-su-theme="kob"] footer {
+  background: linear-gradient(135deg, var(--su-accent), color-mix(in srgb, var(--su-accent) 48%, #10000a));
+}
+[data-su-theme="kob"] button,
+[data-su-theme="kob"] input[type="submit"],
+[data-su-theme="kob"] input[type="button"] {
+  background: linear-gradient(135deg, var(--su-accent), color-mix(in srgb, var(--su-accent) 58%, #10000a));
+  color: var(--su-accent-fg);
+  border: none;
+}
+[data-su-theme="kob"] button:hover,
+[data-su-theme="kob"] input[type="submit"]:hover,
+[data-su-theme="kob"] input[type="button"]:hover {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--su-accent) 85%, #fff), var(--su-accent));
+}
+[data-su-theme="kob"] article {
+  background: linear-gradient(160deg, color-mix(in srgb, var(--su-accent) 13%, transparent), transparent), var(--su-bg);
+  border: var(--su-border-w) solid var(--su-border);
+  box-shadow: none;
+}
+[data-su-theme="kob"] header nav {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--su-accent) 22%, var(--su-bg)), color-mix(in srgb, var(--su-accent) 6%, var(--su-bg)));
+}
+[data-su-theme="kob"] header nav a:hover {
+  background: color-mix(in srgb, var(--su-accent) 28%, transparent);
+  color: var(--su-accent);
+}
+[data-su-theme="kob"] header nav a[aria-current="page"] {
+  background: var(--su-accent);
+  color: var(--su-accent-fg);
+  opacity: 1;
+}

@@ -319,3 +319,51 @@
     background-color: color-mix(in srgb, var(--su-bg-accent) 90%, transparent);
   }
 }
+
+/* ============================================================================
+   MAA personality: vertical accent markers, condensed spacing, translucency.
+   ========================================================================= */
+[data-su-theme="maa"] {
+  /* condensed spacing scale — tighter than the contract defaults */
+  --su-space-3: 0.625rem;
+  --su-space-4: 1rem;
+  --su-space-5: 2rem;
+}
+/* Vertical marker: section headings and quotes get a left accent bar */
+[data-su-theme="maa"] h2,
+[data-su-theme="maa"] h3 {
+  border-left: 3px solid var(--su-accent);
+  padding-left: var(--su-space-3);
+}
+[data-su-theme="maa"] blockquote {
+  border-left: 3px solid var(--su-accent);
+  padding-left: var(--su-space-4);
+}
+/* Translucent frosted cards */
+[data-su-theme="maa"] article,
+[data-su-theme="maa"] details {
+  background-color: color-mix(in srgb, var(--su-bg-accent) 72%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+}
+/* Top nav: translucent condensed bar; active tab tinted with a vertical marker */
+[data-su-theme="maa"] header nav {
+  background: color-mix(in srgb, var(--su-bg-accent) 80%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  gap: var(--su-space-1);
+  padding: var(--su-space-1);
+}
+[data-su-theme="maa"] header nav a {
+  background: transparent;
+  border-radius: var(--su-radius-sm);
+}
+[data-su-theme="maa"] header nav a:hover {
+  background: color-mix(in srgb, var(--su-accent) 8%, transparent);
+}
+[data-su-theme="maa"] header nav a[aria-current="page"] {
+  background: color-mix(in srgb, var(--su-accent) 12%, transparent);
+  border-left: 3px solid var(--su-accent);
+  color: var(--su-accent);
+  opacity: 1;
+}
