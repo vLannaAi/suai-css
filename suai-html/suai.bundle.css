@@ -1823,19 +1823,28 @@ body[data-layout="toolbar"] > main {
   padding: 0;
   white-space: nowrap;
 }
+/* extra breathing room between the Skin cluster and the Mode cluster */
+.su-switcher-mode {
+  margin-left: var(--su-space-4);
+}
+/* Labels are quiet captions — smaller and lighter than the (clickable) items,
+   so the two read as clearly different roles. */
 .su-switcher-label {
-  margin: 0 var(--su-space-1) 0 0;
+  margin: 0 var(--su-space-2) 0 0;
   font: inherit;
+  font-size: 0.6875rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--su-muted);
 }
 .su-switcher button {
   margin: 0;
   padding: 0;
+  min-height: 0; /* reset skins that enforce a tap-target height (maa: 44px) */
   font: inherit;
-  color: var(--su-muted);
+  font-weight: 500;
+  color: var(--su-fg);
   background: none;
   border: 0;
   border-radius: 0;
@@ -1843,7 +1852,7 @@ body[data-layout="toolbar"] > main {
   cursor: pointer;
 }
 .su-switcher button:hover {
-  color: var(--su-fg);
+  color: var(--su-accent);
   background: none;
   box-shadow: none;
 }
