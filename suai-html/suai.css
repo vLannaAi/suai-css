@@ -680,6 +680,19 @@ footer h1, footer h2, footer h3, footer h4, footer h5, footer h6, footer p {
   border: var(--su-border-w) solid color-mix(in srgb, var(--su-accent-fg) 35%, transparent);
   color: var(--su-accent-fg);
 }
+/* Block <pre> inside the accent banner: its opaque --su-bg-accent surface hides
+   the on-accent (white/dark) text. Give the block the same adaptive tint as the
+   chips, and neutralise any nested <code> so it doesn't paint its own box. */
+[data-su-theme] header pre, [data-su-theme] footer pre {
+  background-color: color-mix(in srgb, var(--su-accent-fg) 15%, transparent);
+  border: var(--su-border-w) solid color-mix(in srgb, var(--su-accent-fg) 35%, transparent);
+  color: var(--su-accent-fg);
+}
+[data-su-theme] header pre :is(code, kbd), [data-su-theme] footer pre :is(code, kbd) {
+  background-color: transparent;
+  border: 0;
+  color: var(--su-accent-fg);
+}
 /* An <article>'s own footer is metadata (a timestamp, byline) — not the page
    footer — so keep it plain instead of the accent-banner treatment. */
 article > footer {
