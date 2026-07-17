@@ -1941,6 +1941,12 @@ body[data-layout] { min-height: 100vh; } /* data-layout applied directly to <bod
    height; other demo pages keep the separating gap. */
 body.su-layout-page > .su-switcher { margin-bottom: 0; }
 
+/* Embedded in an iframe (the gallery previews): hide the page's own switcher —
+   the embedding page owns the theme controls (shared via localStorage). The
+   flag is set by a tiny inline script when window.self !== window.top. */
+[data-su-embedded] .su-switcher,
+[data-su-embedded] .su-show-controls { display: none; }
+
 /* "Hide" control — collapses the switcher bar to a small corner "Show controls"
    button so the full-height layout can be tested. Pure CSS (a hidden checkbox).
    The Hide label sits at the right end of the bar (margin-left:auto). */
