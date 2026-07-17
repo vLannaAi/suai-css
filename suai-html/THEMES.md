@@ -7,12 +7,12 @@ SUAI HTML ships one generated CSS file, `suai.bundle.css`, that contains the tok
 ```
 suai-html/
 ├── suai.css              # Theme-agnostic base styles (source layer)
-├── suai.bundle.css       # GENERATED — tokens + fonts + pla/nok/maa/speed + suai.css
+├── suai.bundle.css       # GENERATED — tokens + fonts + pla/nok/maa/kob + suai.css
 ├── suai-theme.js          # Optional client-side switcher (progressive enhancement only)
 └── fonts/                 # Variable-font files used by the skins
 ```
 
-`suai.bundle.css` is built by concatenating, in order: `suai-css/tokens.css` (the `--su-*` contract), `suai-css/themes/fonts/fonts.css`, `suai-css/themes/{pla,nok,maa,speed}.css`, and `suai-html/suai.css`. It is a **committed build artifact** — run `pnpm build:html` from the repo root after editing any of those source files.
+`suai.bundle.css` is built by concatenating, in order: `suai-css/tokens.css` (the `--su-*` contract), `suai-css/themes/fonts/fonts.css`, `suai-css/themes/{pla,nok,maa,kob}.css`, and `suai-html/suai.css`. It is a **committed build artifact** — run `pnpm build:html` from the repo root after editing any of those source files.
 
 ---
 
@@ -64,11 +64,11 @@ For production sites, link the single bundle and set two attributes on `<html>`:
 </head>
 ```
 
-### Speed Light Theme
+### KOB Light Theme
 
 ```html
 <!DOCTYPE html>
-<html lang="en" data-su-theme="speed" data-su-mode="light">
+<html lang="en" data-su-theme="kob" data-su-mode="light">
 <head>
   <link rel="stylesheet" href="suai-html/suai.bundle.css">
 </head>
@@ -117,7 +117,7 @@ For production sites, link the single bundle and set two attributes on `<html>`:
 
 ---
 
-### Speed
+### KOB
 **Characteristics**:
 - Crimson, high-contrast palette
 - Sharp, no-nonsense styling
@@ -178,7 +178,7 @@ For demos or apps needing interactive theme switching, `suai-theme.js` is a smal
   <button type="button" data-su-set-theme="pla">PLA</button>
   <button type="button" data-su-set-theme="nok">NOK</button>
   <button type="button" data-su-set-theme="maa">MAA</button>
-  <button type="button" data-su-set-theme="speed">Speed</button>
+  <button type="button" data-su-set-theme="kob">KOB</button>
   <span>Mode</span>
   <button type="button" data-su-set-mode="light">Light</button>
   <button type="button" data-su-set-mode="dark">Dark</button>

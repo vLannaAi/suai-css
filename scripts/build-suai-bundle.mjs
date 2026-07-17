@@ -7,7 +7,7 @@ const LAYERS = [
   'suai-css/tokens.css',
   'suai-css/themes/fonts/fonts.css',
   'suai-css/themes/pla.css', 'suai-css/themes/nok.css',
-  'suai-css/themes/maa.css', 'suai-css/themes/speed.css',
+  'suai-css/themes/maa.css', 'suai-css/themes/kob.css',
   'suai-html/suai.css',
 ]
 const parts = []

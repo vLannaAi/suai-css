@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Make the four Stage-1 skins (pla/nok/maa/speed) render fully with zero JavaScript by migrating `suai-html` onto the `--su-*` token contract, with an optional progressive-enhancement switcher.
+**Goal:** Make the four Stage-1 skins (pla/nok/maa/kob) render fully with zero JavaScript by migrating `suai-html` onto the `--su-*` token contract, with an optional progressive-enhancement switcher.
 
 **Architecture:** One canonical token layer (`suai-css/tokens.css`) + four attribute-scoped skin files + a rewritten element-base layer, concatenated by a zero-dependency Node script into a committed `suai-html/suai.bundle.css`. Pages set `data-su-theme`/`data-su-mode` on `<html>`; the cascade styles everything with no JS. A ~15-line switcher only flips those attributes.
 
@@ -11,7 +11,7 @@
 ## Global Constraints
 
 - **Tokens:** only `--su-*`. Final check `grep -rE '\-\-suai-' suai-html/` MUST be empty. Token names change ONLY in `suai-css/tokens.css`.
-- **Scoping:** palette axis `data-su-theme="pla|nok|maa|speed"`; mode axis `data-su-mode="light|dark"`. Both cascade from any element. Dark flips ONLY color tokens; shape/type/spacing are mode-invariant.
+- **Scoping:** palette axis `data-su-theme="pla|nok|maa|kob"`; mode axis `data-su-mode="light|dark"`. Both cascade from any element. Dark flips ONLY color tokens; shape/type/spacing are mode-invariant.
 - **No decorative emoji.** Final check `grep -rlP '[\x{1F000}-\x{1FAFF}\x{2600}-\x{27BF}\x{2B00}-\x{2BFF}]' suai-html/` MUST be empty. Use text labels.
 - **Preserve current visual identities** — re-express in `--su-*`, do not restyle.
 - **No AI/Claude attribution** in commits.
@@ -243,18 +243,18 @@ git commit -m "themes: port MAA skin to --su-* (attribute-scoped, light+dark, ba
 
 ---
 
-### Task 5: Bundle Speed fonts + font `@font-face` layer
+### Task 5: Bundle KOB fonts + font `@font-face` layer
 
 **Files:**
 - Create: `suai-css/themes/fonts/fonts.css` (all skins' `@font-face`)
 - Create: `suai-html/fonts/` (woff2 files copied here so the committed bundle is self-contained)
-- Modify: `suai-css/themes/speed.css` (no font changes needed; it already references DM Sans/Saira by name)
+- Modify: `suai-css/themes/kob.css` (no font changes needed; it already references DM Sans/Saira by name)
 - Move: existing woff2 from `suai-html/suai-lai/*/fonts/*.woff2`
 
 **Interfaces:**
 - Produces: `fonts.css` with `@font-face` for Roboto Flex, Noto Sans Thai, CMU, **DM Sans, Saira**, all `url('../../suai-html/fonts/NAME.woff2')`-relative to the bundle output (see Task 6 for final path rewrite).
 
-- [ ] **Step 1: Obtain Speed fonts.** Download variable woff2 for **DM Sans** and **Saira** (both SIL OFL) into `suai-html/fonts/`:
+- [ ] **Step 1: Obtain KOB fonts.** Download variable woff2 for **DM Sans** and **Saira** (both SIL OFL) into `suai-html/fonts/`:
 ```bash
 mkdir -p suai-html/fonts
 # From Google Fonts (OFL). Verify licence file noted in fonts/README.txt.
@@ -277,7 +277,7 @@ git mv suai-html/suai-lai/maa/fonts/CMU-flex.woff2 suai-html/fonts/
 - [ ] **Step 5: Commit.**
 ```bash
 git add suai-css/themes/fonts suai-html/fonts && git rm -r suai-html/suai-lai/*/fonts
-git commit -m "fonts: consolidate skin fonts + bundle Speed (DM Sans, Saira) under suai-html/fonts"
+git commit -m "fonts: consolidate skin fonts + bundle KOB (DM Sans, Saira) under suai-html/fonts"
 ```
 
 ---
@@ -344,7 +344,7 @@ git add suai-html/suai.css && git commit -m "suai-html: migrate element base sty
 - Modify: `package.json` (add `build:html` script)
 
 **Interfaces:**
-- Consumes: `tokens.css`, `themes/{pla,nok,maa,speed}.css`, `themes/fonts/fonts.css`, `suai-html/suai.css`.
+- Consumes: `tokens.css`, `themes/{pla,nok,maa,kob}.css`, `themes/fonts/fonts.css`, `suai-html/suai.css`.
 - Produces: `suai-html/suai.bundle.css` (single committed stylesheet), `pnpm build:html`.
 
 - [ ] **Step 1: Write the script.**
@@ -358,7 +358,7 @@ const LAYERS = [
   'suai-css/tokens.css',
   'suai-css/themes/fonts/fonts.css',
   'suai-css/themes/pla.css', 'suai-css/themes/nok.css',
-  'suai-css/themes/maa.css', 'suai-css/themes/speed.css',
+  'suai-css/themes/maa.css', 'suai-css/themes/kob.css',
   'suai-html/suai.css',
 ]
 const parts = []
@@ -428,7 +428,7 @@ git commit -m "build: add zero-dep Stage-1 bundle script + committed suai.bundle
   <button type="button" data-su-set-theme="pla">PLA</button>
   <button type="button" data-su-set-theme="nok">NOK</button>
   <button type="button" data-su-set-theme="maa">MAA</button>
-  <button type="button" data-su-set-theme="speed">Speed</button>
+  <button type="button" data-su-set-theme="kob">KOB</button>
   <span>Mode</span>
   <button type="button" data-su-set-mode="light">Light</button>
   <button type="button" data-su-set-mode="dark">Dark</button>
@@ -523,7 +523,7 @@ git commit -m "demos: retrofit form/media/layout to bundle + switcher; strip emo
 ```
 (This inline script is demo-only reflection, not required for styling — the page is fully styled without it.)
 
-- [ ] **Step 4: Verify** the swatches re-read after switching skins (click `[data-su-set-theme="speed"]`, re-run/reload → values change). Screenshot.
+- [ ] **Step 4: Verify** the swatches re-read after switching skins (click `[data-su-set-theme="kob"]`, re-run/reload → values change). Screenshot.
 
 - [ ] **Step 5: Commit.**
 ```bash
@@ -541,9 +541,9 @@ git commit -m "demos: rebuild 6.theme as live --su-* reference; strip emoji"
 
 - [ ] **Step 1: No-JS gate.** With JavaScript disabled, for each of the 6 pages: assert `body` background non-transparent and `--su-fg` resolves. Record pass/fail.
 
-- [ ] **Step 2: 8-state screenshots.** With JS enabled, for `1.text.html`, click through all `theme × mode` combinations (pla/nok/maa/speed × light/dark) and screenshot each into `assets/after-<theme>-<mode>.png`. Assert `--su-accent` differs across the four skins.
+- [ ] **Step 2: 8-state screenshots.** With JS enabled, for `1.text.html`, click through all `theme × mode` combinations (pla/nok/maa/kob × light/dark) and screenshot each into `assets/after-<theme>-<mode>.png`. Assert `--su-accent` differs across the four skins.
 
-- [ ] **Step 3: Persistence.** Click `speed`+`dark`, reload, assert attributes still `speed`/`dark`.
+- [ ] **Step 3: Persistence.** Click `kob`+`dark`, reload, assert attributes still `kob`/`dark`.
 
 - [ ] **Step 4: Regression greps (MUST be empty):**
 ```bash
@@ -594,4 +594,4 @@ git commit -m "docs: Stage-1 --su-* attribute-driven theming; retire suai-lai + 
 
 **Type/name consistency:** `data-su-set-theme`/`data-su-set-mode` (Task 8 markup ↔ JS) match. `suai.bundle.css` path consistent across Tasks 7, 9–12. `pnpm build:html` consistent Tasks 7, 13. Font family names in `fonts.css` (Task 5) match each skin's `--su-font-body` (Tasks 2–4).
 
-**Known risk flagged in-plan:** Speed font acquisition (Task 5 Step 1) depends on network/`woff2_compress`; fallback to system fonts documented if unavailable.
+**Known risk flagged in-plan:** KOB font acquisition (Task 5 Step 1) depends on network/`woff2_compress`; fallback to system fonts documented if unavailable.

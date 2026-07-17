@@ -10,16 +10,20 @@
 </head>
 <body>
 
-  <fieldset class="su-switcher" aria-label="Theme controls">
-    <legend>Skin</legend>
-    <button type="button" data-su-set-theme="pla">PLA</button>
-    <button type="button" data-su-set-theme="nok">NOK</button>
-    <button type="button" data-su-set-theme="maa">MAA</button>
-    <button type="button" data-su-set-theme="speed">Speed</button>
-    <span>Mode</span>
-    <button type="button" data-su-set-mode="light">Light</button>
-    <button type="button" data-su-set-mode="dark">Dark</button>
-  </fieldset>
+  <div class="su-switcher" aria-label="Theme controls">
+    <fieldset class="su-switcher-group su-switcher-skin">
+      <legend>Skin</legend>
+      <button type="button" data-su-set-theme="pla">PLA</button>
+      <button type="button" data-su-set-theme="nok">NOK</button>
+      <button type="button" data-su-set-theme="maa">MAA</button>
+      <button type="button" data-su-set-theme="kob">KOB</button>
+    </fieldset>
+    <fieldset class="su-switcher-group su-switcher-mode">
+      <legend>Mode</legend>
+      <button type="button" data-su-set-mode="light">Light</button>
+      <button type="button" data-su-set-mode="dark">Dark</button>
+    </fieldset>
+  </div>
 
   <!-- Fixed Header with Theme Switcher -->
   <header>
@@ -46,6 +50,8 @@
 
       <div id="su-vars"></div>
     </section>
+
+    <hr>
 
     <!-- TYPOGRAPHY SECTION -->
     <section class="section" id="typography">
@@ -75,6 +81,8 @@
         <h6 style="margin: 0.5rem 0;">Heading 6 - The quick brown fox</h6>
       </div>
     </section>
+
+    <hr>
 
     <!-- COMPONENTS SECTION -->
     <section class="section" id="components">
@@ -150,18 +158,64 @@ console.log(theme);</code></pre>
   </main>
 
   <script>
-    // Live --su-* reference: reads computed values and renders swatches.
-    // Demo-only reflection — the page's styling comes entirely from the
-    // static bundle; this script only displays values, never injects CSS.
-    const suVarNames = ['--su-bg', '--su-bg-accent', '--su-fg', '--su-muted', '--su-subtle', '--su-border', '--su-accent', '--su-accent-fg', '--su-accent-2', '--su-danger', '--su-success', '--su-warning', '--su-info'];
+    // Live --su-* palette table. Demo-only reflection — the page's styling
+    // comes entirely from the static bundle; this script only displays values.
+    const SU_VARS = [
+      ['--su-bg', 'Background'],
+      ['--su-bg-accent', 'Background · accent'],
+      ['--su-fg', 'Foreground'],
+      ['--su-muted', 'Muted'],
+      ['--su-subtle', 'Subtle'],
+      ['--su-border', 'Border'],
+      ['--su-accent', 'Accent'],
+      ['--su-accent-fg', 'Accent · foreground'],
+      ['--su-accent-2', 'Accent 2 · data'],
+      ['--su-danger', 'Danger'],
+      ['--su-success', 'Success'],
+      ['--su-warning', 'Warning'],
+      ['--su-info', 'Info'],
+    ];
+
+    // Resolve a token to its painted color so we can show a real hex + rgba,
+    // even when the token is defined via color-mix() or rgba().
+    const probe = document.createElement('span');
+    probe.style.display = 'none';
+    document.body.appendChild(probe);
+    function resolved(varName) {
+      probe.style.backgroundColor = 'transparent';
+      probe.style.backgroundColor = `var(${varName})`;
+      return getComputedStyle(probe).backgroundColor; // "rgb(...)" | "rgba(...)"
+    }
+    function parseRgb(str) {
+      const m = str.match(/rgba?\(([^)]+)\)/);
+      if (!m) return null;
+      const p = m[1].split(',').map((s) => parseFloat(s));
+      return { r: p[0], g: p[1], b: p[2], a: p[3] === undefined ? 1 : p[3] };
+    }
+    const toHex = ({ r, g, b }) =>
+      '#' + [r, g, b].map((x) => Math.round(x).toString(16).padStart(2, '0')).join('');
+    const toRgba = ({ r, g, b, a }) => `rgba(${r}, ${g}, ${b}, ${a})`;
+    // Swatch at 200% of the previous 1.5rem chip.
+    const SWATCH = 'display:inline-block;width:3rem;height:3rem;border-radius:var(--su-radius-sm);border:1px solid var(--su-border);vertical-align:middle';
 
     function renderSuVars() {
-      const cs = getComputedStyle(document.documentElement);
-      document.getElementById('su-vars').innerHTML = suVarNames.map(n =>
-        `<div style="display:flex;align-items:center;gap:.5rem;padding:.25rem 0">
-           <span style="display:inline-block;width:1.5rem;height:1.5rem;border:1px solid var(--su-border);background:var(${n})"></span>
-           <code>${n}</code><span>${cs.getPropertyValue(n).trim()}</span></div>`
-      ).join('');
+      const rows = SU_VARS.map(([name, label]) => {
+        const c = parseRgb(resolved(name));
+        const hex = c ? toHex(c) : '—';
+        const rgba = c ? toRgba(c) : '—';
+        return `<tr>
+            <td>${label}</td>
+            <td><code>${name}</code></td>
+            <td><span style="${SWATCH};background:var(${name})"></span></td>
+            <td><code>${hex}</code></td>
+            <td><code>${rgba}</code></td>
+          </tr>`;
+      }).join('');
+      document.getElementById('su-vars').innerHTML =
+        `<table>
+           <thead><tr><th>Property</th><th>Variable</th><th>Swatch</th><th>Hex</th><th>RGB (alpha)</th></tr></thead>
+           <tbody>${rows}</tbody>
+         </table>`;
     }
 
     renderSuVars();

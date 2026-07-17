@@ -7,7 +7,7 @@ import { defineConfig, presetWind4, presetIcons, transformerVariantGroup, transf
 // (single root class, semantic child selectors, multi-line utility groups via
 // @apply); every colour/shape/font/shadow utility below is LATE-BOUND — it
 // compiles to var(--su-*), so the pre-compiled component CSS re-skins at
-// runtime when a theme (themes/speed.css) or consumer rewrites the variables.
+// runtime when a theme (themes/kob.css) or consumer rewrites the variables.
 // Utilities READ tokens; themes WRITE them. Consumers never need this config —
 // they receive compiled CSS (the opaque seam).
 //

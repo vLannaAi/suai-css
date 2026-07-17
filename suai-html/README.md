@@ -34,7 +34,7 @@ That's it. No `className="..."`, no `import`, no JavaScript. Just HTML.
 
 - **Zero JavaScript** - Pure CSS, works everywhere
 - **Semantic HTML** - Official HTML5 tags only
-- **4 Beautiful Skins** - Material Design 3, Bootstrap 5.3, Apple HIG, and a crimson "Speed" skin
+- **4 Beautiful Skins** - Material Design 3, Bootstrap 5.3, Apple HIG, and a crimson "KOB" skin
 - **Light & Dark Modes** - Built-in theme switching
 - **Single Bundle** - One CSS file, no build tools required to consume
 - **No Build Tools** - Drop in and use
@@ -83,7 +83,7 @@ npm install @suai/html
 <html data-su-theme="pla" data-su-mode="light">
 ```
 
-- `data-su-theme` — one of `pla`, `nok`, `maa`, `speed`
+- `data-su-theme` — one of `pla`, `nok`, `maa`, `kob`
 - `data-su-mode` — `light` or `dark`
 
 ### PLA (ปลา - Fish)
@@ -95,7 +95,7 @@ Bootstrap 5.3 inspired. Clean, professional, accessible.
 ### MAA (ม้า - Horse)
 iOS/Apple HIG inspired. Minimal, precise, elegant.
 
-### Speed
+### KOB
 A crimson, high-contrast skin.
 
 **Switching themes**: Just change the `data-su-theme` and `data-su-mode` attributes. No page reload needed. No JavaScript required (set server-side or statically). An optional `suai-theme.js` is provided for client-side switching in demos — see [THEMES.md](THEMES.md).

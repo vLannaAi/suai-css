@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" data-su-theme="speed">
+<html lang="en" data-su-theme="kob">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SUAI × speed — token contract demo</title>
-  <!-- Speed's fonts (graceful system-sans fallback when offline) -->
+  <title>SUAI × kob — token contract demo</title>
+  <!-- kob's fonts (graceful system-sans fallback when offline) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Saira:wght@600;700&display=swap">
   <!-- The chain under test: contract → theme → compiled utilities -->
   <link rel="stylesheet" href="../tokens.css">
-  <link rel="stylesheet" href="../themes/speed.css">
+  <link rel="stylesheet" href="../themes/kob.css">
   <link rel="stylesheet" href="./demo.css">
 </head>
 <body class="bg-su-bg text-su-fg font-su-body min-h-screen transition-colors">
 
   <header class="px-6 py-5 md:px-10 flex flex-wrap items-center justify-between gap-4 border-b border-su-border">
     <div>
-      <h1 class="font-su-brand font-bold text-2xl text-su-accent">speed</h1>
-      <p class="text-sm text-su-muted">SUAI token contract v1 · theme: <strong>speed</strong> · first-consumer demo</p>
+      <h1 class="font-su-brand font-bold text-2xl text-su-accent">kob</h1>
+      <p class="text-sm text-su-muted">SUAI token contract v1 · theme: <strong>kob</strong> · first-consumer demo</p>
     </div>
     <div class="flex gap-2">
       <button id="mode-toggle" class="su-btn-soft">toggle dark mode</button>
-      <button id="theme-toggle" class="su-btn-ghost">theme: speed ⇄ default</button>
+      <button id="theme-toggle" class="su-btn-ghost">theme: kob ⇄ default</button>
     </div>
   </header>
 
@@ -114,7 +114,7 @@
   </main>
 
   <footer class="px-6 pb-8 md:px-10 text-xs text-su-subtle">
-    tokens.css (contract defaults) → themes/speed.css (data-su-theme="speed") → demo.css
+    tokens.css (contract defaults) → themes/kob.css (data-su-theme="kob") → demo.css
     (compiled from uno.config.ts — every colour/shape/font utility resolves to var(--su-*)).
     Toggle "default" to see the whitelabel contract values with the exact same compiled CSS.
   </footer>
@@ -127,7 +127,7 @@
     })
     document.getElementById('theme-toggle').addEventListener('click', () => {
       if (html.dataset.suTheme) delete html.dataset.suTheme
-      else html.dataset.suTheme = 'speed'
+      else html.dataset.suTheme = 'kob'
     })
   </script>
 </body>

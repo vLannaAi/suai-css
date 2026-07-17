@@ -1,6 +1,6 @@
 /* ============================================================================
-   SUAI THEME: speed — first canonical theme (v1 draft)
-   First consumer: speed. Ported from noy-db-ui showcase "Speed" palette
+   SUAI THEME: kob — first canonical theme (v1 draft)
+   First consumer: kob. Ported from noy-db-ui's crimson showcase palette
    (examples/showcase/app/assets/themes.css), translated to the --su- contract.
    ----------------------------------------------------------------------------
    Voice: crimson racing. Neutrals are crimson-tinted (not straight slate):
@@ -8,13 +8,13 @@
    page sits in one temperature. DM Sans throughout; Saira for brand only.
    Cyan is the data accent (accent-2) — chrome is crimson, data is cyan.
    ----------------------------------------------------------------------------
-   Usage: load AFTER tokens.css, then  <html data-su-theme="speed">
+   Usage: load AFTER tokens.css, then  <html data-su-theme="kob">
    (add data-su-mode="dark" for dark). Fonts are NOT bundled here — the app
    loads DM Sans + Saira (webfont or system fallback applies otherwise).
    Only tokens that DIFFER from the contract defaults are set (lean rule).
    ========================================================================= */
 
-[data-su-theme="speed"] {
+[data-su-theme="kob"] {
   /* surfaces & neutrals (light) */
   --su-bg: #ffffff;
   --su-bg-accent: #f8f3f5;
@@ -51,9 +51,9 @@
 
 /* Dark — mode attribute on the same element or any ancestor/descendant scope.
    Status tokens are NOT restated: the contract's [data-su-mode="dark"] block
-   already provides the exact dark status set Speed used. */
-[data-su-theme="speed"][data-su-mode="dark"],
-[data-su-theme="speed"] [data-su-mode="dark"] {
+   already provides the exact dark status set kob uses. */
+[data-su-theme="kob"][data-su-mode="dark"],
+[data-su-theme="kob"] [data-su-mode="dark"] {
   --su-bg: #190e13;
   --su-bg-accent: #2a1a21;
   --su-fg: #f7eef1;

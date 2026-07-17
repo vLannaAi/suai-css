@@ -26,7 +26,7 @@ Files:
            (Sans/fonts/variable/DMSans[opsz,wght].ttf)
   Licence: SIL OFL 1.1
   Converted from ttf to woff2 with `fonttools ttLib.woff2 compress`.
-  Used by: suai-css/themes/speed.css (--su-font-body, --su-font-display)
+  Used by: suai-css/themes/kob.css (--su-font-body, --su-font-display)
 
 - Saira-flex.woff2
   Family: Saira (variable: wght 100-900, wdth 50%-125%)
@@ -34,7 +34,7 @@ Files:
            (Saira[wdth,wght].ttf)
   Licence: SIL OFL 1.1
   Converted from ttf to woff2 with `fonttools ttLib.woff2 compress`.
-  Used by: suai-css/themes/speed.css (--su-font-brand)
+  Used by: suai-css/themes/kob.css (--su-font-brand)
 
 The @font-face declarations for all of the above live in
 suai-css/themes/fonts/fonts.css.

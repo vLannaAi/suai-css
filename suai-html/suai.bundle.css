@@ -179,7 +179,7 @@
 /* === suai-css/themes/fonts/fonts.css === */
 /**
  * SUAI Stage-1 skins - Font Declarations
- * Consolidated @font-face rules for all skins (pla, nok, maa, speed).
+ * Consolidated @font-face rules for all skins (pla, nok, maa, kob).
  *
  * Paths are written relative to the eventual bundle output at
  * suai-html/suai.bundle.css (i.e. `./fonts/NAME.woff2` resolves to
@@ -854,10 +854,10 @@
 }
 
 
-/* === suai-css/themes/speed.css === */
+/* === suai-css/themes/kob.css === */
 /* ============================================================================
-   SUAI THEME: speed — first canonical theme (v1 draft)
-   First consumer: speed. Ported from noy-db-ui showcase "Speed" palette
+   SUAI THEME: kob — first canonical theme (v1 draft)
+   First consumer: kob. Ported from noy-db-ui's crimson showcase palette
    (examples/showcase/app/assets/themes.css), translated to the --su- contract.
    ----------------------------------------------------------------------------
    Voice: crimson racing. Neutrals are crimson-tinted (not straight slate):
@@ -865,13 +865,13 @@
    page sits in one temperature. DM Sans throughout; Saira for brand only.
    Cyan is the data accent (accent-2) — chrome is crimson, data is cyan.
    ----------------------------------------------------------------------------
-   Usage: load AFTER tokens.css, then  <html data-su-theme="speed">
+   Usage: load AFTER tokens.css, then  <html data-su-theme="kob">
    (add data-su-mode="dark" for dark). Fonts are NOT bundled here — the app
    loads DM Sans + Saira (webfont or system fallback applies otherwise).
    Only tokens that DIFFER from the contract defaults are set (lean rule).
    ========================================================================= */
 
-[data-su-theme="speed"] {
+[data-su-theme="kob"] {
   /* surfaces & neutrals (light) */
   --su-bg: #ffffff;
   --su-bg-accent: #f8f3f5;
@@ -908,9 +908,9 @@
 
 /* Dark — mode attribute on the same element or any ancestor/descendant scope.
    Status tokens are NOT restated: the contract's [data-su-mode="dark"] block
-   already provides the exact dark status set Speed used. */
-[data-su-theme="speed"][data-su-mode="dark"],
-[data-su-theme="speed"] [data-su-mode="dark"] {
+   already provides the exact dark status set kob uses. */
+[data-su-theme="kob"][data-su-mode="dark"],
+[data-su-theme="kob"] [data-su-mode="dark"] {
   --su-bg: #190e13;
   --su-bg-accent: #2a1a21;
   --su-fg: #f7eef1;
@@ -1780,6 +1780,65 @@ body[data-layout="toolbar"] > main {
   body[data-layout="toolbar"] > main {
     padding-bottom: var(--su-space-4);
   }
+}
+
+/* ============================================================================
+   THEME SWITCHER (demo control). Styled entirely from --su-* tokens so it
+   re-skins with the page. suai-theme.js marks the active skin/mode button with
+   aria-pressed="true"; the styling below is all that turns that into a visible
+   selection. Without JS the buttons are inert (the switcher needs JS to work).
+   ========================================================================= */
+.su-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--su-space-3);
+  align-items: flex-end;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--su-space-3) var(--su-space-3) 0;
+}
+.su-switcher-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--su-space-2);
+  margin: 0;
+  border: var(--su-border-w) solid var(--su-border);
+  border-radius: var(--su-radius);
+  padding: var(--su-space-2) var(--su-space-3);
+}
+.su-switcher-group > legend {
+  padding: 0 var(--su-space-1);
+  font-size: var(--su-font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--su-muted);
+}
+.su-switcher button {
+  margin: 0;
+  padding: var(--su-space-1) var(--su-space-3);
+  font: inherit;
+  font-size: var(--su-font-size-sm);
+  line-height: 1.6;
+  color: var(--su-fg);
+  background: var(--su-bg);
+  border: var(--su-border-w) solid var(--su-border);
+  border-radius: var(--su-radius-control);
+  box-shadow: none;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.su-switcher button:hover {
+  border-color: var(--su-accent);
+  color: var(--su-accent);
+  box-shadow: none;
+}
+.su-switcher button[aria-pressed="true"] {
+  background: var(--su-accent);
+  border-color: var(--su-accent);
+  color: var(--su-accent-fg);
+  box-shadow: none;
 }
 
 /* ============================================================================

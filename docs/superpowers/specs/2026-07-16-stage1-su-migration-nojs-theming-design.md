@@ -17,11 +17,11 @@ The Stage 1 (`suai-html`) demos are visibly broken and, more seriously, the fram
 
 This directly contradicts the README's "Zero JavaScript / SSR Perfect / Email Compatible" claims. Stage 1 cannot currently prove the one thing it exists to prove.
 
-Two token systems are also live and incompatible: Stage 1 uses legacy `--suai-*` (scoped by `data-theme`/`data-mode`); Stage 2 (`suai-css/`) uses the canonical `--su-*` contract (scoped by `data-su-theme`/`data-su-mode`). The Speed skin exists only in `--su-*`.
+Two token systems are also live and incompatible: Stage 1 uses legacy `--suai-*` (scoped by `data-theme`/`data-mode`); Stage 2 (`suai-css/`) uses the canonical `--su-*` contract (scoped by `data-su-theme`/`data-su-mode`). The KOB skin exists only in `--su-*`.
 
 ## 2. Goal & success criteria
 
-Migrate Stage 1 onto the `--su-*` contract, unify all four skins (pla / nok / maa / speed) under one attribute-driven mechanism, and rebuild the demos so they are **fully styled with zero JavaScript** and switch skin+mode via a progressive-enhancement toggle.
+Migrate Stage 1 onto the `--su-*` contract, unify all four skins (pla / nok / maa / kob) under one attribute-driven mechanism, and rebuild the demos so they are **fully styled with zero JavaScript** and switch skin+mode via a progressive-enhancement toggle.
 
 **Done when:**
 1. With JavaScript disabled, every demo page renders fully styled in the default skin (`pla`/`light`); hand-editing `data-su-theme` / `data-su-mode` in devtools reskins live with no JS.
@@ -30,7 +30,7 @@ Migrate Stage 1 onto the `--su-*` contract, unify all four skins (pla / nok / ma
 4. All four skins are visually distinct across all six element pages, screenshot-verified.
 5. No console errors on any page (favicon 404 excepted or fixed).
 
-**Aesthetic constraint (owner directive):** **no decorative emoji anywhere in demo output.** The current demos scatter placeholder emoji (`🏠🔍➕❤👤☰✕` in `5.layout.html`; `🎨✍📏🔲✨🧩📋` in `6.theme.html`; also `2.display.html` and the Speed demo) — these read as ugly and unprofessional. Replace with plain text labels (Stage 1 is CSS-only; real iconography is Stage 2's `presetIcons` job, never inline emoji). This applies to all rebuilt pages and the switcher.
+**Aesthetic constraint (owner directive):** **no decorative emoji anywhere in demo output.** The current demos scatter placeholder emoji (`🏠🔍➕❤👤☰✕` in `5.layout.html`; `🎨✍📏🔲✨🧩📋` in `6.theme.html`; also `2.display.html` and the KOB demo) — these read as ugly and unprofessional. Replace with plain text labels (Stage 1 is CSS-only; real iconography is Stage 2's `presetIcons` job, never inline emoji). This applies to all rebuilt pages and the switcher.
 
 **Explicitly out of scope:** redesigning how pla/nok/maa *look* (re-express current identities in `--su-*`, do not restyle); the Nuxt "matrix showcase" harness (deferred — this migration is the foundation it will sit on); Stage 3/4.
 
@@ -41,15 +41,15 @@ A skin is defined **once** and consumed by both stages.
 | Layer | File(s) | Responsibility |
 |---|---|---|
 | **Tokens** | `suai-css/tokens.css` *(canonical, mostly unchanged; grows only via §6 gaps)* | `--su-*` defaults on `:root`. The SP-1 contract. Never duplicated. |
-| **Skins** | `suai-css/themes/{pla,nok,maa,speed}.css` | Each skin = `--su-*` overrides scoped `[data-su-theme="x"]`, with a nested `[data-su-mode="dark"]` block. `speed.css` exists; migration **adds** `pla`/`nok`/`maa` here, ported from the retired `--suai-*` vars files. |
-| **Fonts** | `suai-css/themes/fonts/*` | Per-skin `@font-face`, reusing existing woff2 (roboto-flex, noto-sans-thai, CMU) **plus newly-bundled Speed fonts (DM Sans, Saira)**. |
+| **Skins** | `suai-css/themes/{pla,nok,maa,kob}.css` | Each skin = `--su-*` overrides scoped `[data-su-theme="x"]`, with a nested `[data-su-mode="dark"]` block. `kob.css` exists; migration **adds** `pla`/`nok`/`maa` here, ported from the retired `--suai-*` vars files. |
+| **Fonts** | `suai-css/themes/fonts/*` | Per-skin `@font-face`, reusing existing woff2 (roboto-flex, noto-sans-thai, CMU) **plus newly-bundled KOB fonts (DM Sans, Saira)**. |
 | **Element base** | `suai-html/suai.css` | The element-styling layer (~835 lines) rewritten to consume `--su-*`. This is Stage 1's "beautiful raw HTML" core. |
 
 Retired: `suai-html/suai-lai/{pla,nok,maa}/*-vars.css` and `*-base.css`. Per-theme element tweaks in the old `-base.css` files fold into either the base layer (if universal) or the skin file (if skin-specific), decided per rule during migration. The `suai-lai/` font woff2 files move under `suai-css/themes/fonts/`.
 
 ### Theming mechanism (the no-JS proof)
 
-A page sets `<html data-su-theme="nok" data-su-mode="dark">`. The cascade does everything: tokens supply defaults → the matching skin block overrides them → the base layer paints elements from those variables. **No JavaScript.** Switching = changing two attributes. This is identical to the mechanism `tokens.css` and the Speed demo already use, so Stage 1 and Stage 2 converge on one model.
+A page sets `<html data-su-theme="nok" data-su-mode="dark">`. The cascade does everything: tokens supply defaults → the matching skin block overrides them → the base layer paints elements from those variables. **No JavaScript.** Switching = changing two attributes. This is identical to the mechanism `tokens.css` and the KOB demo already use, so Stage 1 and Stage 2 converge on one model.
 
 ## 4. Distribution — modular sources, one committed bundle
 
@@ -104,12 +104,12 @@ Playwright, scripted, across all pages:
 - **Gap decisions block the migration.** Mitigation: for each gap, migration may use a *provisional* `--su-*` token with a `/* SP-1 provisional */` marker so Stage 1 ships; SP-1 review ratifies or renames. Names stay changeable only in `tokens.css` (working rule).
 - **Visual drift** from re-expressing skins. Mitigation: scope is re-expression, not restyle; verify against pre-migration screenshots per skin.
 - **Bundle staleness.** Mitigation: generated-header comment + a `pnpm build:html` step; document in CLAUDE.md that the bundle is a build artifact.
-- **Font weight.** Bundling Speed's DM Sans + Saira adds woff2 payload. Acceptable — Stage 1 self-containment is the goal; subset later if needed.
+- **Font weight.** Bundling KOB's DM Sans + Saira adds woff2 payload. Acceptable — Stage 1 self-containment is the goal; subset later if needed.
 
 ## 10. Build order (for the plan)
 
 1. Reconcile vars → produce the map + gap list; add provisional tokens to `tokens.css`.
-2. Author `themes/{pla,nok,maa}.css` + fonts (incl. Speed fonts).
+2. Author `themes/{pla,nok,maa}.css` + fonts (incl. KOB fonts).
 3. Rewrite `suai-html/suai.css` to `--su-*`.
 4. Concat script + committed `suai.bundle.css` + `pnpm build:html`.
 5. Switcher JS + shared switcher markup.
