@@ -367,3 +367,21 @@
   color: var(--su-accent);
   opacity: 1;
 }
+
+/* MAA form flourishes: secondary is the iOS tinted button; the scrollbar is thin
+   and translucent to match the frost. */
+[data-su-theme="maa"] button[type="reset"],
+[data-su-theme="maa"] input[type="reset"] {
+  background: color-mix(in srgb, var(--su-accent) 12%, transparent);
+  color: var(--su-accent);
+  border: none;
+}
+[data-su-theme="maa"] button[type="reset"]:hover,
+[data-su-theme="maa"] input[type="reset"]:hover {
+  background: color-mix(in srgb, var(--su-accent) 20%, transparent);
+}
+[data-su-theme="maa"] ::-webkit-scrollbar { width: 8px; height: 8px; }
+[data-su-theme="maa"] ::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--su-accent) 70%, transparent);
+  border-width: 2px;
+}

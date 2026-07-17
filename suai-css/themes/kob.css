@@ -132,3 +132,22 @@
   color: var(--su-accent-fg);
   opacity: 1;
 }
+
+/* KOB form flourishes: the fox has no round edges — square radio too; the file
+   button and the flooded secondary carry the crimson fur-gradient. */
+[data-su-theme="kob"] input[type="radio"] { border-radius: 0; }
+[data-su-theme="kob"] input[type="radio"]:checked::before { border-radius: 0; }
+[data-su-theme="kob"] input[type="file"]::file-selector-button {
+  background: linear-gradient(135deg, var(--su-accent), color-mix(in srgb, var(--su-accent) 58%, #10000a));
+}
+[data-su-theme="kob"] button[type="reset"],
+[data-su-theme="kob"] input[type="reset"] {
+  border: 2px solid var(--su-accent);
+  color: var(--su-accent);
+  background: transparent;
+}
+[data-su-theme="kob"] button[type="reset"]:hover,
+[data-su-theme="kob"] input[type="reset"]:hover {
+  background: linear-gradient(135deg, var(--su-accent), color-mix(in srgb, var(--su-accent) 58%, #10000a));
+  color: var(--su-accent-fg);
+}

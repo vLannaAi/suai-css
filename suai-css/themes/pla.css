@@ -90,12 +90,14 @@
 [data-su-theme="pla"] input[type="button"]:active,
 [data-su-theme="pla"] input[type="submit"]:active { box-shadow: var(--su-shadow-sm); }
 
+[data-su-theme="pla"] button[type="reset"],
 [data-su-theme="pla"] input[type="reset"] {
   background-color: transparent;
   color: var(--su-accent);
   border: 2px solid var(--su-border);
   box-shadow: none;
 }
+[data-su-theme="pla"] button[type="reset"]:hover,
 [data-su-theme="pla"] input[type="reset"]:hover {
   background-color: color-mix(in srgb, var(--su-fg) 6%, var(--su-bg));
   box-shadow: none;

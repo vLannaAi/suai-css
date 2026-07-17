@@ -327,12 +327,14 @@
 [data-su-theme="pla"] input[type="button"]:active,
 [data-su-theme="pla"] input[type="submit"]:active { box-shadow: var(--su-shadow-sm); }
 
+[data-su-theme="pla"] button[type="reset"],
 [data-su-theme="pla"] input[type="reset"] {
   background-color: transparent;
   color: var(--su-accent);
   border: 2px solid var(--su-border);
   box-shadow: none;
 }
+[data-su-theme="pla"] button[type="reset"]:hover,
 [data-su-theme="pla"] input[type="reset"]:hover {
   background-color: color-mix(in srgb, var(--su-fg) 6%, var(--su-bg));
   box-shadow: none;
@@ -594,6 +596,30 @@
   border-color: var(--su-accent);
   opacity: 1;
 }
+
+/* NOK form flourishes: pressed-in (inset) fields — the nest's cup; secondary is an
+   outline-primary that floods to filled on hover; the file button is shadowed. */
+[data-su-theme="nok"] :is(input:not([type="checkbox"], [type="radio"], [type="button"], [type="submit"], [type="reset"], [type="file"], [type="color"], [type="range"]), textarea, select) {
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+[data-su-theme="nok"] :is(input, textarea, select):focus {
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), 0 0 0 0.25rem rgba(217, 119, 6, 0.25);
+}
+[data-su-theme="nok"] input[type="checkbox"],
+[data-su-theme="nok"] input[type="radio"] { box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12); }
+[data-su-theme="nok"] button[type="reset"],
+[data-su-theme="nok"] input[type="reset"] {
+  background: transparent;
+  color: var(--su-accent);
+  border: var(--su-border-w) solid var(--su-accent);
+  box-shadow: none;
+}
+[data-su-theme="nok"] button[type="reset"]:hover,
+[data-su-theme="nok"] input[type="reset"]:hover {
+  background: var(--su-accent);
+  color: var(--su-accent-fg);
+}
+[data-su-theme="nok"] input[type="file"]::file-selector-button { box-shadow: var(--su-shadow-sm); }
 
 
 /* === suai-css/themes/maa.css === */
@@ -967,6 +993,24 @@
   opacity: 1;
 }
 
+/* MAA form flourishes: secondary is the iOS tinted button; the scrollbar is thin
+   and translucent to match the frost. */
+[data-su-theme="maa"] button[type="reset"],
+[data-su-theme="maa"] input[type="reset"] {
+  background: color-mix(in srgb, var(--su-accent) 12%, transparent);
+  color: var(--su-accent);
+  border: none;
+}
+[data-su-theme="maa"] button[type="reset"]:hover,
+[data-su-theme="maa"] input[type="reset"]:hover {
+  background: color-mix(in srgb, var(--su-accent) 20%, transparent);
+}
+[data-su-theme="maa"] ::-webkit-scrollbar { width: 8px; height: 8px; }
+[data-su-theme="maa"] ::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--su-accent) 70%, transparent);
+  border-width: 2px;
+}
+
 
 /* === suai-css/themes/kob.css === */
 /* ============================================================================
@@ -1102,6 +1146,25 @@
   background: var(--su-accent);
   color: var(--su-accent-fg);
   opacity: 1;
+}
+
+/* KOB form flourishes: the fox has no round edges — square radio too; the file
+   button and the flooded secondary carry the crimson fur-gradient. */
+[data-su-theme="kob"] input[type="radio"] { border-radius: 0; }
+[data-su-theme="kob"] input[type="radio"]:checked::before { border-radius: 0; }
+[data-su-theme="kob"] input[type="file"]::file-selector-button {
+  background: linear-gradient(135deg, var(--su-accent), color-mix(in srgb, var(--su-accent) 58%, #10000a));
+}
+[data-su-theme="kob"] button[type="reset"],
+[data-su-theme="kob"] input[type="reset"] {
+  border: 2px solid var(--su-accent);
+  color: var(--su-accent);
+  background: transparent;
+}
+[data-su-theme="kob"] button[type="reset"]:hover,
+[data-su-theme="kob"] input[type="reset"]:hover {
+  background: linear-gradient(135deg, var(--su-accent), color-mix(in srgb, var(--su-accent) 58%, #10000a));
+  color: var(--su-accent-fg);
 }
 
 
@@ -1533,6 +1596,18 @@ input[type="reset"]:disabled {
   cursor: not-allowed;
 }
 
+/* Secondary button — the quieter alternative: outlined, never filled like primary. */
+button[type="reset"],
+input[type="reset"] {
+  background-color: transparent;
+  color: var(--su-accent);
+  border: var(--su-border-w) solid var(--su-accent);
+}
+button[type="reset"]:hover,
+input[type="reset"]:hover {
+  background-color: color-mix(in srgb, var(--su-accent) 12%, transparent);
+}
+
 /* ============================================================================
    INPUT ELEMENTS
    ========================================================================= */
@@ -1554,6 +1629,7 @@ textarea,
 select {
   display: block;
   width: 100%;
+  max-width: 26rem; /* comfortable measure — fields don't stretch full-bleed */
   padding: var(--su-space-2) var(--su-space-3);
   font-family: inherit;
   font-size: var(--su-font-size);
@@ -1564,6 +1640,7 @@ select {
   border-radius: var(--su-radius);
   transition: var(--su-transition-fast);
 }
+input[type="color"] { width: 3rem; height: 2.4rem; padding: 2px; }
 
 input:focus,
 textarea:focus,
@@ -1583,6 +1660,7 @@ select:disabled {
 
 textarea {
   min-height: 100px;
+  max-width: 44rem;
   resize: vertical;
 }
 
@@ -1590,13 +1668,79 @@ select {
   cursor: pointer;
 }
 
-/* Checkboxes and Radio Buttons */
+/* Checkboxes and radios — custom-drawn (appearance:none), token-driven so they
+   re-skin. Box/dot fills with the accent when checked; the check is CSS, no glyph. */
 input[type="checkbox"],
 input[type="radio"] {
-  width: auto;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.15em;
+  height: 1.15em;
   margin-right: var(--su-space-1);
+  vertical-align: -0.2em;
+  border: max(1px, var(--su-border-w)) solid var(--su-border);
+  background-color: var(--su-bg);
   cursor: pointer;
+  display: inline-grid;
+  place-content: center;
+  transition: var(--su-transition-fast);
 }
+input[type="checkbox"] { border-radius: var(--su-radius-sm); }
+input[type="radio"] { border-radius: 50%; }
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  background-color: var(--su-accent);
+  border-color: var(--su-accent);
+}
+input[type="checkbox"]:checked::before {
+  content: "";
+  width: 0.3em;
+  height: 0.56em;
+  border: solid var(--su-accent-fg);
+  border-width: 0 0.16em 0.16em 0;
+  transform: translateY(-0.06em) rotate(45deg);
+}
+input[type="radio"]:checked::before {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background-color: var(--su-accent-fg);
+}
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+  outline: 2px solid var(--su-accent);
+  outline-offset: 2px;
+}
+
+/* File input — the picker button wears the skin's primary button. */
+input[type="file"] { cursor: pointer; font-size: var(--su-font-size); }
+input[type="file"]::file-selector-button {
+  margin-right: var(--su-space-3);
+  padding: var(--su-space-2) var(--su-space-3);
+  font-family: inherit;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--su-radius);
+  background-color: var(--su-accent);
+  color: var(--su-accent-fg);
+  cursor: pointer;
+  transition: var(--su-transition-fast);
+}
+input[type="file"]::file-selector-button:hover {
+  background-color: color-mix(in srgb, var(--su-accent) 85%, black);
+}
+
+/* Scrollbar — themed thumb on a subtle track; corners follow the skin's radius. */
+* { scrollbar-width: thin; scrollbar-color: var(--su-accent) var(--su-bg-accent); }
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--su-bg-accent); }
+::-webkit-scrollbar-thumb {
+  background-color: var(--su-accent);
+  border-radius: var(--su-radius);
+  border: 3px solid var(--su-bg-accent);
+}
+::-webkit-scrollbar-thumb:hover { background-color: color-mix(in srgb, var(--su-accent) 85%, black); }
 
 /* ============================================================================
    CODE BLOCKS
