@@ -692,50 +692,61 @@ body[data-layout="basic"] > footer {
   border-top: var(--su-border-w) solid var(--su-border);
 }
 
-/* Side Navigation Layout */
-body[data-layout="side-nav"] {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+/* Side Navigation Layout — an app shell: header (top), nav (left sidebar),
+   main, footer (bottom). Scoped to [data-layout] (not body) so the in-page
+   demos render it, and every child is placed with CSS Grid.
+   Mobile: nav is an off-canvas drawer revealed via :target (no JS — matches
+   the demos' href="#drawer" / nav id="drawer" markup).
+   Desktop (>=768px): permanent left sidebar. */
+[data-layout="side-nav"] {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "header" "main" "footer";
   padding: 0;
+  overflow: hidden; /* clip the off-canvas drawer to the shell */
 }
+body[data-layout="side-nav"] { min-height: 100vh; } /* full-page usage fills the viewport */
 
-body[data-layout="side-nav"] > nav {
-  position: fixed;
+[data-layout="side-nav"] > header { grid-area: header; }
+[data-layout="side-nav"] > main   { grid-area: main; padding: var(--su-space-4); }
+[data-layout="side-nav"] > footer { grid-area: footer; }
+
+[data-layout="side-nav"] > nav {
+  position: absolute;
   top: 0;
+  bottom: 0;
   left: -280px;
   width: 280px;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--su-space-1);
   background-color: var(--su-bg-accent);
   border-right: var(--su-border-w) solid var(--su-border);
   transition: left 0.3s ease;
-  z-index: 1000;
+  z-index: 10;
   overflow-y: auto;
   padding: var(--su-space-4);
 }
+[data-layout="side-nav"] > nav:target { left: 0; }
+[data-layout="side-nav"] > nav a { flex: none; text-align: left; }
 
-body[data-layout="side-nav"][data-nav-open="true"] > nav {
-  left: 0;
-}
-
-body[data-layout="side-nav"] > main {
-  flex: 1;
-  padding: var(--su-space-4);
-}
-
-/* Desktop: Side nav always visible */
+/* Desktop: permanent left sidebar (nav joins the grid) */
 @media (min-width: 768px) {
-  body[data-layout="side-nav"] > nav {
+  [data-layout="side-nav"] {
+    grid-template-columns: 280px 1fr;
+    grid-template-areas:
+      "header header"
+      "nav    main"
+      "footer footer";
+    overflow: visible;
+  }
+  [data-layout="side-nav"] > nav {
+    grid-area: nav;
     position: static;
-    left: 0;
-  }
-
-  body[data-layout="side-nav"] {
-    flex-direction: row;
-  }
-
-  body[data-layout="side-nav"] > main {
-    flex: 1;
+    left: auto;
+    width: auto;
+    transition: none;
   }
 }
 
