@@ -6,6 +6,45 @@
   <title>Side navigation layout — SUAI</title>
   <link rel="stylesheet" href="../../suai.bundle.css">
   <script src="../../suai-theme.js" defer></script>
+  <style>
+    /* Radio-driven navigation: pick an item, it stays selected, and the matching
+       panel replaces the content — all in CSS, no JavaScript. The radios sit
+       before nav/main so :checked can style the active item and reveal its panel
+       via the ~ sibling combinator. */
+    .su-nav-radio { position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none; }
+
+    .su-nav-menu { display: flex; flex-direction: column; gap: var(--su-space-1); margin-top: var(--su-space-2); }
+    .su-nav-item {
+      display: block;
+      padding: var(--su-space-2) var(--su-space-3);
+      border-radius: var(--su-radius-sm);
+      color: var(--su-accent);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .su-nav-item:hover { background: color-mix(in srgb, var(--su-accent) 14%, transparent); }
+
+    .su-panel { display: none; }
+    .su-panel > h2:first-child { margin-top: 0; }
+
+    /* Checked radio -> highlight its nav item */
+    #nav-overview:checked ~ nav label[for="nav-overview"],
+    #nav-projects:checked ~ nav label[for="nav-projects"],
+    #nav-team:checked     ~ nav label[for="nav-team"],
+    #nav-reports:checked  ~ nav label[for="nav-reports"],
+    #nav-settings:checked ~ nav label[for="nav-settings"] {
+      background: var(--su-accent);
+      color: var(--su-accent-fg);
+    }
+    /* Checked radio -> show its panel (all others stay display:none) */
+    #nav-overview:checked ~ main .su-panel--overview,
+    #nav-projects:checked ~ main .su-panel--projects,
+    #nav-team:checked     ~ main .su-panel--team,
+    #nav-reports:checked  ~ main .su-panel--reports,
+    #nav-settings:checked ~ main .su-panel--settings {
+      display: block;
+    }
+  </style>
 </head>
 <body class="su-layout-page">
 
@@ -26,6 +65,12 @@
 
   <div data-layout="side-nav">
     <input type="checkbox" id="su-drawer" class="su-drawer-toggle" aria-hidden="true" tabindex="-1">
+    <input type="radio" name="su-nav" id="nav-overview" class="su-nav-radio" checked>
+    <input type="radio" name="su-nav" id="nav-projects" class="su-nav-radio">
+    <input type="radio" name="su-nav" id="nav-team" class="su-nav-radio">
+    <input type="radio" name="su-nav" id="nav-reports" class="su-nav-radio">
+    <input type="radio" name="su-nav" id="nav-settings" class="su-nav-radio">
+
     <header>
       <label for="su-drawer" class="su-drawer-open" aria-label="Open menu">Menu</label>
       <h1>Dashboard</h1>
@@ -34,28 +79,76 @@
     <nav>
       <label for="su-drawer" class="su-drawer-close" aria-label="Close menu">Close</label>
       <h3>Navigation</h3>
-      <a href="#overview">Overview</a>
-      <a href="#projects">Projects</a>
-      <a href="#team">Team</a>
-      <a href="#reports">Reports</a>
-      <a href="#settings">Settings</a>
+      <div class="su-nav-menu">
+        <label for="nav-overview" class="su-nav-item">Overview</label>
+        <label for="nav-projects" class="su-nav-item">Projects</label>
+        <label for="nav-team" class="su-nav-item">Team</label>
+        <label for="nav-reports" class="su-nav-item">Reports</label>
+        <label for="nav-settings" class="su-nav-item">Settings</label>
+      </div>
     </nav>
 
     <main>
       <p><a href="../5.layout.html">&larr; Back to layouts gallery</a></p>
-      <h2>Dashboard content</h2>
-      <p>An application shell: header across the top, a navigation sidebar on the left, the main content area, and a footer across the bottom &mdash; placed with CSS Grid.</p>
-      <p><strong>On mobile</strong> the sidebar is a hidden drawer; tap <em>Menu</em> to slide it in and <em>Close</em> to dismiss it &mdash; no JavaScript (a hidden checkbox toggles it, so it never touches the URL or scroll position). <strong>On tablet and desktop (&ge;768px)</strong> the sidebar is permanent.</p>
-      <h3>When to use</h3>
-      <ul>
-        <li>Admin panels and dashboards</li>
-        <li>Apps with a persistent primary navigation</li>
-      </ul>
+
+      <section class="su-panel su-panel--overview">
+        <h2>Overview</h2>
+        <p>Welcome back. Pick an item from the sidebar &mdash; it stays selected and this area swaps to the matching content, with no JavaScript (each item is a radio button; <code>:checked</code> reveals its panel).</p>
+        <ul>
+          <li>12 active projects</li>
+          <li>4 pending reports</li>
+          <li>8 team members</li>
+        </ul>
+      </section>
+
+      <section class="su-panel su-panel--projects">
+        <h2>Projects</h2>
+        <table>
+          <thead><tr><th>Project</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Apollo</td><td>On track</td></tr>
+            <tr><td>Borealis</td><td>At risk</td></tr>
+            <tr><td>Cirrus</td><td>Shipped</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="su-panel su-panel--team">
+        <h2>Team</h2>
+        <ul>
+          <li>Ana &mdash; Design</li>
+          <li>Beto &mdash; Engineering</li>
+          <li>Chai &mdash; Product</li>
+          <li>Dao &mdash; Research</li>
+        </ul>
+      </section>
+
+      <section class="su-panel su-panel--reports">
+        <h2>Reports</h2>
+        <p>Four reports are awaiting review.</p>
+        <ol>
+          <li>Q2 revenue summary</li>
+          <li>Churn analysis</li>
+          <li>Uptime &amp; incidents</li>
+          <li>Roadmap progress</li>
+        </ol>
+      </section>
+
+      <section class="su-panel su-panel--settings">
+        <h2>Settings</h2>
+        <form>
+          <label>Display name<br><input type="text" value="Dashboard"></label>
+          <p><label><input type="checkbox" checked> Email notifications</label></p>
+          <p><button type="button">Save changes</button></p>
+        </form>
+      </section>
     </main>
 
     <footer>
       <p>&copy; 2026 SUAI &middot; side-nav layout</p>
     </footer>
+
+    <label for="su-drawer" class="su-drawer-backdrop" aria-hidden="true"></label>
   </div>
 
 </body>

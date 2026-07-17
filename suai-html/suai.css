@@ -742,6 +742,19 @@ body[data-layout] { min-height: 100vh; } /* data-layout applied directly to <bod
 /* Sidebar links: cancel the base nav hover border-bottom — a growing 4px border
    changes each row's height and makes the list jitter on hover. */
 [data-layout="side-nav"] > nav a:hover { border-bottom: 0; }
+/* Backdrop: when the drawer is open on mobile, a dimmed overlay covers the rest;
+   tapping it (a label for the toggle) closes the drawer. */
+[data-layout="side-nav"] .su-drawer-backdrop { display: none; }
+@media (max-width: 767px) {
+  [data-layout="side-nav"] .su-drawer-toggle:checked ~ .su-drawer-backdrop {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+}
 
 /* Desktop: permanent left sidebar (nav joins the grid); the toggle is hidden. */
 @media (min-width: 768px) {
