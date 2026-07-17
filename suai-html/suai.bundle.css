@@ -1643,6 +1643,7 @@ body[data-layout] { min-height: 100vh; } /* data-layout applied directly to <bod
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto; /* header/footer sized to content, middle expands */
   grid-template-areas: "header" "main" "footer";
   padding: 0;
   overflow: hidden; /* clip the off-canvas drawer to the shell */
@@ -1700,6 +1701,7 @@ body[data-layout] { min-height: 100vh; } /* data-layout applied directly to <bod
 @media (min-width: 768px) {
   [data-layout="side-nav"] {
     grid-template-columns: 280px 1fr;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
       "header header"
       "nav    main"
@@ -1722,6 +1724,7 @@ body[data-layout] { min-height: 100vh; } /* data-layout applied directly to <bod
 [data-layout="with-aside"] {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto auto;
   grid-template-areas: "header" "main" "aside" "footer";
   padding: 0;
 }
@@ -1737,6 +1740,7 @@ body[data-layout] { min-height: 100vh; } /* data-layout applied directly to <bod
 @media (min-width: 1024px) {
   [data-layout="with-aside"] {
     grid-template-columns: 1fr 320px;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
       "header header"
       "main   aside"
@@ -1899,6 +1903,41 @@ body[data-layout] { min-height: 100vh; } /* data-layout applied directly to <bod
   text-underline-offset: 3px;
   background: none;
   box-shadow: none;
+}
+
+/* Layout pages sit flush under the switcher (no gap) so the layout can be full
+   height; other demo pages keep the separating gap. */
+body.su-layout-page > .su-switcher { margin-bottom: 0; }
+
+/* "Hide" control — collapses the switcher bar to a small corner "Show controls"
+   button so the full-height layout can be tested. Pure CSS (a hidden checkbox).
+   The Hide label sits at the right end of the bar (margin-left:auto). */
+.su-hide-controls-toggle { position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none; }
+.su-hide-controls {
+  margin-left: auto;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--su-muted);
+}
+.su-hide-controls:hover { color: var(--su-fg); }
+.su-show-controls { display: none; }
+.su-hide-controls-toggle:checked ~ .su-switcher { display: none; }
+.su-hide-controls-toggle:checked ~ .su-show-controls {
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  padding: var(--su-space-1) var(--su-space-3);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--su-font-size-sm);
+  font-weight: 600;
+  color: var(--su-muted);
+  background: var(--su-bg-accent);
+  border: var(--su-border-w) solid var(--su-border);
+  border-top: 0;
+  border-radius: 0 0 0 var(--su-radius-sm);
+  cursor: pointer;
 }
 
 /* ============================================================================

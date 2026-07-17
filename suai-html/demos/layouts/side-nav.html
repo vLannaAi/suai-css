@@ -48,6 +48,8 @@
 </head>
 <body class="su-layout-page">
 
+  <input type="checkbox" id="su-hide-controls" class="su-hide-controls-toggle" hidden>
+
   <div class="su-switcher" aria-label="Theme controls">
     <div class="su-switcher-group su-switcher-skin" role="group" aria-label="Skin">
       <span class="su-switcher-label">Skin</span>
@@ -61,7 +63,10 @@
       <button type="button" data-su-set-mode="light">Light</button>
       <button type="button" data-su-set-mode="dark">Dark</button>
     </div>
+    <label for="su-hide-controls" class="su-hide-controls">Hide</label>
   </div>
+
+  <label for="su-hide-controls" class="su-show-controls">Show controls</label>
 
   <div data-layout="side-nav">
     <input type="checkbox" id="su-drawer" class="su-drawer-toggle" aria-hidden="true" tabindex="-1">
