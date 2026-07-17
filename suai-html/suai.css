@@ -578,6 +578,13 @@ footer h1, footer h2, footer h3, footer h4, footer h5, footer h6, footer p {
   border: var(--su-border-w) solid color-mix(in srgb, var(--su-accent-fg) 35%, transparent);
   color: var(--su-accent-fg);
 }
+/* An <article>'s own footer is metadata (a timestamp, byline) — not the page
+   footer — so keep it plain instead of the accent-banner treatment. */
+article > footer {
+  background-color: transparent;
+  color: var(--su-muted);
+}
+[data-su-theme] article > footer :is(small, time, span, a, p) { color: var(--su-muted); }
 nav {
   display: flex;
   gap: var(--su-space-3);
