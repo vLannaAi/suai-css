@@ -2132,6 +2132,7 @@ body[data-layout] { min-height: 100vh; } /* data-layout applied directly to <bod
   flex: 1;
   display: grid;
   grid-template-columns: 1fr;
+  align-content: start; /* rows size to content; don't stretch to fill the flex height */
   gap: var(--su-space-4);
   padding: var(--su-space-4);
 }
@@ -2157,12 +2158,11 @@ body[data-layout] { min-height: 100vh; } /* data-layout applied directly to <bod
 }
 [data-layout="sections"] > section {
   padding: var(--su-space-5) var(--su-space-4);
-  border-bottom: var(--su-border-w) solid var(--su-border);
 }
+/* Bands separate by the alternating surface tint alone — no hard rules. */
 [data-layout="sections"] > section:nth-of-type(even) {
   background-color: var(--su-bg-accent);
 }
-[data-layout="sections"] > section:last-of-type { border-bottom: none; }
 
 /* Toolbar — header, nav (top on desktop, fixed bottom bar on mobile), main. */
 [data-layout="toolbar"] {
