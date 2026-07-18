@@ -647,7 +647,12 @@ video {
    slide fills the width (one at a time = slideshow); on wide screens the next
    slide peeks in. The container is keyboard-focusable so arrow keys can scroll. */
 .su-gallery {
+  /* Uniform image-band height: images keep their own aspect ratio (portrait,
+     landscape, square) so widths differ, but every image is this tall. This
+     both tidies the row and gives the arrows a single height to centre on. */
+  --su-img-h: clamp(11rem, 42vw, 17rem);
   display: flex;
+  align-items: flex-start; /* top-align images so the band starts at the top */
   gap: var(--su-space-4);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -657,11 +662,16 @@ video {
   -webkit-overflow-scrolling: touch;
 }
 .su-gallery > figure {
-  flex: 0 0 min(100%, 32rem);
+  flex: 0 0 auto; /* slide width follows the image's natural ratio */
   scroll-snap-align: center;
   margin: 0;
 }
-.su-gallery > figure img { width: 100%; }
+.su-gallery > figure img {
+  display: block;
+  height: var(--su-img-h);
+  width: auto;
+  border-radius: var(--su-radius);
+}
 .su-gallery:focus-visible {
   outline: 2px solid var(--su-accent);
   outline-offset: 2px;
@@ -681,6 +691,9 @@ video {
 .su-gallery::scroll-button(right) {
   position: absolute;
   position-anchor: --su-gallery;
+  /* Centre on the image band (not the figure, whose caption sits below it). */
+  top: calc(anchor(top) + var(--su-img-h) / 2);
+  translate: 0 -50%;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -700,13 +713,11 @@ video {
 }
 .su-gallery::scroll-button(left) {
   content: "\2039"; /* ‹ */
-  position-area: center left;
-  translate: calc(100% + var(--su-space-2)) 0;
+  left: calc(anchor(left) + var(--su-space-2));
 }
 .su-gallery::scroll-button(right) {
   content: "\203A"; /* › */
-  position-area: center right;
-  translate: calc(-100% - var(--su-space-2)) 0;
+  right: calc(anchor(right) + var(--su-space-2));
 }
 .su-gallery::scroll-button(*):hover {
   background-color: var(--su-accent);
@@ -720,6 +731,74 @@ video {
   opacity: 0.35;
   cursor: default;
   box-shadow: none;
+}
+
+/* Lightbox gallery — a responsive thumbnail grid where any photo opens
+   full-screen. Pure CSS: a per-figure checkbox toggles a fixed overlay via
+   `:checked`; the overlay is itself a <label> for the same checkbox, so
+   clicking the backdrop closes it. No JS and no `#id`/`:target`, so the page
+   never jumps. Thumbnails are cropped to a tidy uniform frame; the overlay
+   shows each photo at its true aspect ratio. */
+.su-lightbox-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: var(--su-space-4);
+  margin-bottom: var(--su-space-4);
+}
+.su-lightbox-gallery > figure { margin: 0; }
+/* Visually hidden but still keyboard-focusable (so it is not `display:none`). */
+.su-lightbox-cb {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+.su-lightbox-open {
+  display: block;
+  cursor: zoom-in;
+}
+.su-lightbox-open img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--su-radius);
+}
+.su-lightbox-cb:focus-visible + .su-lightbox-open img {
+  outline: 2px solid var(--su-accent);
+  outline-offset: 2px;
+}
+.su-lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: var(--su-space-5);
+  background: rgba(0, 0, 0, 0.85);
+  cursor: zoom-out;
+}
+.su-lightbox-overlay img {
+  max-width: 92vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--su-radius);
+  box-shadow: var(--su-shadow-lg);
+}
+.su-lightbox-cb:checked ~ .su-lightbox-overlay { display: flex; }
+/* Close affordance in the corner (decorative — the whole backdrop closes). */
+.su-lightbox-overlay::after {
+  content: "\00d7"; /* × */
+  position: absolute;
+  top: var(--su-space-4);
+  right: var(--su-space-5);
+  font-size: 2.5rem;
+  line-height: 1;
+  color: #fff;
 }
 
 /* ============================================================================
