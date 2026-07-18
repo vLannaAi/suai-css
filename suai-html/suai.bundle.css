@@ -1837,7 +1837,9 @@ video {
   scroll-snap-align: center;
   margin: 0;
 }
-.su-gallery > figure img {
+/* Thumbnail only (the .su-lightbox-open image) — the fixed overlay image, also
+   a descendant of the figure, keeps its own full-screen sizing. */
+.su-gallery > figure > .su-lightbox-open img {
   display: block;
   height: var(--su-img-h);
   width: auto;
@@ -1904,19 +1906,11 @@ video {
   box-shadow: none;
 }
 
-/* Lightbox gallery — a responsive thumbnail grid where any photo opens
-   full-screen. Pure CSS: a per-figure checkbox toggles a fixed overlay via
-   `:checked`; the overlay is itself a <label> for the same checkbox, so
-   clicking the backdrop closes it. No JS and no `#id`/`:target`, so the page
-   never jumps. Thumbnails are cropped to a tidy uniform frame; the overlay
-   shows each photo at its true aspect ratio. */
-.su-lightbox-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-  gap: var(--su-space-4);
-  margin-bottom: var(--su-space-4);
-}
-.su-lightbox-gallery > figure { margin: 0; }
+/* Lightbox — any photo (here, each carousel slide) opens full-screen. Pure CSS:
+   a per-figure checkbox toggles a fixed overlay via `:checked`; the overlay is
+   itself a <label> for the same checkbox, so clicking the backdrop closes it.
+   No JS and no `#id`/`:target`, so the page never jumps. The overlay shows the
+   photo at its true aspect ratio. */
 /* Visually hidden but still keyboard-focusable (so it is not `display:none`). */
 .su-lightbox-cb {
   position: absolute;
@@ -1928,13 +1922,6 @@ video {
 .su-lightbox-open {
   display: block;
   cursor: zoom-in;
-}
-.su-lightbox-open img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: var(--su-radius);
 }
 .su-lightbox-cb:focus-visible + .su-lightbox-open img {
   outline: 2px solid var(--su-accent);
